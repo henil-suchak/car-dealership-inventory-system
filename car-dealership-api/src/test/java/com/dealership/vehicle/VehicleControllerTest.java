@@ -11,8 +11,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.dealership.TestcontainersConfiguration;
+import org.springframework.context.annotation.Import;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
 @SpringBootTest
 @AutoConfigureMockMvc
+@Testcontainers
+@Import(TestcontainersConfiguration.class)
 public class VehicleControllerTest {
 
     @Autowired
