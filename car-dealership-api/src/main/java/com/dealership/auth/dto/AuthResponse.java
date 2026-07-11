@@ -1,4 +1,4 @@
 package com.dealership.auth.dto;
 
-public record AuthResponse(String token) {
+public record AuthResponse(String token, String refreshToken) {
 }

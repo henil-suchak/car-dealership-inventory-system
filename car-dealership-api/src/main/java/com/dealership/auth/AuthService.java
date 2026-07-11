@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.dealership.entity.RefreshToken;
 import com.dealership.auth.dto.LoginRequest;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,16 +23,18 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    // AuthService.java
-    private final UserDetailsService userDetailsService; // Add this field
+    private final UserDetailsService userDetailsService;
+    private final RefreshTokenService refreshTokenService;
 
     public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                       JwtService jwtService, UserDetailsService userDetailsService,AuthenticationManager authenticationManager) {
+                       JwtService jwtService, UserDetailsService userDetailsService,
+                       AuthenticationManager authenticationManager, RefreshTokenService refreshTokenService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
-        this.userDetailsService = userDetailsService; // Add this line
+        this.userDetailsService = userDetailsService;
         this.authenticationManager=authenticationManager;
+        this.refreshTokenService = refreshTokenService;
     }
 
 
@@ -45,31 +48,28 @@ public class AuthService {
         // Save and use the saved entity
         User savedUser = userRepository.save(user);
 
-        // Since 'savedUser' implements UserDetails, you can pass it directly!
-        String token = jwtService.generateToken(savedUser);
-        return new AuthResponse(token);
+        String accessToken = jwtService.generateToken(savedUser);
+        RefreshToken refreshToken = refreshTokenService.createRefreshToken(savedUser.getId());
+        return new AuthResponse(accessToken, refreshToken.getToken());
     }
 
-    public AuthResponse refresh(String authHeader) {
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new com.dealership.exception.InvalidTokenException("Invalid token format");
-        }
-
-        String token = authHeader.substring(7);
-        String email = jwtService.extractUsername(token);
-
-        // Load the user details
-        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-
-        // Explicitly validate the token against the loaded user details
-        if (!jwtService.isTokenValid(token, userDetails)) {
-            throw new com.dealership.exception.InvalidTokenException("Token is invalid or expired");
-        }
-
-        return new AuthResponse(jwtService.generateToken(userDetails));
+    public AuthResponse refresh(com.dealership.auth.dto.RefreshTokenRequest request) {
+        return refreshTokenService.findByToken(request.refreshToken())
+                .map(refreshTokenService::verifyExpiration)
+                .map(RefreshToken::getUser)
+                .map(user -> {
+                    String accessToken = jwtService.generateToken(user);
+                    return new AuthResponse(accessToken, request.refreshToken());
+                })
+                .orElseThrow(() -> new com.dealership.exception.InvalidTokenException("Refresh token is not in database!"));
     }
 
     public void logout() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof User) {
+            User user = (User) auth.getPrincipal();
+            refreshTokenService.deleteByUserId(user.getId());
+        }
         SecurityContextHolder.clearContext();
     }
     public AuthResponse login(LoginRequest request) {
@@ -78,7 +78,10 @@ public class AuthService {
         );
         var user = userRepository.findByEmail(request.email())
                 .orElseThrow(); // Or use a custom ResourceNotFoundException
-        return new AuthResponse(jwtService.generateToken(user));
+        
+        String accessToken = jwtService.generateToken(user);
+        RefreshToken refreshToken = refreshTokenService.createRefreshToken(user.getId());
+        return new AuthResponse(accessToken, refreshToken.getToken());
     }
 
 

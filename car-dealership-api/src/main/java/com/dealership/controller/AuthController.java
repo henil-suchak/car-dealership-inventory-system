@@ -23,8 +23,8 @@ public class AuthController {
         return new ResponseEntity<>(authService.register(request), HttpStatus.CREATED);
     }
     @PostMapping("/refresh")
-    public ResponseEntity<AuthResponse> refresh(@RequestHeader("Authorization") String authHeader) {
-        return ResponseEntity.ok(authService.refresh(authHeader));
+    public ResponseEntity<AuthResponse> refresh(@RequestBody com.dealership.auth.dto.RefreshTokenRequest request) {
+        return ResponseEntity.ok(authService.refresh(request));
     }
 
     @PostMapping("/logout")
