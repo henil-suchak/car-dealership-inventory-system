@@ -1,6 +1,6 @@
 package com.dealership.service;
 
-import com.dealership.entity.Vehicle; // Must match the entity
+import com.dealership.entity.Vehicle;
 import com.dealership.repository.VehicleRepository;
 import com.dealership.vehicle.VehicleMapper;
 import com.dealership.vehicle.dto.VehicleRequest;
@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 @Service
 public class VehicleService {
@@ -23,7 +25,6 @@ public class VehicleService {
 
     @Transactional
     public VehicleResponse createVehicle(VehicleRequest request) {
-        // vehicleMapper.toEntity now returns com.dealership.entity.Vehicle
         Vehicle vehicle = vehicleMapper.toEntity(request);
         return vehicleMapper.toResponse(vehicleRepository.save(vehicle));
     }
@@ -31,5 +32,27 @@ public class VehicleService {
     @Transactional(readOnly = true)
     public Page<VehicleResponse> getAllVehicles(Pageable pageable) {
         return vehicleRepository.findAll(pageable).map(vehicleMapper::toResponse);
+    }
+
+    @Transactional
+    public VehicleResponse updateVehicle(UUID id, VehicleRequest request) {
+        Vehicle vehicle = vehicleRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vehicle not found"));
+
+        vehicle.setMake(request.make());
+        vehicle.setModel(request.model());
+        vehicle.setCategory(request.category());
+        vehicle.setPrice(request.price());
+        vehicle.setQuantityInStock(request.quantityInStock());
+
+        return vehicleMapper.toResponse(vehicleRepository.save(vehicle));
+    }
+
+    @Transactional
+    public void deleteVehicle(UUID id) {
+        if (!vehicleRepository.existsById(id)) {
+            throw new RuntimeException("Vehicle not found");
+        }
+        vehicleRepository.deleteById(id);
     }
 }

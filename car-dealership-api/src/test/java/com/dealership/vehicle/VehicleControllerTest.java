@@ -62,17 +62,28 @@ public class VehicleControllerTest {
     }
     // ... existing POST and GET tests ...
 
+    @Autowired
+    private com.dealership.repository.VehicleRepository vehicleRepository;
+
     @Test
     @WithMockUser(roles = "ADMIN")
     void shouldUpdateVehicleWhenAdmin() throws Exception {
-        // We assume an existing UUID for the test context, or we create one
-        // For TDD, we just define the expected behavior
-        String json = "{\"make\":\"Toyota\", \"model\":\"Camry\", \"category\":\"SEDAN\", \"price\":26000, \"quantityInStock\":5}";
+        // Save a real vehicle to the DB so we don't get a 500 Not Found
+        com.dealership.entity.Vehicle vehicle = new com.dealership.entity.Vehicle();
+        vehicle.setMake("Honda");
+        vehicle.setModel("Civic");
+        vehicle.setCategory("SEDAN");
+        vehicle.setPrice(new java.math.BigDecimal("22000"));
+        vehicle.setQuantityInStock(2);
+        vehicle = vehicleRepository.save(vehicle);
 
-        mockMvc.perform(put("/api/vehicles/" + java.util.UUID.randomUUID())
+        String json = "{\"make\":\"Honda\", \"model\":\"Civic\", \"category\":\"SEDAN\", \"price\":23000, \"quantityInStock\":5}";
+
+        mockMvc.perform(put("/api/vehicles/" + vehicle.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.price").value(23000));
     }
 
     @Test
@@ -89,7 +100,16 @@ public class VehicleControllerTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     void shouldDeleteVehicleWhenAdmin() throws Exception {
-        mockMvc.perform(delete("/api/vehicles/" + java.util.UUID.randomUUID()))
+        // Save a real vehicle to the DB
+        com.dealership.entity.Vehicle vehicle = new com.dealership.entity.Vehicle();
+        vehicle.setMake("Ford");
+        vehicle.setModel("Focus");
+        vehicle.setCategory("HATCHBACK");
+        vehicle.setPrice(new java.math.BigDecimal("18000"));
+        vehicle.setQuantityInStock(1);
+        vehicle = vehicleRepository.save(vehicle);
+
+        mockMvc.perform(delete("/api/vehicles/" + vehicle.getId()))
                 .andExpect(status().isNoContent());
     }
 

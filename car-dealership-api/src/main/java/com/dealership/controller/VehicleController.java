@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/vehicles")
 public class VehicleController {
@@ -30,5 +32,18 @@ public class VehicleController {
     @GetMapping
     public ResponseEntity<Page<VehicleResponse>> getAllVehicles(Pageable pageable) {
         return ResponseEntity.ok(vehicleService.getAllVehicles(pageable));
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<VehicleResponse> updateVehicle(@PathVariable UUID id, @Valid @RequestBody VehicleRequest request) {
+        return ResponseEntity.ok(vehicleService.updateVehicle(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> deleteVehicle(@PathVariable UUID id) {
+        vehicleService.deleteVehicle(id);
+        return ResponseEntity.noContent().build();
     }
 }
