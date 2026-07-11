@@ -3,6 +3,7 @@ import useVehicles from '../hooks/useVehicles';
 import vehicleApi from '../api/vehicleApi';
 import Button from '../components/ui/Button';
 import Modal from '../components/ui/Modal';
+import Toast from '../components/ui/Toast';
 import VehicleForm from '../components/inventory/VehicleForm';
 import { useAuth } from '../context/AuthContext';
 
@@ -12,6 +13,12 @@ const AdminInventoryPage = () => {
   
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [editingVehicle, setEditingVehicle] = React.useState(null);
+  const [toast, setToast] = React.useState(null);
+
+  const showToast = (type, message) => {
+    setToast({ type, message });
+    setTimeout(() => setToast(null), 3000);
+  };
 
   // Fetch immediately on mount
   useEffect(() => {
@@ -23,8 +30,10 @@ const AdminInventoryPage = () => {
       try {
         await vehicleApi.deleteVehicle(id);
         fetchVehicles(); // Refresh list
+        showToast('success', 'Vehicle deleted successfully.');
       } catch (err) {
         console.error('Failed to delete vehicle', err);
+        showToast('error', 'Failed to delete vehicle.');
       }
     }
   };
@@ -35,8 +44,10 @@ const AdminInventoryPage = () => {
       try {
         await vehicleApi.restockVehicle(id, parseInt(quantity, 10));
         fetchVehicles(); // Refresh list
+        showToast('success', 'Vehicle restocked successfully.');
       } catch (err) {
         console.error('Failed to restock vehicle', err);
+        showToast('error', 'Failed to restock vehicle.');
       }
     }
   };
@@ -45,13 +56,16 @@ const AdminInventoryPage = () => {
     try {
       if (editingVehicle) {
         await vehicleApi.updateVehicle(editingVehicle.id, data);
+        showToast('success', 'Vehicle updated successfully.');
       } else {
         await vehicleApi.createVehicle(data);
+        showToast('success', 'Vehicle created successfully.');
       }
       setIsModalOpen(false);
       fetchVehicles();
     } catch (err) {
       console.error('Failed to save vehicle', err);
+      showToast('error', 'Failed to save vehicle.');
       throw err;
     }
   };
@@ -67,7 +81,12 @@ const AdminInventoryPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 py-8 relative">
+      {toast && (
+        <div className="fixed top-4 right-4 z-50">
+          <Toast type={toast.type} message={toast.message} onClose={() => setToast(null)} />
+        </div>
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Inventory Management</h1>
