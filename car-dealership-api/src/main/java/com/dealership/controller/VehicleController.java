@@ -34,6 +34,13 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.getAllVehicles(pageable));
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<Page<VehicleResponse>> searchVehicles(
+            @ModelAttribute com.dealership.vehicle.dto.VehicleSearchCriteria criteria,
+            Pageable pageable) {
+        return ResponseEntity.ok(vehicleService.searchVehicles(criteria, pageable));
+    }
+
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<VehicleResponse> updateVehicle(@PathVariable UUID id, @Valid @RequestBody VehicleRequest request) {

@@ -34,6 +34,15 @@ public class VehicleService {
         return vehicleRepository.findAll(pageable).map(vehicleMapper::toResponse);
     }
 
+    @Transactional(readOnly = true)
+    public Page<VehicleResponse> searchVehicles(com.dealership.vehicle.dto.VehicleSearchCriteria criteria, Pageable pageable) {
+        if (criteria.minPrice() != null && criteria.maxPrice() != null && criteria.minPrice().compareTo(criteria.maxPrice()) > 0) {
+            throw new IllegalArgumentException("minPrice cannot be greater than maxPrice");
+        }
+        return vehicleRepository.findAll(com.dealership.vehicle.VehicleSpecification.withCriteria(criteria), pageable)
+                .map(vehicleMapper::toResponse);
+    }
+
     @Transactional
     public VehicleResponse updateVehicle(UUID id, VehicleRequest request) {
         Vehicle vehicle = vehicleRepository.findById(id)

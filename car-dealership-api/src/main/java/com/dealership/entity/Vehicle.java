@@ -6,7 +6,11 @@ import java.util.UUID;
 import java.util.Objects;
 
 @Entity
-@Table(name = "vehicles")
+@Table(name = "vehicles", indexes = {
+    @Index(name = "idx_vehicle_make", columnList = "make"),
+    @Index(name = "idx_vehicle_category", columnList = "category"),
+    @Index(name = "idx_vehicle_price", columnList = "price")
+})
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
