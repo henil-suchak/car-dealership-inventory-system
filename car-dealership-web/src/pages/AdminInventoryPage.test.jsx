@@ -30,8 +30,7 @@ describe('AdminInventoryPage', () => {
   it('renders the inventory table with edit/delete buttons', () => {
     renderWithProviders(<AdminInventoryPage />);
     
-    expect(screen.getByText('Toyota')).toBeInTheDocument();
-    expect(screen.getByText('Camry')).toBeInTheDocument();
+    expect(screen.getByText('Toyota Camry')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /edit/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /delete/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /restock/i })).toBeInTheDocument();
