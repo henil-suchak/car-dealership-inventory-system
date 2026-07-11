@@ -5,7 +5,9 @@ import com.dealership.auth.dto.RegisterRequest;
 import com.dealership.entity.Role;
 import com.dealership.entity.User;
 import com.dealership.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +19,17 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    // AuthService.java
+    private final UserDetailsService userDetailsService; // Add this field
 
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                       JwtService jwtService, UserDetailsService userDetailsService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
+        this.userDetailsService = userDetailsService; // Add this line
     }
+
 
     public AuthResponse register(RegisterRequest request) {
         User user = new User();
@@ -41,5 +48,19 @@ public class AuthService {
 
         String token = jwtService.generateToken(userDetails);
         return new AuthResponse(token);
+    }
+
+    public AuthResponse refresh(String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new RuntimeException("Invalid token");
+        }
+        String token = authHeader.substring(7);
+        String email = jwtService.extractUsername(token);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+        return new AuthResponse(jwtService.generateToken(userDetails));
+    }
+
+    public void logout() {
+        SecurityContextHolder.clearContext();
     }
 }

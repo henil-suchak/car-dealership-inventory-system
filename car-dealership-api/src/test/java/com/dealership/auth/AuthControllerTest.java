@@ -23,6 +23,12 @@ public class AuthControllerTest {
     @MockBean
     private AuthService authService;
 
+    @MockBean
+    private com.dealership.auth.JwtService jwtService;
+
+    @MockBean
+    private org.springframework.security.core.userdetails.UserDetailsService userDetailsService;
+
     @Test
     void shouldRegisterUser() throws Exception {
         String json = "{\"username\":\"testuser\", \"email\":\"test@example.com\", \"password\":\"password123\"}";
