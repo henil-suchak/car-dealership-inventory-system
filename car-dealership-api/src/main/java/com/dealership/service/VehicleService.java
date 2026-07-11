@@ -37,7 +37,7 @@ public class VehicleService {
     @Transactional
     public VehicleResponse updateVehicle(UUID id, VehicleRequest request) {
         Vehicle vehicle = vehicleRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Vehicle not found"));
+                .orElseThrow(() -> new com.dealership.exception.ResourceNotFoundException("Vehicle not found with id: " + id));
 
         vehicle.setMake(request.make());
         vehicle.setModel(request.model());
@@ -51,7 +51,7 @@ public class VehicleService {
     @Transactional
     public void deleteVehicle(UUID id) {
         if (!vehicleRepository.existsById(id)) {
-            throw new RuntimeException("Vehicle not found");
+            throw new com.dealership.exception.ResourceNotFoundException("Vehicle not found with id: " + id);
         }
         vehicleRepository.deleteById(id);
     }
