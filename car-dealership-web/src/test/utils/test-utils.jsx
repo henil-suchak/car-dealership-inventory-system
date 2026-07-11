@@ -1,23 +1,20 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-// import { AuthProvider } from '../../context/AuthContext'; // We'll uncomment this when AuthContext is created
+import { MemoryRouter } from 'react-router-dom';
+import { AuthProvider } from '../../context/AuthContext';
 
-const AllTheProviders = ({ children }) => {
-  return (
-    <BrowserRouter>
-      {/* <AuthProvider> */}
-        {children}
-      {/* </AuthProvider> */}
-    </BrowserRouter>
-  );
+const customRender = (ui, { initialEntries = ['/'], ...options } = {}) => {
+  const AllTheProviders = ({ children }) => {
+    return (
+      <MemoryRouter initialEntries={initialEntries}>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+      </MemoryRouter>
+    );
+  };
+  return render(ui, { wrapper: AllTheProviders, ...options });
 };
 
-const customRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options });
-
-// re-export everything
 export * from '@testing-library/react';
-
-// override render method
 export { customRender as renderWithProviders };
