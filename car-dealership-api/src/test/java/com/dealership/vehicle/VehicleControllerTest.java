@@ -60,4 +60,43 @@ public class VehicleControllerTest {
                         .param("size", "20"))
                 .andExpect(status().isOk());
     }
+    // ... existing POST and GET tests ...
+
+    @Test
+    @WithMockUser(roles = "ADMIN")
+    void shouldUpdateVehicleWhenAdmin() throws Exception {
+        // We assume an existing UUID for the test context, or we create one
+        // For TDD, we just define the expected behavior
+        String json = "{\"make\":\"Toyota\", \"model\":\"Camry\", \"category\":\"SEDAN\", \"price\":26000, \"quantityInStock\":5}";
+
+        mockMvc.perform(put("/api/vehicles/" + java.util.UUID.randomUUID())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithMockUser(roles = "USER")
+    void shouldReturn403WhenUserTriesToUpdateVehicle() throws Exception {
+        String json = "{\"make\":\"Toyota\", \"model\":\"Camry\", \"category\":\"SEDAN\", \"price\":26000, \"quantityInStock\":5}";
+
+        mockMvc.perform(put("/api/vehicles/" + java.util.UUID.randomUUID())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @WithMockUser(roles = "ADMIN")
+    void shouldDeleteVehicleWhenAdmin() throws Exception {
+        mockMvc.perform(delete("/api/vehicles/" + java.util.UUID.randomUUID()))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    @WithMockUser(roles = "USER")
+    void shouldReturn403WhenUserTriesToDeleteVehicle() throws Exception {
+        mockMvc.perform(delete("/api/vehicles/" + java.util.UUID.randomUUID()))
+                .andExpect(status().isForbidden());
+    }
 }
