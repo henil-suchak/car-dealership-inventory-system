@@ -32,7 +32,9 @@ const LoginPage = () => {
     setServerError(null);
     try {
       const response = await apiClient.post('/auth/login', data);
-      login(response.data.token);
+      const token = response.data.accessToken || response.data.token;
+      if (!token) throw new Error('No token received');
+      login(token);
       setSuccess(true);
       setTimeout(() => navigate('/'), 1000);
     } catch (err) {

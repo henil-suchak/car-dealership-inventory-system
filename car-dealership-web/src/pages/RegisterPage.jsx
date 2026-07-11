@@ -30,7 +30,12 @@ const RegisterPage = () => {
   const onSubmit = async (data) => {
     setServerError(null);
     try {
-      await apiClient.post('/auth/register', data);
+      const payload = {
+        username: data.name,
+        email: data.email,
+        password: data.password
+      };
+      await apiClient.post('/auth/register', payload);
       setSuccess(true);
       setTimeout(() => navigate('/login'), 2000);
     } catch (err) {

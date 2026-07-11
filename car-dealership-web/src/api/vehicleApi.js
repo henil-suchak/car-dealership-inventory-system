@@ -2,7 +2,8 @@ import apiClient from './apiClient';
 
 const vehicleApi = {
   getVehicles: async (params) => {
-    const response = await apiClient.get('/vehicles', { params });
+    // We hit /vehicles/search because the backend uses a different endpoint for searching vs fetching all
+    const response = await apiClient.get('/vehicles/search', { params });
     return response.data;
   },
 

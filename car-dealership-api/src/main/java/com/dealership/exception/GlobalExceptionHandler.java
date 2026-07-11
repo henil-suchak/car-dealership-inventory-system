@@ -87,4 +87,26 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(body, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
+    public ResponseEntity<java.util.Map<String, Object>> handleDataIntegrityViolationException(
+            org.springframework.dao.DataIntegrityViolationException ex) {
+        java.util.Map<String, Object> body = new java.util.HashMap<>();
+        body.put("timestamp", java.time.LocalDateTime.now());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", "Conflict");
+        
+        String message = "Database error occurred.";
+        if (ex.getCause() != null && ex.getCause().getCause() != null) {
+            String rootMsg = ex.getCause().getCause().getMessage();
+            if (rootMsg != null && rootMsg.contains("users_email_key")) {
+                message = "That email is already registered.";
+            } else if (rootMsg != null && rootMsg.contains("users_username_key")) {
+                message = "That username is already taken.";
+            }
+        }
+        body.put("message", message);
+
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
 }

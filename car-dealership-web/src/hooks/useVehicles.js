@@ -26,11 +26,21 @@ const useVehicles = (initialParams = {}) => {
     }
   }, []);
 
+  const purchaseVehicle = useCallback(async (id) => {
+    try {
+      await vehicleApi.purchaseVehicle(id);
+      // Refresh the list to update stock numbers
+      await fetchVehicles();
+    } catch (err) {
+      throw err;
+    }
+  }, [fetchVehicles]);
+
   useEffect(() => {
     fetchVehicles();
   }, [fetchVehicles]);
 
-  return { vehicles, loading, error, totalElements, fetchVehicles };
+  return { vehicles, loading, error, totalElements, fetchVehicles, purchaseVehicle };
 };
 
 export default useVehicles;
