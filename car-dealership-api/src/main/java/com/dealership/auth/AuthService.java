@@ -38,15 +38,11 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(request.password()));
         user.setRole(Role.USER);
 
-        userRepository.save(user);
+        // Save and use the saved entity
+        User savedUser = userRepository.save(user);
 
-        UserDetails userDetails = new org.springframework.security.core.userdetails.User(
-                user.getEmail(),
-                user.getPassword(),
-                Collections.emptyList()
-        );
-
-        String token = jwtService.generateToken(userDetails);
+        // Since 'savedUser' implements UserDetails, you can pass it directly!
+        String token = jwtService.generateToken(savedUser);
         return new AuthResponse(token);
     }
 
@@ -63,4 +59,7 @@ public class AuthService {
     public void logout() {
         SecurityContextHolder.clearContext();
     }
+
+
+
 }
