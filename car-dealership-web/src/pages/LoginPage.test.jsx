@@ -37,9 +37,13 @@ describe('LoginPage', () => {
   });
 
   it('submits successfully, stores session and redirects to dashboard', async () => {
+    // We provide a valid JWT structure so jwtDecode doesn't throw.
+    // JWT format: header.payload.signature
+    const fakeJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBkZWFsZXJzaGlwLmNvbSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTcxNjIzOTAyMn0.signature';
+    
     server.use(
       http.post('http://localhost:8080/api/auth/login', () => {
-        return HttpResponse.json({ token: 'fake-jwt-token' }, { status: 200 });
+        return HttpResponse.json({ token: fakeJwt }, { status: 200 });
       })
     );
 
