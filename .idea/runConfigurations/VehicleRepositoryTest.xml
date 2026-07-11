@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="VehicleRepositoryTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="car-dealership-api" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.dealership.vehicle.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="PACKAGE_NAME" value="com.dealership.vehicle" />
+    <option name="MAIN_CLASS_NAME" value="com.dealership.vehicle.VehicleRepositoryTest" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <envs>
+      <env name="DOCKER_API_VERSION" value="1.41" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
