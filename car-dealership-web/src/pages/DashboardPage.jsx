@@ -2,16 +2,26 @@ import React, { useState, useCallback } from 'react';
 import useVehicles from '../hooks/useVehicles';
 import VehicleCard from '../components/inventory/VehicleCard';
 import SearchBar from '../components/inventory/SearchBar';
+import Toast from '../components/ui/Toast';
 import { useAuth } from '../context/AuthContext';
 
 const DashboardPage = () => {
-  const { vehicles, loading, error, fetchVehicles } = useVehicles();
+  const { vehicles, loading, error, fetchVehicles, purchaseVehicle } = useVehicles();
   const { user, logout } = useAuth();
+  const [toast, setToast] = useState(null);
 
   const handlePurchase = async (vehicleId) => {
-    // We will implement purchase API logic in TASK-046.
-    // For now, it's just a placeholder or we can wire it here.
-    console.log('Purchasing vehicle', vehicleId);
+    try {
+      await purchaseVehicle(vehicleId);
+      setToast({ type: 'success', message: 'Purchase successful!' });
+    } catch (err) {
+      setToast({ type: 'error', message: 'Purchase failed. Please try again.' });
+    }
+    
+    // Auto clear toast
+    setTimeout(() => {
+      setToast(null);
+    }, 3000);
   };
 
   const handleSearch = useCallback((filters) => {
@@ -19,7 +29,16 @@ const DashboardPage = () => {
   }, [fetchVehicles]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 relative">
+      {toast && (
+        <div className="fixed top-4 right-4 z-50">
+          <Toast 
+            type={toast.type} 
+            message={toast.message} 
+            onClose={() => setToast(null)} 
+          />
+        </div>
+      )}
       <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-900">Inventory Dashboard</h1>
