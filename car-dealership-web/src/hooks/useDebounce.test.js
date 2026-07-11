@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from '@testing-library/react';
+import { renderHook, waitFor, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import useDebounce from './useDebounce';
 
@@ -19,7 +19,9 @@ describe('useDebounce', () => {
     expect(result.current).toBe('test');
     
     // Advance timers
-    vi.advanceTimersByTime(500);
+    act(() => {
+      vi.advanceTimersByTime(500);
+    });
     
     // Now it should be updated
     expect(result.current).toBe('updated');
