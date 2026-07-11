@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import useVehicles from '../hooks/useVehicles';
 import VehicleCard from '../components/inventory/VehicleCard';
+import SearchBar from '../components/inventory/SearchBar';
 import { useAuth } from '../context/AuthContext';
 
 const DashboardPage = () => {
@@ -12,6 +13,10 @@ const DashboardPage = () => {
     // For now, it's just a placeholder or we can wire it here.
     console.log('Purchasing vehicle', vehicleId);
   };
+
+  const handleSearch = useCallback((filters) => {
+    fetchVehicles(filters);
+  }, [fetchVehicles]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -33,6 +38,8 @@ const DashboardPage = () => {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <SearchBar onSearch={handleSearch} />
+        
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <p className="text-gray-500 text-lg">Loading vehicles...</p>
