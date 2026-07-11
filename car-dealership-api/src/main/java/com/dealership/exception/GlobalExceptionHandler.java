@@ -75,4 +75,16 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(org.springframework.orm.ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity<java.util.Map<String, Object>> handleOptimisticLockingFailure(
+            org.springframework.orm.ObjectOptimisticLockingFailureException ex) {
+        java.util.Map<String, Object> body = new java.util.HashMap<>();
+        body.put("timestamp", java.time.LocalDateTime.now());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", "Conflict");
+        body.put("message", "This vehicle was just modified by another transaction. Please retry.");
+
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
 }
