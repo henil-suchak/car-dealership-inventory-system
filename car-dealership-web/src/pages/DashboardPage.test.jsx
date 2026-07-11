@@ -9,13 +9,13 @@ vi.mock('../hooks/useVehicles');
 
 describe('DashboardPage', () => {
   it('renders loading state initially', () => {
-    useVehicles.mockReturnValue({ loading: true, vehicles: [], error: null });
+    useVehicles.mockReturnValue({ loading: true, vehicles: [], error: null, fetchVehicles: vi.fn() });
     renderWithProviders(<DashboardPage />);
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
 
   it('renders error message on API failure', () => {
-    useVehicles.mockReturnValue({ loading: false, vehicles: [], error: 'Failed to load' });
+    useVehicles.mockReturnValue({ loading: false, vehicles: [], error: 'Failed to load', fetchVehicles: vi.fn() });
     renderWithProviders(<DashboardPage />);
     expect(screen.getByText(/failed to load/i)).toBeInTheDocument();
   });
@@ -25,7 +25,7 @@ describe('DashboardPage', () => {
       { id: 1, make: 'Toyota', model: 'Camry', year: 2023, price: 25000, quantityInStock: 5 },
       { id: 2, make: 'Honda', model: 'Civic', year: 2022, price: 22000, quantityInStock: 0 },
     ];
-    useVehicles.mockReturnValue({ loading: false, vehicles: mockVehicles, error: null });
+    useVehicles.mockReturnValue({ loading: false, vehicles: mockVehicles, error: null, fetchVehicles: vi.fn() });
     renderWithProviders(<DashboardPage />);
     
     expect(screen.getByText('Toyota Camry (2023)')).toBeInTheDocument();
