@@ -5,6 +5,7 @@ import AdminRoute from './AdminRoute';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import DashboardPage from '../pages/DashboardPage';
+import AdminInventoryPage from '../pages/AdminInventoryPage';
 
 const AppRoutes = () => {
   return (
@@ -20,7 +21,7 @@ const AppRoutes = () => {
 
       {/* Protected Admin Routes */}
       <Route element={<AdminRoute />}>
-        <Route path="/admin/inventory" element={<div>Admin Inventory</div>} />
+        <Route path="/admin/inventory" element={<AdminInventoryPage />} />
       </Route>
     </Routes>
   );
