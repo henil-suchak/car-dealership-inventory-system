@@ -54,9 +54,12 @@ describe('RegisterPage', () => {
     await userEvent.click(screen.getByRole('button', { name: /register/i }));
     
     await waitFor(() => {
-      expect(screen.getByTestId('login-page')).toBeInTheDocument();
       expect(screen.getByText(/registration successful/i)).toBeInTheDocument(); // Toast message
     });
+    
+    await waitFor(() => {
+      expect(screen.getByTestId('login-page')).toBeInTheDocument();
+    }, { timeout: 2500 });
   });
 
   it('displays server error toast on failure', async () => {
