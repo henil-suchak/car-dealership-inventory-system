@@ -48,11 +48,20 @@ public class AuthService {
 
     public AuthResponse refresh(String authHeader) {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new RuntimeException("Invalid token");
+            throw new com.dealership.exception.InvalidTokenException("Invalid token format");
         }
+
         String token = authHeader.substring(7);
         String email = jwtService.extractUsername(token);
+
+        // Load the user details
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+
+        // Explicitly validate the token against the loaded user details
+        if (!jwtService.isTokenValid(token, userDetails)) {
+            throw new com.dealership.exception.InvalidTokenException("Token is invalid or expired");
+        }
+
         return new AuthResponse(jwtService.generateToken(userDetails));
     }
 
