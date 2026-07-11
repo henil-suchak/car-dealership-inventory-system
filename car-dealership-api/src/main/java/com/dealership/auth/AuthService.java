@@ -56,10 +56,13 @@ public class AuthService {
     public AuthResponse refresh(com.dealership.auth.dto.RefreshTokenRequest request) {
         return refreshTokenService.findByToken(request.refreshToken())
                 .map(refreshTokenService::verifyExpiration)
-                .map(RefreshToken::getUser)
-                .map(user -> {
+                .map(token -> {
+                    User user = token.getUser();
+                    refreshTokenService.deleteToken(token); // Rotate: delete old token
+                    
                     String accessToken = jwtService.generateToken(user);
-                    return new AuthResponse(accessToken, request.refreshToken());
+                    RefreshToken newRefreshToken = refreshTokenService.createRefreshToken(user.getId());
+                    return new AuthResponse(accessToken, newRefreshToken.getToken());
                 })
                 .orElseThrow(() -> new com.dealership.exception.InvalidTokenException("Refresh token is not in database!"));
     }

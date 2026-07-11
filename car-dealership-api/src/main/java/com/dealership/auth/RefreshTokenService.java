@@ -43,6 +43,10 @@ public class RefreshTokenService {
         return token;
     }
 
+    public void deleteToken(RefreshToken token) {
+        refreshTokenRepository.delete(token);
+    }
+
     @Transactional
     public int deleteByUserId(UUID userId) {
         return refreshTokenRepository.deleteByUser(userRepository.findById(userId).orElseThrow());
