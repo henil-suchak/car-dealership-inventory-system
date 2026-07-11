@@ -1,6 +1,7 @@
 package com.dealership.controller;
 
 import com.dealership.auth.dto.AuthResponse;
+import com.dealership.auth.dto.LoginRequest;
 import com.dealership.auth.dto.RegisterRequest;
 import com.dealership.auth.AuthService;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,9 @@ public class AuthController {
     public ResponseEntity<Void> logout() {
         authService.logout();
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.login(request));
     }
 }

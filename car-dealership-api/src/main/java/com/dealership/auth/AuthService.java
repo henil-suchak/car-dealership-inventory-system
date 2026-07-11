@@ -10,7 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import com.dealership.auth.dto.LoginRequest;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import java.util.Collections;
 
 @Service
@@ -19,15 +21,17 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
     // AuthService.java
     private final UserDetailsService userDetailsService; // Add this field
 
     public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                       JwtService jwtService, UserDetailsService userDetailsService) {
+                       JwtService jwtService, UserDetailsService userDetailsService,AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService; // Add this line
+        this.authenticationManager=authenticationManager;
     }
 
 
@@ -67,6 +71,14 @@ public class AuthService {
 
     public void logout() {
         SecurityContextHolder.clearContext();
+    }
+    public AuthResponse login(LoginRequest request) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.email(), request.password())
+        );
+        var user = userRepository.findByEmail(request.email())
+                .orElseThrow(); // Or use a custom ResourceNotFoundException
+        return new AuthResponse(jwtService.generateToken(user));
     }
 
 
