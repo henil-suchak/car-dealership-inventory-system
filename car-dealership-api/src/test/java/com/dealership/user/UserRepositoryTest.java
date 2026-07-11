@@ -1,6 +1,9 @@
 package com.dealership.user;
 
 import com.dealership.TestcontainersConfiguration;
+import com.dealership.entity.Role;
+import com.dealership.entity.User;
+import com.dealership.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
