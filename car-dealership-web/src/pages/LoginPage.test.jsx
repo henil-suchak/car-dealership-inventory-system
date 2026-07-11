@@ -37,6 +37,12 @@ describe('LoginPage', () => {
   });
 
   it('submits successfully, stores session and redirects to dashboard', async () => {
+    server.use(
+      http.post('http://localhost:8080/api/auth/login', () => {
+        return HttpResponse.json({ token: 'fake-jwt-token' }, { status: 200 });
+      })
+    );
+
     renderLogin();
     
     await userEvent.type(screen.getByLabelText(/email/i), 'admin@dealership.com');
