@@ -1,6 +1,6 @@
 package com.dealership.security;
 
-import com.dealership.auth.JwtService;
+import com.dealership.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

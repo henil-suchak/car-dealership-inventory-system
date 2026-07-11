@@ -3,7 +3,7 @@ package com.dealership.controller;
 import com.dealership.auth.dto.AuthResponse;
 import com.dealership.auth.dto.LoginRequest;
 import com.dealership.auth.dto.RegisterRequest;
-import com.dealership.auth.AuthService;
+import com.dealership.service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

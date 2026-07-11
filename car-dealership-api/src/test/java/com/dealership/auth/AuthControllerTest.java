@@ -1,7 +1,7 @@
 package com.dealership.auth;
 
 import com.dealership.controller.AuthController;
-import com.dealership.auth.AuthService;
+import com.dealership.service.AuthService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -24,7 +24,7 @@ public class AuthControllerTest {
     private AuthService authService;
 
     @MockBean
-    private com.dealership.auth.JwtService jwtService;
+    private com.dealership.service.JwtService jwtService;
 
     @MockBean
     private org.springframework.security.core.userdetails.UserDetailsService userDetailsService;

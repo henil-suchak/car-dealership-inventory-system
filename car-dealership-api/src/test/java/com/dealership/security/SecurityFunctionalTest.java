@@ -1,6 +1,6 @@
 package com.dealership.security;
 
-import com.dealership.auth.JwtService;
+import com.dealership.service.JwtService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,17 +26,17 @@ public class SecurityFunctionalTest {
     private JwtService jwtService;
 
     @Test
-    void shouldReturnForbiddenWhenAccessingVehiclesWithoutToken() throws Exception {
+    void shouldReturnUnauthorizedWhenAccessingSecuredEndpointWithoutToken() throws Exception {
         // This hits the real SecurityFilterChain and should be rejected
-        mockMvc.perform(get("/api/vehicles"))
-                .andExpect(status().isForbidden());
+        mockMvc.perform(get("/api/secured-dummy"))
+                .andExpect(status().isUnauthorized());
     }
 
     @Autowired
     private com.dealership.repository.UserRepository userRepository;
 
     @Test
-    void shouldReturnOkWhenAccessingVehiclesWithValidToken() throws Exception {
+    void shouldReturnNotFoundWhenAccessingSecuredEndpointWithValidToken() throws Exception {
         // Save a real user in the test database so UserDetailsService can find it
         com.dealership.entity.User dbUser = new com.dealership.entity.User();
         dbUser.setUsername("testuser");
@@ -50,9 +50,9 @@ public class SecurityFunctionalTest {
         String token = jwtService.generateToken(user);
 
         // Verify that with the token, we get past the security gate
-        // (Note: Expecting 200 or 404 is fine, as long as it's NOT 403 Forbidden)
-        mockMvc.perform(get("/api/vehicles")
+        // Expecting 404 because the endpoint does not exist, but we successfully authenticated
+        mockMvc.perform(get("/api/secured-dummy")
                         .header("Authorization", "Bearer " + token))
-                .andExpect(status().isNotFound()); // Expecting 404 because we haven't built VehicleController yet, but not 403!
+                .andExpect(status().isNotFound());
     }
 }

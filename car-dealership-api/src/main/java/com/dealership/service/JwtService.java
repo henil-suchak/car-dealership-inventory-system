@@ -1,4 +1,4 @@
-package com.dealership.auth;
+package com.dealership.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

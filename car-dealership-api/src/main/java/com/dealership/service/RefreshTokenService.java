@@ -1,4 +1,4 @@
-package com.dealership.auth;
+package com.dealership.service;
 
 import com.dealership.entity.RefreshToken;
 import com.dealership.repository.RefreshTokenRepository;

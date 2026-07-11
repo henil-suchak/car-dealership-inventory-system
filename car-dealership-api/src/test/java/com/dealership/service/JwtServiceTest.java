@@ -1,4 +1,4 @@
-package com.dealership.auth;
+package com.dealership.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

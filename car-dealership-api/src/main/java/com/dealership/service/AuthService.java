@@ -1,4 +1,4 @@
-package com.dealership.auth;
+package com.dealership.service;
 
 import com.dealership.auth.dto.AuthResponse;
 import com.dealership.auth.dto.RegisterRequest;
