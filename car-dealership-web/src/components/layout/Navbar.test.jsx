@@ -34,7 +34,7 @@ describe('Navbar Component', () => {
     expect(screen.getByText('Logout')).toBeInTheDocument();
   });
 
-  it('renders Admin Inventory link for ADMIN', () => {
+  it('does not render Admin Inventory link since it is moved to dashboard', () => {
     AuthContext.useAuth.mockReturnValue({
       user: { role: 'ADMIN', email: 'admin@example.com' },
       logout: mockLogout,
@@ -47,7 +47,7 @@ describe('Navbar Component', () => {
     );
 
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
-    expect(screen.getByText('Admin Inventory')).toBeInTheDocument();
+    expect(screen.queryByText('Admin Inventory')).not.toBeInTheDocument();
   });
 
   it('calls logout function when Logout is clicked', () => {

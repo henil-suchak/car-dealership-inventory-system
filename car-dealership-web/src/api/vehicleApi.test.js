@@ -11,7 +11,7 @@ describe('vehicleApi', () => {
 
     const result = await vehicleApi.getVehicles({ make: 'Toyota' });
     
-    expect(apiClient.get).toHaveBeenCalledWith('/vehicles', { params: { make: 'Toyota' } });
+    expect(apiClient.get).toHaveBeenCalledWith('/vehicles/search', { params: { make: 'Toyota' } });
     expect(result).toEqual(mockData);
   });
 
