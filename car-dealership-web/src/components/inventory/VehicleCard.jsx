@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../ui/Button';
 
 const VehicleCard = ({ vehicle, onPurchase, onEdit, onRestock, onDelete }) => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const isOutOfStock = vehicle.quantityInStock === 0;
 
   const statusColors = {
@@ -17,97 +19,98 @@ const VehicleCard = ({ vehicle, onPurchase, onEdit, onRestock, onDelete }) => {
   const statusText = vehicle.status || (isOutOfStock ? 'SOLD' : 'AVAILABLE');
   const statusColor = statusColors[statusText] || statusColors.AVAILABLE;
 
-  // Derive an image url from media array if it exists, otherwise use placeholder
-  const primaryMedia = vehicle.media?.find(m => m.isPrimary);
+  // Derive an image url from media array if it exists, fallback to first if no primary, otherwise placeholder
+  const primaryMedia = vehicle.media && vehicle.media.length > 0 ? (vehicle.media.find(m => m.isPrimary) || vehicle.media[0]) : null;
   const imageUrl = primaryMedia?.mediaUrl || null;
 
   return (
-    <div className="group bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-      {/* Premium Image Area */}
-      <div className="relative h-48 w-full bg-slate-100 dark:bg-slate-900 overflow-hidden flex items-center justify-center">
+    <div 
+      onClick={() => navigate(`/vehicles/${vehicle.id}`)}
+      className="group bg-zinc-900 border border-zinc-800 hover:border-gray-500 transition-all duration-700 cursor-pointer overflow-hidden relative"
+    >
+      <div className="relative h-64 w-full bg-black overflow-hidden flex items-center justify-center">
         {imageUrl ? (
-          <img src={imageUrl} alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
+          <img src={imageUrl} alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} className="object-cover w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out" />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-accent-600">
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_10%,_transparent_20%)] bg-[length:20px_20px]"></div>
-          </div>
+          <div className="absolute inset-0 bg-zinc-800"></div>
         )}
         
-        <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary-700 dark:text-primary-400 shadow-lg">
-          {vehicle.year}
+        <div className="absolute top-4 right-4 bg-white px-3 py-1 text-xs font-bold text-black uppercase tracking-widest">
+          {vehicle.year || 'NEW'}
         </div>
         <div className="absolute top-4 left-4">
-           <span className={`text-xs font-bold px-2 py-1 rounded-md shadow-sm ${statusColor}`}>
+           <span className={`text-xs font-bold px-3 py-1 uppercase tracking-widest ${statusColor} text-white`}>
               {statusText.replace('_', ' ')}
            </span>
         </div>
       </div>
 
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-2">
-          <div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-1">
-              {vehicle.make} {vehicle.model} {vehicle.trimLevel}
-            </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider font-semibold">
-              {vehicle.category} • {vehicle.mileage ? vehicle.mileage.toLocaleString() + ' mi' : 'New'}
-            </p>
-          </div>
+      <div className="p-8">
+        <div>
+           <p className="text-gray-400 uppercase tracking-widest text-xs font-bold mb-1">{vehicle.make} • {vehicle.category}</p>
+           <h3 className="text-3xl font-light text-white mb-2 font-serif line-clamp-1">
+             {vehicle.model}
+           </h3>
+           <p className="text-zinc-500 text-xs mt-1 uppercase tracking-wider font-semibold">
+             {vehicle.mileage ? vehicle.mileage.toLocaleString() + ' MI' : 'O MI'}
+           </p>
         </div>
         
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-600 dark:text-slate-400">
-           {vehicle.engineType && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.engineType}</span>}
-           {vehicle.transmission && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.transmission}</span>}
-           {vehicle.color && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.color}</span>}
-           {vehicle.quantityInStock !== undefined && <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400 font-medium px-2 py-1 rounded border border-primary-100 dark:border-primary-800">{vehicle.quantityInStock} in stock</span>}
+        <div className="mt-8 flex flex-wrap gap-2 text-xs text-zinc-400">
+           {vehicle.engineType && <span className="border border-zinc-700 px-3 py-1 uppercase">{vehicle.engineType}</span>}
+           {vehicle.transmission && <span className="border border-zinc-700 px-3 py-1 uppercase">{vehicle.transmission}</span>}
+           {vehicle.color && <span className="border border-zinc-700 px-3 py-1 uppercase">{vehicle.color}</span>}
+           {vehicle.quantityInStock !== undefined && <span className="text-white border border-white px-3 py-1 uppercase font-bold">{vehicle.quantityInStock} IN STOCK</span>}
         </div>
         
-        <div className="mt-5 flex items-end justify-between">
+        <div className="mt-8 flex items-end justify-between border-b border-zinc-800 pb-8">
           <div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Price</p>
-            <span className="text-2xl font-extrabold text-slate-900 dark:text-white">
-              ${vehicle.price?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            <p className="text-xs text-zinc-500 mb-1 uppercase tracking-widest">Valuation</p>
+            <span className="text-3xl font-light text-white">
+              ${Number(vehicle.price || 0).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
             </span>
           </div>
-          <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
-            VIN: {vehicle.vin?.substring(0, 8)}...
+          <span className="text-xs font-mono text-zinc-600">
+            {vehicle.vin?.substring(0, 8) || 'N/A'}
           </span>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700/50">
-          <Button 
-            className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 ${
+        <div className="mt-8">
+          <button 
+            className={`w-full py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
               isOutOfStock || statusText === 'SOLD'
-                ? 'bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500 border-none' 
-                : 'bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50'
+                ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed' 
+                : 'bg-white text-black hover:bg-gray-200'
             }`} 
             disabled={isOutOfStock || statusText === 'SOLD'}
-            onClick={() => onPurchase(vehicle.id)}
+            onClick={(e) => {
+               e.stopPropagation();
+               onPurchase(vehicle.id);
+            }}
           >
-            {isOutOfStock || statusText === 'SOLD' ? 'Unavailable' : 'Purchase Now'}
-          </Button>
+            {isOutOfStock || statusText === 'SOLD' ? 'Unavailable' : 'Commit to Purchase'}
+          </button>
 
           {user?.isAdmin && (
-            <div className="mt-3 flex justify-between gap-2">
+            <div className="mt-4 flex justify-between gap-4">
               <button 
                 type="button"
-                className="flex-1 px-2 py-2 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-                onClick={() => onEdit?.(vehicle)}
+                className="flex-1 py-3 text-xs uppercase tracking-widest font-bold border border-zinc-700 hover:bg-zinc-800 text-gray-300"
+                onClick={(e) => { e.stopPropagation(); onEdit?.(vehicle); }}
               >
                 Edit
               </button>
               <button 
                 type="button"
-                className="flex-1 px-2 py-2 text-xs font-semibold rounded-lg border border-emerald-200 dark:border-emerald-800/50 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
-                onClick={() => onRestock?.(vehicle.id)}
+                className="flex-1 py-3 text-xs uppercase tracking-widest font-bold border border-zinc-700 hover:bg-zinc-800 text-gray-300"
+                onClick={(e) => { e.stopPropagation(); onRestock?.(vehicle.id); }}
               >
                 Restock
               </button>
               <button 
                 type="button"
-                className="flex-1 px-2 py-2 text-xs font-semibold rounded-lg border border-red-200 dark:border-red-800/50 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                onClick={() => onDelete?.(vehicle.id)}
+                className="flex-1 py-3 text-xs uppercase tracking-widest font-bold border border-red-900/50 hover:bg-red-900/20 text-red-500"
+                onClick={(e) => { e.stopPropagation(); onDelete?.(vehicle.id); }}
               >
                 Delete
               </button>

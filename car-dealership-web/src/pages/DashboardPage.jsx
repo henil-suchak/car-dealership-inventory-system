@@ -6,6 +6,7 @@ import SearchBar from '../components/inventory/SearchBar';
 import Toast from '../components/ui/Toast';
 import Modal from '../components/ui/Modal';
 import VehicleForm from '../components/inventory/VehicleForm';
+import PurchaseAgreementModal from '../components/inventory/PurchaseAgreementModal';
 import Button from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 
@@ -16,18 +17,37 @@ const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingVehicle, setEditingVehicle] = useState(null);
 
-  const handlePurchase = async (vehicleId) => {
+  const [restockingVehicle, setRestockingVehicle] = useState(null);
+  const [restockAmount, setRestockAmount] = useState(1);
+  
+  // Purchasing State
+  const [agreeingVehicle, setAgreeingVehicle] = useState(null);
+  const [purchasingVehicle, setPurchasingVehicle] = useState(null);
+
+  const initPurchase = (id) => {
+    const v = vehicles.find(v => v.id === id);
+    setAgreeingVehicle(v);
+  };
+
+  const executeSignedPurchase = async () => {
+    if (!agreeingVehicle) return;
+    const vehicleId = agreeingVehicle.id;
+    
+    setAgreeingVehicle(null);
+    setPurchasingVehicle(vehicleId);
+    
+    // Simulate complex finance/blockchain/transaction processing
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
     try {
       await purchaseVehicle(vehicleId);
-      setToast({ type: 'success', message: 'Purchase successful!' });
+      setToast({ type: 'success', message: 'Asset successfully acquired.' });
     } catch (err) {
-      setToast({ type: 'error', message: 'Purchase failed. Please try again.' });
+      setToast({ type: 'error', message: 'Acquisition failed. Please contact client services.' });
+    } finally {
+      setPurchasingVehicle(null);
+      setTimeout(() => setToast(null), 3000);
     }
-    
-    // Auto clear toast
-    setTimeout(() => {
-      setToast(null);
-    }, 3000);
   };
 
   const showToast = (type, message) => {
@@ -36,28 +56,35 @@ const DashboardPage = () => {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this vehicle?')) {
+    if (window.confirm('WARNING: Are you sure you want to completely delete this asset?')) {
       try {
         await vehicleApi.deleteVehicle(id);
         fetchVehicles(); // Refresh list
-        showToast('success', 'Vehicle deleted successfully.');
+        showToast('success', 'Asset removed from inventory.');
       } catch (err) {
-        showToast('error', 'Failed to delete vehicle.');
+        showToast('error', 'Failed to remove asset.');
       }
     }
   };
 
-  const handleRestock = async (id) => {
-    const quantity = window.prompt('Enter quantity to restock:', '1');
-    if (quantity && !isNaN(quantity)) {
-      try {
-        await vehicleApi.restockVehicle(id, parseInt(quantity, 10));
-        fetchVehicles(); // Refresh list
-        showToast('success', 'Vehicle restocked successfully.');
-      } catch (err) {
-        showToast('error', 'Failed to restock vehicle.');
-      }
+  const handleRestock = async () => {
+    if (!restockingVehicle || isNaN(restockAmount)) return;
+    try {
+      await vehicleApi.restockVehicle(restockingVehicle.id, parseInt(restockAmount, 10));
+      fetchVehicles(); // Refresh list
+      showToast('success', 'Inventory successfully replenished.');
+    } catch (err) {
+      showToast('error', 'Failed to replenish inventory.');
+    } finally {
+      setRestockingVehicle(null);
+      setRestockAmount(1);
     }
+  };
+
+  const initRestock = (id) => {
+    const v = vehicles.find(v => v.id === id);
+    setRestockingVehicle(v);
+    setRestockAmount(1);
   };
 
   const handleSave = async (data) => {
@@ -92,14 +119,9 @@ const DashboardPage = () => {
   }, [fetchVehicles]);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
-      {/* Background ambient gradients */}
-      <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-primary-500/10 via-accent-500/5 to-transparent pointer-events-none"></div>
-      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary-600/10 blur-[120px] pointer-events-none"></div>
-      <div className="absolute top-[10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent-600/10 blur-[100px] pointer-events-none"></div>
-
+    <div className="min-h-screen bg-black text-white relative overflow-hidden pt-32">
       {toast && (
-        <div className="fixed top-6 right-6 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="fixed top-24 right-6 z-50 animate-in fade-in duration-300">
           <Toast 
             type={toast.type} 
             message={toast.message} 
@@ -108,32 +130,37 @@ const DashboardPage = () => {
         </div>
       )}
 
-      <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
+      <main className="relative max-w-[1400px] mx-auto px-6 md:px-12 pb-20">
         
-        {/* Hero Section */}
-        <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
-          <h2 className="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight leading-tight">
-            Find Your Dream <br/>
-            <span className="text-gradient">Vehicle Today.</span>
-          </h2>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
-            Browse our premium collection of cars, trucks, and SUVs. Experience seamless purchasing with real-time inventory updates.
-          </p>
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-zinc-800 pb-8">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-white mb-2 font-serif">
+              Inventory <span className="font-bold text-gray-500">Management</span>
+            </h2>
+            <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold">
+              Client & Enterprise Portal
+            </p>
+          </div>
           
-          <SearchBar onSearch={handleSearch} />
+          <div className="mt-8 md:mt-0 max-w-md w-full">
+            <SearchBar onSearch={handleSearch} />
+          </div>
         </div>
         
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Featured Inventory</h3>
             <div className="flex items-center space-x-4">
-              <span className="text-sm font-medium px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">
+              <span className="text-xs font-bold uppercase tracking-widest px-4 py-2 bg-zinc-900 border border-zinc-800 text-gray-400">
                 {vehicles.length} Results
               </span>
               {user?.isAdmin && (
-                <Button onClick={openCreateModal} size="sm">
+                <button 
+                  onClick={openCreateModal}
+                  className="px-6 py-2 border border-white text-white text-xs uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-colors"
+                >
                   Add New Vehicle
-                </Button>
+                </button>
               )}
             </div>
           </div>
@@ -163,9 +190,9 @@ const DashboardPage = () => {
                 <VehicleCard 
                   key={vehicle.id} 
                   vehicle={vehicle} 
-                  onPurchase={handlePurchase} 
+                  onPurchase={initPurchase} 
                   onEdit={openEditModal}
-                  onRestock={handleRestock}
+                  onRestock={initRestock}
                   onDelete={handleDelete}
                 />
               ))}
@@ -180,7 +207,55 @@ const DashboardPage = () => {
             onCancel={() => setIsModalOpen(false)} 
           />
         </Modal>
+
+        {restockingVehicle && (
+          <Modal isOpen={true} onClose={() => setRestockingVehicle(null)}>
+            <div className="bg-zinc-950 p-8 border border-zinc-800 auth-form-container">
+               <h2 className="text-2xl font-light font-serif uppercase tracking-widest text-white mb-8 border-b border-zinc-800 pb-4">
+                 Replenish <span className="font-bold text-gray-500">Inventory</span>
+               </h2>
+               <p className="text-zinc-500 text-xs mb-6 uppercase tracking-widest">
+                 {restockingVehicle.year} {restockingVehicle.make} {restockingVehicle.model}
+               </p>
+               <div className="space-y-4">
+                  <div className="flex flex-col space-y-1">
+                     <label className="block text-xs uppercase tracking-widest font-bold text-zinc-400">Add Units</label>
+                     <input 
+                        type="number" 
+                        className="bg-black border border-zinc-800 text-white p-3 font-mono focus:border-white transition-colors outline-none"
+                        value={restockAmount}
+                        min="1"
+                        onChange={(e) => setRestockAmount(e.target.value)}
+                     />
+                  </div>
+                  <div className="flex justify-end pt-6 border-t border-zinc-800 mt-6 gap-4">
+                     <button onClick={() => setRestockingVehicle(null)} className="px-6 py-3 border border-zinc-700 text-xs text-zinc-400 font-bold uppercase tracking-widest hover:text-white transition-colors">Cancel</button>
+                     <button onClick={handleRestock} className="px-6 py-3 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-zinc-200 transition-colors">Confirm Restock</button>
+                  </div>
+               </div>
+            </div>
+          </Modal>
+        )}
+
+        <PurchaseAgreementModal 
+           isOpen={!!agreeingVehicle}
+           vehicle={agreeingVehicle}
+           onClose={() => setAgreeingVehicle(null)}
+           onConfirm={executeSignedPurchase}
+        />
+
       </main>
+
+      {/* Full screen acquisition overlay */}
+      {purchasingVehicle && (
+        <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center text-white">
+            <div className="w-16 h-16 border-t-2 border-white rounded-full animate-spin mb-8"></div>
+            <h2 className="text-3xl font-serif font-light mb-2">Finalizing Acquisition</h2>
+            <p className="text-xs uppercase tracking-widest text-zinc-500 font-bold max-w-sm text-center">
+              Processing blockchain escrow and verifying client funds. Please do not close this window.
+            </p>
+        </div>
+      )}
     </div>
   );
 };
