@@ -6,12 +6,18 @@ const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
-    const token = localStorage.getItem('jwt_token');
+    let token = null;
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+      token = window.localStorage.getItem('jwt_token');
+    }
+    
     if (token) {
       try {
         const decoded = jwtDecode(token);
         if (decoded.exp && decoded.exp * 1000 < Date.now()) {
-          localStorage.removeItem('jwt_token');
+          if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.removeItem === 'function') {
+            window.localStorage.removeItem('jwt_token');
+          }
           return null;
         }
         return {
@@ -20,7 +26,9 @@ export const AuthProvider = ({ children }) => {
           isAdmin: decoded.roles?.includes('ROLE_ADMIN') || false
         };
       } catch (e) {
-        localStorage.removeItem('jwt_token');
+        if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.removeItem === 'function') {
+          window.localStorage.removeItem('jwt_token');
+        }
         return null;
       }
     }

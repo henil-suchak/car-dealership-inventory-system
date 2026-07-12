@@ -25,7 +25,7 @@ public class VehicleRepositoryTest {
     @Test
     void shouldSaveAndFindVehicle() {
         // Arrange
-        Vehicle vehicle = new Vehicle(null, "Toyota", "Camry", "SEDAN", new BigDecimal("25000.00"), 10, null);
+        Vehicle vehicle = new Vehicle("Toyota", "Camry", "SEDAN", new BigDecimal("25000.00"), 10);
 
         // Action
         Vehicle savedVehicle = vehicleRepository.save(vehicle);

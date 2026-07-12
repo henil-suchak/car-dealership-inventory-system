@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-let currentToken = localStorage.getItem('jwt_token') || null;
+let currentToken = (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') ? window.localStorage.getItem('jwt_token') : null;
 
 export const setToken = (token) => {
   currentToken = token;
-  if (token) {
-    localStorage.setItem('jwt_token', token);
-  } else {
-    localStorage.removeItem('jwt_token');
+  if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
+    if (token) {
+      window.localStorage.setItem('jwt_token', token);
+    } else {
+      window.localStorage.removeItem('jwt_token');
+    }
   }
 };
 
