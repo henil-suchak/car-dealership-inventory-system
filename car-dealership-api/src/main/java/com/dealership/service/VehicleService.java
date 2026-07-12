@@ -60,6 +60,14 @@ public class VehicleService {
         vehicle.setCategory(request.category());
         vehicle.setPrice(request.price());
         vehicle.setQuantityInStock(request.quantityInStock());
+        vehicle.setYear(request.year());
+        vehicle.setMileage(request.mileage());
+        vehicle.setVin(request.vin());
+        vehicle.setTrimLevel(request.trimLevel());
+        vehicle.setEngineType(request.engineType());
+        vehicle.setTransmission(request.transmission());
+        vehicle.setColor(request.color());
+        vehicle.setStatus(request.status());
 
         return vehicleMapper.toResponse(vehicleRepository.save(vehicle));
     }

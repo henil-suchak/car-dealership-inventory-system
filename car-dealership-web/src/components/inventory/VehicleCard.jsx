@@ -6,53 +6,85 @@ const VehicleCard = ({ vehicle, onPurchase, onEdit, onRestock, onDelete }) => {
   const { user } = useAuth();
   const isOutOfStock = vehicle.quantityInStock === 0;
 
+  const statusColors = {
+    AVAILABLE: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
+    IN_TRANSIT: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+    MAINTENANCE: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+    RESERVED: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
+    SOLD: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400',
+  };
+
+  const statusText = vehicle.status || (isOutOfStock ? 'SOLD' : 'AVAILABLE');
+  const statusColor = statusColors[statusText] || statusColors.AVAILABLE;
+
+  // Derive an image url from media array if it exists, otherwise use placeholder
+  const primaryMedia = vehicle.media?.find(m => m.isPrimary);
+  const imageUrl = primaryMedia?.mediaUrl || null;
+
   return (
     <div className="group bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-      {/* Premium Image Placeholder Area */}
-      <div className="relative h-48 w-full bg-gradient-to-br from-primary-500 to-accent-600 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+      {/* Premium Image Area */}
+      <div className="relative h-48 w-full bg-slate-100 dark:bg-slate-900 overflow-hidden flex items-center justify-center">
+        {imageUrl ? (
+          <img src={imageUrl} alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-accent-600">
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_10%,_transparent_20%)] bg-[length:20px_20px]"></div>
+          </div>
+        )}
+        
         <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary-700 dark:text-primary-400 shadow-lg">
           {vehicle.year}
         </div>
-        {/* Subtle geometric pattern overlay */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_10%,_transparent_20%)] bg-[length:20px_20px]"></div>
+        <div className="absolute top-4 left-4">
+           <span className={`text-xs font-bold px-2 py-1 rounded-md shadow-sm ${statusColor}`}>
+              {statusText.replace('_', ' ')}
+           </span>
+        </div>
       </div>
 
       <div className="p-6">
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between items-start mb-2">
           <div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-              {vehicle.make} {vehicle.model}
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-1">
+              {vehicle.make} {vehicle.model} {vehicle.trimLevel}
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider font-semibold">
-              {vehicle.category}
+              {vehicle.category} • {vehicle.mileage ? vehicle.mileage.toLocaleString() + ' mi' : 'New'}
             </p>
           </div>
         </div>
         
+        <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-600 dark:text-slate-400">
+           {vehicle.engineType && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.engineType}</span>}
+           {vehicle.transmission && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.transmission}</span>}
+           {vehicle.color && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.color}</span>}
+        </div>
+        
         <div className="mt-5 flex items-end justify-between">
           <div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Starting at</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Price</p>
             <span className="text-2xl font-extrabold text-slate-900 dark:text-white">
-              ${vehicle.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              ${vehicle.price?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           </div>
-          <span className={`text-sm font-semibold px-3 py-1 rounded-full ${isOutOfStock ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'}`}>
-            {isOutOfStock ? 'Out of Stock' : `${vehicle.quantityInStock} Available`}
+          <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
+            VIN: {vehicle.vin?.substring(0, 8)}...
           </span>
         </div>
 
         <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700/50">
           <Button 
             className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 ${
-              isOutOfStock 
+              isOutOfStock || statusText === 'SOLD'
                 ? 'bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500 border-none' 
                 : 'bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50'
             }`} 
-            disabled={isOutOfStock}
+            disabled={isOutOfStock || statusText === 'SOLD'}
             onClick={() => onPurchase(vehicle.id)}
           >
-            {isOutOfStock ? 'Sold Out' : 'Purchase Now'}
+            {isOutOfStock || statusText === 'SOLD' ? 'Unavailable' : 'Purchase Now'}
           </Button>
 
           {user?.isAdmin && (

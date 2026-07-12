@@ -118,7 +118,9 @@ cd car-dealership-api
 ./mvnw verify
 ```
 
-> **Requirement:** Docker must be running — the backend tests use **Testcontainers** to spin up an isolated PostgreSQL instance.
+> **Frameworks:** The backend uses **JUnit 5** and **Mockito** for unit testing (mocking dependencies like Repositories/Services).
+> 
+> **Requirement:** Docker must be running — the backend tests use **Testcontainers** to spin up an isolated PostgreSQL instance for integration testing.
 
 The JaCoCo coverage report is generated at:
 ```

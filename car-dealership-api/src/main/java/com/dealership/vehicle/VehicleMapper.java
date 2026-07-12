@@ -9,13 +9,22 @@ import org.springframework.stereotype.Component;
 public class VehicleMapper {
 
     public Vehicle toEntity(VehicleRequest request) {
-        return new Vehicle(
+        Vehicle vehicle = new Vehicle(
                 request.make(),
                 request.model(),
                 request.category(),
                 request.price(),
                 request.quantityInStock()
         );
+        vehicle.setYear(request.year());
+        vehicle.setMileage(request.mileage());
+        vehicle.setVin(request.vin());
+        vehicle.setTrimLevel(request.trimLevel());
+        vehicle.setEngineType(request.engineType());
+        vehicle.setTransmission(request.transmission());
+        vehicle.setColor(request.color());
+        vehicle.setStatus(request.status());
+        return vehicle;
     }
 
     public VehicleResponse toResponse(Vehicle vehicle) {
@@ -25,7 +34,15 @@ public class VehicleMapper {
                 vehicle.getModel(),
                 vehicle.getCategory(),
                 vehicle.getPrice(),
-                vehicle.getQuantityInStock()
+                vehicle.getQuantityInStock(),
+                vehicle.getYear(),
+                vehicle.getMileage(),
+                vehicle.getVin(),
+                vehicle.getTrimLevel(),
+                vehicle.getEngineType(),
+                vehicle.getTransmission(),
+                vehicle.getColor(),
+                vehicle.getStatus()
         );
     }
 }

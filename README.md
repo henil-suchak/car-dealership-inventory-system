@@ -255,7 +255,7 @@ cd car-dealership-api
 ./mvnw test
 ```
 
-> Requires Docker running — integration tests use **Testcontainers** to spin up a real PostgreSQL instance.
+> Runs **Unit Tests (JUnit 5 + Mockito)** for isolated business logic testing, and **Integration Tests (Testcontainers)** which spin up a real PostgreSQL instance to test the database layer.
 
 ### Frontend Tests
 
