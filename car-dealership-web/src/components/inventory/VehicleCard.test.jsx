@@ -50,7 +50,25 @@ describe('VehicleCard', () => {
     const handlePurchase = vi.fn();
     render(<VehicleCard vehicle={mockVehicle} onPurchase={handlePurchase} />);
     
-    await userEvent.click(screen.getByRole('button', { name: /purchase/i }));
+    await userEvent.click(screen.getByRole('button', { name: /purchase now/i }));
     expect(handlePurchase).toHaveBeenCalledWith(1);
+  });
+
+  it('does NOT render admin controls for regular user', () => {
+    useAuth.mockReturnValue({ user: { isAdmin: false } });
+    render(<VehicleCard vehicle={mockVehicle} onPurchase={() => {}} />);
+    
+    expect(screen.queryByRole('button', { name: /edit/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /restock/i })).not.toBeInTheDocument();
+  });
+
+  it('renders admin controls for ADMIN user', () => {
+    useAuth.mockReturnValue({ user: { isAdmin: true } });
+    render(<VehicleCard vehicle={mockVehicle} onPurchase={() => {}} />);
+    
+    expect(screen.getByRole('button', { name: /edit/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /delete/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /restock/i })).toBeInTheDocument();
   });
 });
