@@ -1,8 +1,8 @@
-package com.dealership.finance.controller;
+package com.dealership.controller;
 
 import com.dealership.finance.dto.FinanceRequest;
 import com.dealership.finance.dto.FinanceResponse;
-import com.dealership.finance.service.FinanceService;
+import com.dealership.service.FinanceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

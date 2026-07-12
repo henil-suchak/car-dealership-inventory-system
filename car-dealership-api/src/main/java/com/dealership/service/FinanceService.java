@@ -1,4 +1,4 @@
-package com.dealership.finance.service;
+package com.dealership.service;
 
 import com.dealership.finance.dto.FinanceRequest;
 import com.dealership.finance.dto.FinanceResponse;
