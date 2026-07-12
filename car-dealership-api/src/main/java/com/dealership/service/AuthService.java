@@ -43,7 +43,7 @@ public class AuthService {
         user.setUsername(request.username());
         user.setEmail(request.email());
         user.setPassword(passwordEncoder.encode(request.password()));
-        user.setRole(Role.CUSTOMER);
+        user.setRole(Role.USER);
 
         // Save and use the saved entity
         User savedUser = userRepository.save(user);
