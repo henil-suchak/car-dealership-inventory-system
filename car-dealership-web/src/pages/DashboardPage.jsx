@@ -133,7 +133,7 @@ const DashboardPage = () => {
       <main className="relative max-w-[1400px] mx-auto px-6 md:px-12 pb-20">
         
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-zinc-800 pb-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-zinc-800 pb-8">
           <div>
             <h2 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-white mb-2 font-serif">
               Inventory <span className="font-bold text-gray-500">Management</span>
@@ -142,11 +142,9 @@ const DashboardPage = () => {
               Client & Enterprise Portal
             </p>
           </div>
-          
-          <div className="mt-8 md:mt-0 max-w-md w-full">
-            <SearchBar onSearch={handleSearch} />
-          </div>
         </div>
+
+        <SearchBar onSearch={handleSearch} />
         
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-8">
