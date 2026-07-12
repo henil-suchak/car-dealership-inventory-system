@@ -93,7 +93,8 @@ const VehicleDetailPage = () => {
         ? vehicle.media[0].mediaUrl 
         : 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=2070&auto=format&fit=crop';
   
-  const isAvailable = vehicle.status === 'AVAILABLE' && vehicle.quantityInStock > 0;
+  const statusText = vehicle.status || (vehicle.quantityInStock === 0 ? 'SOLD' : 'AVAILABLE');
+  const isAvailable = statusText === 'AVAILABLE' && vehicle.quantityInStock > 0;
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black pb-24 overflow-x-hidden pt-20">
@@ -172,7 +173,7 @@ const VehicleDetailPage = () => {
                     </div>
                     <div>
                         <p className="text-zinc-500 uppercase tracking-widest text-xs font-bold mb-1">Status</p>
-                        <p className={`text-lg font-bold ${isAvailable ? 'text-emerald-500' : 'text-zinc-500'}`}>{vehicle.status}</p>
+                        <p className={`text-lg font-bold ${isAvailable ? 'text-emerald-500' : 'text-zinc-500'}`}>{statusText}</p>
                     </div>
                  </div>
               </div>

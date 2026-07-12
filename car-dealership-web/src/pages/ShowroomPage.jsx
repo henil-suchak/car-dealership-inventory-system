@@ -14,7 +14,7 @@ const ShowroomPage = () => {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const response = await axios.get('/api/vehicles');
+        const response = await axios.get('/api/vehicles?size=50');
         setPremiumCars(response.data.content || response.data);
       } catch (error) {
         console.error('Failed to fetch showroom vehicles', error);
