@@ -291,7 +291,7 @@ npx oxlint
 
 ## 📄 License
 
-This project is built for educational purposes as part of a full-stack development portfolio.
+This project is built for Online Assesment Round for Incubyte. And i Wish they Like my Projects and My Design.
 
 ---
 
