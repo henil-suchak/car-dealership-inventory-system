@@ -14,10 +14,10 @@ public class VehicleSpecification {
             List<Predicate> predicates = new ArrayList<>();
 
             if (criteria.make() != null && !criteria.make().isBlank()) {
-                predicates.add(cb.equal(root.get("make"), criteria.make()));
+                predicates.add(cb.like(cb.lower(root.get("make")), "%" + criteria.make().toLowerCase() + "%"));
             }
             if (criteria.model() != null && !criteria.model().isBlank()) {
-                predicates.add(cb.equal(root.get("model"), criteria.model()));
+                predicates.add(cb.like(cb.lower(root.get("model")), "%" + criteria.model().toLowerCase() + "%"));
             }
             if (criteria.category() != null && !criteria.category().isBlank()) {
                 predicates.add(cb.equal(root.get("category"), criteria.category()));
