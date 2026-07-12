@@ -60,6 +60,7 @@ const VehicleCard = ({ vehicle, onPurchase, onEdit, onRestock, onDelete }) => {
            {vehicle.engineType && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.engineType}</span>}
            {vehicle.transmission && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.transmission}</span>}
            {vehicle.color && <span className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{vehicle.color}</span>}
+           {vehicle.quantityInStock !== undefined && <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400 font-medium px-2 py-1 rounded border border-primary-100 dark:border-primary-800">{vehicle.quantityInStock} in stock</span>}
         </div>
         
         <div className="mt-5 flex items-end justify-between">
