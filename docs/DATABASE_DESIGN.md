@@ -47,10 +47,34 @@ erDiagram
         UUID id PK "Primary Key"
         VARCHAR make "e.g. Toyota, NOT NULL"
         VARCHAR model "e.g. Camry, NOT NULL"
+        INTEGER year "NOT NULL"
+        INTEGER mileage "NOT NULL"
+        VARCHAR vin "17 chars, UK, NOT NULL"
+        VARCHAR trim_level "NOT NULL"
+        VARCHAR engine_type "NOT NULL"
+        VARCHAR transmission "NOT NULL"
+        VARCHAR color "NOT NULL"
         VARCHAR category "SEDAN, TRUCK, etc., NOT NULL"
         DECIMAL price "DECIMAL(19,2), NOT NULL"
         INTEGER quantity_in_stock "NOT NULL"
+        VARCHAR status "Enum (AVAILABLE, SOLD, etc.), NOT NULL"
         BIGINT version "Optimistic lock counter"
+    }
+
+    VEHICLE_MEDIA {
+        UUID id PK "Primary Key"
+        VARCHAR url "NOT NULL"
+        VARCHAR media_type "NOT NULL"
+        BOOLEAN is_primary "NOT NULL"
+        UUID vehicle_id FK "References vehicles(id)"
+    }
+
+    VEHICLE_CONDITION_REPORTS {
+        UUID id PK "Primary Key"
+        VARCHAR overall_condition "NOT NULL"
+        VARCHAR notes
+        TIMESTAMP report_date "NOT NULL"
+        UUID vehicle_id FK "References vehicles(id)"
     }
 
     REFRESH_TOKENS {
@@ -61,6 +85,8 @@ erDiagram
     }
 
     USERS ||--o{ REFRESH_TOKENS : "has"
+    VEHICLES ||--o{ VEHICLE_MEDIA : "has"
+    VEHICLES ||--o| VEHICLE_CONDITION_REPORTS : "has"
 ```
 
 **Cardinality:**
@@ -83,18 +109,28 @@ Stores the dealership's vehicle inventory. Each row represents a vehicle listing
 | `id` | `UUID` | `PRIMARY KEY` | Unique identifier for the vehicle, generated at the application layer. |
 | `make` | `VARCHAR(255)` | `NOT NULL` | Manufacturer name (e.g., Toyota, Honda, Ford). |
 | `model` | `VARCHAR(255)` | `NOT NULL` | Model name (e.g., Camry, Civic, F-150). |
-| `category` | `VARCHAR(255)` | `NOT NULL` | Vehicle category. Maps to the `Category` enum: `SEDAN`, `TRUCK`, `SUV`, `COUPE`, `HATCHBACK`. |
+| `year` | `INTEGER` | `NOT NULL` | Manufacture year. |
+| `mileage` | `INTEGER` | `NOT NULL` | Mileage on the odometer. |
+| `vin` | `VARCHAR(17)` | `UNIQUE`, `NOT NULL` | 17-character Vehicle Identification Number. |
+| `trim_level` | `VARCHAR(255)` | `NOT NULL` | Trim level (e.g., LE, XLE). |
+| `engine_type` | `VARCHAR(255)` | `NOT NULL` | Engine specifications (e.g., 2.5L 4-Cylinder). |
+| `transmission` | `VARCHAR(255)` | `NOT NULL` | Transmission type (e.g., 8-Speed Automatic). |
+| `color` | `VARCHAR(255)` | `NOT NULL` | Exterior color. |
+| `category` | `VARCHAR(255)` | `NOT NULL` | Vehicle category. Maps to the `Category` enum. |
 | `price` | `DECIMAL(19, 2)` | `NOT NULL` | Listing price in USD. Two decimal places for cent-level precision. |
-| `quantity_in_stock` | `INTEGER` | `NOT NULL` | Number of units currently available. Decremented on purchase, incremented on restock. |
+| `quantity_in_stock` | `INTEGER` | `NOT NULL` | Number of units currently available. |
+| `status` | `VARCHAR(255)` | `NOT NULL` | Inventory status mapped to `VehicleStatus` enum (AVAILABLE, IN_TRANSIT, MAINTENANCE, RESERVED, SOLD). |
 | `version` | `BIGINT` | `NOT NULL` | Optimistic locking version counter. Automatically incremented by JPA on each update. |
 
 **Keys:**
 - **Primary Key:** `id`
+- **Unique Constraints:** `vin`
 
 **JPA Indexes (defined via `@Table` annotations):**
 - `idx_vehicle_make` on `make`
 - `idx_vehicle_category` on `category`
 - `idx_vehicle_price` on `price`
+- `idx_vehicle_status` on `status`
 
 ---
 
@@ -141,6 +177,43 @@ Stores JWT refresh tokens for session management. Enables token rotation and mul
 
 **Implicit Indexes:**
 - Unique index on `token`
+
+---
+
+### 3.4 `vehicle_media`
+
+Stores media (images, videos) associated with vehicles.
+
+| Column | Data Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique identifier for the media record. |
+| `url` | `VARCHAR(255)` | `NOT NULL` | URL pointing to the media resource. |
+| `media_type` | `VARCHAR(50)` | `NOT NULL` | Type of media (e.g., IMAGE, VIDEO). |
+| `is_primary` | `BOOLEAN` | `NOT NULL` | Indicates if this is the primary image for the vehicle. |
+| `vehicle_id` | `UUID` | `NOT NULL`, `FOREIGN KEY` | References `vehicles(id)`. |
+
+**Keys:**
+- **Primary Key:** `id`
+- **Foreign Key:** `vehicle_id` → `vehicles(id)` with `ON DELETE CASCADE`
+
+---
+
+### 3.5 `vehicle_condition_reports`
+
+Stores the latest condition report for a vehicle.
+
+| Column | Data Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `UUID` | `PRIMARY KEY` | Unique identifier for the report. |
+| `overall_condition` | `VARCHAR(50)` | `NOT NULL` | Overall condition rating (e.g., EXCELLENT, GOOD, FAIR, POOR). |
+| `notes` | `TEXT` | | Detailed notes about the vehicle's condition. |
+| `report_date` | `TIMESTAMP` | `NOT NULL` | Date when the report was generated. |
+| `vehicle_id` | `UUID` | `UNIQUE`, `NOT NULL`, `FOREIGN KEY` | References `vehicles(id)`. |
+
+**Keys:**
+- **Primary Key:** `id`
+- **Foreign Key:** `vehicle_id` → `vehicles(id)` with `ON DELETE CASCADE`
+- **Unique Constraint:** `vehicle_id` (Ensures One-to-One relationship)
 
 ---
 
@@ -271,6 +344,7 @@ Flyway maintains a metadata table called `flyway_schema_history` in the target s
 |---|---|---|---|---|
 | `V1__init_schema.sql` | 1 | Versioned | Initialize schema | Creates the `vehicles` and `users` tables with all columns, constraints, and data types. |
 | `V2__create_refresh_tokens_table.sql` | 2 | Versioned | Create refresh tokens table | Adds the `refresh_tokens` table with a foreign key to `users` and `ON DELETE CASCADE`. |
+| `V4__expand_vehicles_table.sql` | 4 | Versioned | Expand vehicles table | Adds extended profile columns (year, mileage, vin, etc.) to the `vehicles` table, and adds `vehicle_media` and `vehicle_condition_reports` tables. |
 | `R__seed_dev_data.sql` | — | Repeatable | Seed development data | Inserts a demo admin user and 8 sample vehicles. Re-runs whenever the seed data file is modified. |
 
 ---

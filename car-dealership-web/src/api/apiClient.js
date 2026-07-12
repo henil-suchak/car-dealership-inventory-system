@@ -4,10 +4,10 @@ let currentToken = (typeof window !== 'undefined' && window.localStorage && type
 
 export const setToken = (token) => {
   currentToken = token;
-  if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
-    if (token) {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    if (token && typeof window.localStorage.setItem === 'function') {
       window.localStorage.setItem('jwt_token', token);
-    } else {
+    } else if (!token && typeof window.localStorage.removeItem === 'function') {
       window.localStorage.removeItem('jwt_token');
     }
   }

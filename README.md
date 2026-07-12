@@ -25,6 +25,8 @@ A full-stack **Car Dealership Inventory Management System** built with **Spring 
 
 ### 🚘 Vehicle Management
 - **Full CRUD operations** for vehicle inventory (Admin only)
+- **Detailed Profiles** — comprehensive specs including VIN, trim, engine, and condition
+- **Monroney Sticker Generation** — printable window stickers for physical showrooms
 - **Dynamic search** with filters — search by make, model, category, price range
 - **Paginated listings** with configurable page size and sorting
 

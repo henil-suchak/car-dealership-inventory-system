@@ -313,17 +313,33 @@ GET /api/vehicles?page=0&size=5&sort=price,asc
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "make": "Honda",
       "model": "Civic",
-      "category": "Sedan",
+      "year": 2023,
+      "mileage": 15000,
+      "vin": "1HGCM82633A000000",
+      "trimLevel": "LX",
+      "engineType": "2.0L 4-Cylinder",
+      "transmission": "CVT",
+      "color": "Silver",
+      "category": "SEDAN",
       "price": 24950.00,
-      "quantityInStock": 8
+      "quantityInStock": 8,
+      "status": "AVAILABLE"
     },
     {
       "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
       "make": "Toyota",
       "model": "Camry",
-      "category": "Sedan",
+      "year": 2024,
+      "mileage": 0,
+      "vin": "4T1B11HK5RU000000",
+      "trimLevel": "XLE",
+      "engineType": "2.5L Hybrid",
+      "transmission": "eCVT",
+      "color": "Midnight Black Metallic",
+      "category": "SEDAN",
       "price": 28450.00,
-      "quantityInStock": 12
+      "quantityInStock": 12,
+      "status": "AVAILABLE"
     },
     {
       "id": "a8098c1a-f86e-11da-bd1a-00112444be1e",
@@ -395,9 +411,17 @@ GET /api/vehicles/3fa85f64-5717-4562-b3fc-2c963f66afa6
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "make": "Honda",
   "model": "Civic",
-  "category": "Sedan",
+  "year": 2023,
+  "mileage": 15000,
+  "vin": "1HGCM82633A000000",
+  "trimLevel": "LX",
+  "engineType": "2.0L 4-Cylinder",
+  "transmission": "CVT",
+  "color": "Silver",
+  "category": "SEDAN",
   "price": 24950.00,
-  "quantityInStock": 8
+  "quantityInStock": 8,
+  "status": "AVAILABLE"
 }
 ```
 
@@ -493,9 +517,17 @@ Content-Type: application/json
 {
   "make": "Chevrolet",
   "model": "Tahoe",
+  "year": 2024,
+  "mileage": 0,
+  "vin": "1GNSKBE09RR000000",
+  "trimLevel": "LT",
+  "engineType": "5.3L V8",
+  "transmission": "10-Speed Automatic",
+  "color": "Summit White",
   "category": "SUV",
   "price": 54900.00,
-  "quantityInStock": 5
+  "quantityInStock": 5,
+  "status": "AVAILABLE"
 }
 ```
 
@@ -503,9 +535,17 @@ Content-Type: application/json
 |-------------------|--------|-------------------------------|
 | `make`            | string | Required, not blank           |
 | `model`           | string | Required, not blank           |
+| `year`            | number | Required, min 1886            |
+| `mileage`         | number | Required, min 0               |
+| `vin`             | string | Required, exactly 17 chars    |
+| `trimLevel`       | string | Required, not blank           |
+| `engineType`      | string | Required, not blank           |
+| `transmission`    | string | Required, not blank           |
+| `color`           | string | Required, not blank           |
 | `category`        | string | Required, not blank           |
 | `price`           | number | Required, must be positive    |
 | `quantityInStock` | number | Required, minimum 0           |
+| `status`          | string | Required, valid enum value    |
 
 **Response Body** (`201 Created`):
 
@@ -555,9 +595,17 @@ Content-Type: application/json
 {
   "make": "Chevrolet",
   "model": "Tahoe",
+  "year": 2024,
+  "mileage": 0,
+  "vin": "1GNSKBE09RR000000",
+  "trimLevel": "LT",
+  "engineType": "5.3L V8",
+  "transmission": "10-Speed Automatic",
+  "color": "Summit White",
   "category": "SUV",
   "price": 56500.00,
-  "quantityInStock": 7
+  "quantityInStock": 7,
+  "status": "AVAILABLE"
 }
 ```
 
@@ -565,9 +613,17 @@ Content-Type: application/json
 |-------------------|--------|-------------------------------|
 | `make`            | string | Required, not blank           |
 | `model`           | string | Required, not blank           |
+| `year`            | number | Required, min 1886            |
+| `mileage`         | number | Required, min 0               |
+| `vin`             | string | Required, exactly 17 chars    |
+| `trimLevel`       | string | Required, not blank           |
+| `engineType`      | string | Required, not blank           |
+| `transmission`    | string | Required, not blank           |
+| `color`           | string | Required, not blank           |
 | `category`        | string | Required, not blank           |
 | `price`           | number | Required, must be positive    |
 | `quantityInStock` | number | Required, minimum 0           |
+| `status`          | string | Required, valid enum value    |
 
 **Response Body** (`200 OK`):
 
@@ -576,9 +632,17 @@ Content-Type: application/json
   "id": "d4e5f6a7-b8c9-0123-def0-456789012345",
   "make": "Chevrolet",
   "model": "Tahoe",
+  "year": 2024,
+  "mileage": 0,
+  "vin": "1GNSKBE09RR000000",
+  "trimLevel": "LT",
+  "engineType": "5.3L V8",
+  "transmission": "10-Speed Automatic",
+  "color": "Summit White",
   "category": "SUV",
   "price": 56500.00,
-  "quantityInStock": 7
+  "quantityInStock": 7,
+  "status": "AVAILABLE"
 }
 ```
 

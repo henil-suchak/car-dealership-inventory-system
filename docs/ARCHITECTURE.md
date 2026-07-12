@@ -268,10 +268,34 @@ erDiagram
         UUID id PK
         VARCHAR make
         VARCHAR model
+        INTEGER year
+        INTEGER mileage
+        VARCHAR vin UK
+        VARCHAR trim_level
+        VARCHAR engine_type
+        VARCHAR transmission
+        VARCHAR color
         VARCHAR category "SEDAN | SUV | TRUCK | COUPE | HATCHBACK"
         DECIMAL price "BigDecimal precision"
         INT quantity_in_stock
+        VARCHAR status "AVAILABLE | IN_TRANSIT | MAINTENANCE | RESERVED | SOLD"
         INT version "Optimistic lock"
+    }
+
+    VEHICLE_MEDIA {
+        UUID id PK
+        VARCHAR url
+        VARCHAR media_type
+        BOOLEAN is_primary
+        UUID vehicle_id FK
+    }
+
+    VEHICLE_CONDITION_REPORTS {
+        UUID id PK
+        VARCHAR overall_condition
+        VARCHAR notes
+        TIMESTAMP report_date
+        UUID vehicle_id FK UK
     }
 
     REFRESH_TOKENS {
@@ -282,6 +306,8 @@ erDiagram
     }
 
     USERS ||--o{ REFRESH_TOKENS : "has"
+    VEHICLES ||--o{ VEHICLE_MEDIA : "has"
+    VEHICLES ||--o| VEHICLE_CONDITION_REPORTS : "has"
 ```
 
 ### 4.2 Key Schema Decisions
