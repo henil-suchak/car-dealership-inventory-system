@@ -345,6 +345,7 @@ Flyway maintains a metadata table called `flyway_schema_history` in the target s
 | `V1__init_schema.sql` | 1 | Versioned | Initialize schema | Creates the `vehicles` and `users` tables with all columns, constraints, and data types. |
 | `V2__create_refresh_tokens_table.sql` | 2 | Versioned | Create refresh tokens table | Adds the `refresh_tokens` table with a foreign key to `users` and `ON DELETE CASCADE`. |
 | `V4__expand_vehicles_table.sql` | 4 | Versioned | Expand vehicles table | Adds extended profile columns (year, mileage, vin, etc.) to the `vehicles` table, and adds `vehicle_media` and `vehicle_condition_reports` tables. |
+| `V5__fix_admin_password.sql` | 5 | Versioned | Fix admin password | Corrects the BCrypt hash for the admin user to ensure proper authentication. |
 | `R__seed_dev_data.sql` | — | Repeatable | Seed development data | Inserts a demo admin user and 8 sample vehicles. Re-runs whenever the seed data file is modified. |
 
 ---

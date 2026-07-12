@@ -439,7 +439,7 @@ The application follows a **layered architecture** pattern:
 | `POST`   | `/api/auth/login`         | Login and get JWT tokens     | No            |
 | `POST`   | `/api/auth/refresh`       | Refresh access token         | No            |
 | `POST`   | `/api/auth/logout`        | Logout and revoke tokens     | Yes           |
-| `GET`    | `/api/vehicles`           | List / search vehicles       | Yes           |
+| `GET`    | `/api/vehicles`           | List / search vehicles       | No            |
 
 For a comprehensive deep-dive into the system architecture, data models, security flow, and design decisions, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**.
 
