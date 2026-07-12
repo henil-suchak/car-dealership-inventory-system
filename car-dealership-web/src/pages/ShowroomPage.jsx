@@ -25,8 +25,18 @@ const ShowroomPage = () => {
     fetchVehicles();
   }, []);
 
-  const getFallbackImage = (make, category) => {
+  const getFallbackImage = (make, model, category) => {
+    const makeLower = make?.toLowerCase() || '';
+    const modelLower = model?.toLowerCase() || '';
     const catLower = category?.toLowerCase() || '';
+    
+    // Map specific models directly to new local assets
+    if (modelLower.includes('911')) return '/images/cars/porsche_911.png';
+    if (modelLower.includes('urus')) return '/images/cars/urus.png';
+    if (modelLower.includes('db12')) return '/images/cars/db12.png';
+    if (modelLower.includes('camry')) return '/images/cars/camry.png';
+    if (modelLower.includes('rav4') || modelLower.includes('rav14')) return '/images/cars/rav4.png';
+    if (modelLower.includes('m8')) return '/images/cars/m8.png';
     
     // Use locally generated car stock images
     const carImages = {
@@ -34,7 +44,7 @@ const ShowroomPage = () => {
       truck: '/images/cars/truck.png',
       suv: '/images/cars/suv.png',
       coupe: '/images/cars/sports.png',
-      hatchback: '/images/cars/sedan.png', // Fallback hatchback to sedan
+      hatchback: '/images/cars/sedan.png', 
       sports: '/images/cars/sports.png',
       default: '/images/cars/default.png'
     };
@@ -97,7 +107,8 @@ const ShowroomPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {premiumCars.map((car, idx) => {
-             const imageUrl = car.media && car.media.length > 0 ? car.media[0].mediaUrl : getFallbackImage(car.make, car.category);
+             // ENTIRELY IGNORE DB MEDIA 
+             const imageUrl = getFallbackImage(car.make, car.model, car.category);
              return (
             <div 
               key={car.id} 

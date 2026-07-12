@@ -19,16 +19,26 @@ const VehicleCard = ({ vehicle, onPurchase, onEdit, onRestock, onDelete }) => {
   const statusText = vehicle.status || (isOutOfStock ? 'SOLD' : 'AVAILABLE');
   const statusColor = statusColors[statusText] || statusColors.AVAILABLE;
 
-  const getFallbackImage = (make, category) => {
+  const getFallbackImage = (make, model, category) => {
+    const makeLower = make?.toLowerCase() || '';
+    const modelLower = model?.toLowerCase() || '';
     const catLower = category?.toLowerCase() || '';
     
-    // Use locally generated car stock images
+    // Map specific models directly to new local assets
+    if (modelLower.includes('911')) return '/images/cars/porsche_911.png';
+    if (modelLower.includes('urus')) return '/images/cars/urus.png';
+    if (modelLower.includes('db12')) return '/images/cars/db12.png';
+    if (modelLower.includes('camry')) return '/images/cars/camry.png';
+    if (modelLower.includes('rav4') || modelLower.includes('rav14')) return '/images/cars/rav4.png';
+    if (modelLower.includes('m8')) return '/images/cars/m8.png';
+    
+    // Use locally generated car stock images mapped by category
     const carImages = {
       sedan: '/images/cars/sedan.png',
       truck: '/images/cars/truck.png',
       suv: '/images/cars/suv.png',
       coupe: '/images/cars/sports.png',
-      hatchback: '/images/cars/sedan.png', // Fallback hatchback to sedan
+      hatchback: '/images/cars/sedan.png', 
       sports: '/images/cars/sports.png',
       default: '/images/cars/default.png'
     };
@@ -37,9 +47,9 @@ const VehicleCard = ({ vehicle, onPurchase, onEdit, onRestock, onDelete }) => {
     return carImages.default;
   };
 
-  // Derive an image url from media array if it exists, fallback to curated stock images
-  const primaryMedia = vehicle.media && vehicle.media.length > 0 ? (vehicle.media.find(m => m.isPrimary) || vehicle.media[0]) : null;
-  const imageUrl = primaryMedia?.mediaUrl || getFallbackImage(vehicle.make, vehicle.category);
+  // ENTIRELY IGNORE DB MEDIA (which contains blocked Unsplash links) 
+  // AND FORCE LOCAL HIGH-QUALITY IMAGES
+  const imageUrl = getFallbackImage(vehicle.make, vehicle.model, vehicle.category);
 
   return (
     <div 
