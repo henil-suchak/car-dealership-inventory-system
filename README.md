@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # 🚗 Car Dealership Inventory System
 
@@ -300,4 +300,3 @@ This project is built for educational purposes as part of a full-stack developme
 **Built with ❤️ using Spring Boot & React**
 
 </div>
-]]>
