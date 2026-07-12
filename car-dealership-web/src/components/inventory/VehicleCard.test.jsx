@@ -29,9 +29,10 @@ describe('VehicleCard', () => {
     useAuth.mockReturnValue({ user: { isAdmin: false } });
     render(<VehicleCard vehicle={mockVehicle} onPurchase={() => {}} />);
     
-    expect(screen.getByText('Toyota Camry (2023)')).toBeInTheDocument();
+    expect(screen.getByText('Toyota Camry')).toBeInTheDocument();
+    expect(screen.getByText('2023')).toBeInTheDocument();
     expect(screen.getByText('$25,000.00')).toBeInTheDocument();
-    expect(screen.getByText('In Stock: 5')).toBeInTheDocument();
+    expect(screen.getByText('5 Available')).toBeInTheDocument();
   });
 
   it('disables purchase button when quantityInStock is 0', () => {
@@ -39,9 +40,9 @@ describe('VehicleCard', () => {
     const outOfStockVehicle = { ...mockVehicle, quantityInStock: 0 };
     render(<VehicleCard vehicle={outOfStockVehicle} onPurchase={() => {}} />);
     
-    const purchaseButton = screen.getByRole('button', { name: /out of stock|purchase/i });
+    const purchaseButton = screen.getByRole('button', { name: /sold out|purchase now/i });
     expect(purchaseButton).toBeDisabled();
-    expect(screen.getByText(/out of stock/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/out of stock/i).length).toBeGreaterThan(0);
   });
 
   it('calls onPurchase when purchase button is clicked', async () => {
