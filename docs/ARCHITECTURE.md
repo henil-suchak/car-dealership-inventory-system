@@ -1,7 +1,7 @@
 # 🏗️ System Architecture — Car Dealership Inventory System
 
-> A full-stack inventory management platform built with **Spring Boot 3**, **React 19**, and **PostgreSQL 16**.
-> This document captures the architectural decisions, security design, and trade-offs behind the system.
+> A full-stack luxury automotive inventory & acquisition platform built with **Spring Boot 3**, **React 19**, and **PostgreSQL 16**.
+> This document captures the architectural decisions, security design, UI philosophy, and trade-offs behind the system.
 
 ---
 
@@ -512,7 +512,34 @@ flowchart LR
 
 The application has a single global concern: **authentication state** (current user, tokens, roles). React Context handles this cleanly without the boilerplate of Redux (actions, reducers, store configuration). Vehicle data is local to the pages that need it — fetched via `useVehicles()` and not shared globally.
 
-### 8.3 API Client Pattern
+### 8.3 Purchase Flow & Escrow Simulation
+
+The acquisition UX follows a formal, legally-styled contract flow:
+
+```mermaid
+sequenceDiagram
+    actor Client
+    participant Dashboard as DashboardPage
+    participant PAM as PurchaseAgreementModal
+    participant Escrow as Escrow Overlay
+    participant API as Backend API
+    participant Profile as ClientProfilePage
+
+    Client->>Dashboard: Click "Commit to Purchase"
+    Dashboard->>PAM: Open with vehicle details
+    PAM->>PAM: Display contract terms
+    Client->>PAM: Check terms + type digital signature
+    PAM->>PAM: Validate signature (min 3 chars)
+    PAM->>Dashboard: onConfirm()
+    Dashboard->>Escrow: Show "Finalizing Acquisition" overlay
+    Escrow->>API: POST /api/vehicles/{id}/purchase
+    API-->>Escrow: 200 OK (stock decremented)
+    Escrow->>Dashboard: Hide overlay + success toast
+    Note over PAM: Order saved to localStorage
+    Client->>Profile: View in Client Dossier
+```
+
+### 8.4 API Client Pattern
 
 ```javascript
 // apiClient.js — Simplified
@@ -570,9 +597,11 @@ flowchart TB
 | Layer | Tool | What's Tested |
 |---|---|---|
 | **Service Layer** | JUnit 5 + Mockito | Business logic in isolation — `VehicleService`, `AuthService`, `InventoryService` |
+| **Search Layer** | JUnit 5 + Testcontainers | `VehicleSearchTest` — validates min/max price filtering with real PostgreSQL |
 | **Repository Layer** | Testcontainers (PostgreSQL) | JPA queries, specifications, and Flyway migrations against a real database |
 | **Controller Layer** | `@WebMvcTest` + MockMvc | Request/response serialization, validation, security rules |
 | **Frontend Components** | Vitest + Testing Library | User interactions, form validation, conditional rendering |
+| **SearchBar Tests** | Vitest + Testing Library | Min/max price input rendering, debounced callbacks, category filters |
 | **API Integration** | MSW (Mock Service Worker) | Intercepting network requests at the service worker level — no mock axios |
 
 > [!TIP]

@@ -78,16 +78,14 @@ Navigate to **[http://localhost:5173](http://localhost:5173)** in your browser a
 
 ## 3. Default Credentials
 
-The Flyway repeatable migration (`R__seed_dev_data.sql`) seeds the following account:
+The Flyway repeatable migration (`R__seed_dev_data.sql`) seeds the following accounts:
 
-| Field        | Value                    |
-| ------------ | ------------------------ |
-| **Email**    | `admin@dealership.com`   |
-| **Password** | `admin123`               |
-| **Username** | `admin_demo`             |
-| **Role**     | `ADMIN`                  |
+| Role       | Email                    | Password   |
+| ---------- | ------------------------ | ---------- |
+| **Admin**  | `admin@dealership.com`   | `admin123` |
+| **VIP Client** | `client@dealership.com` | `client123` |
 
-The seed script also inserts **8 sample vehicles** (Toyota Camry, Honda Civic, Ford F-150, etc.) so the inventory is pre-populated for development.
+The seed script also inserts **sample vehicles** (luxury marques and standard inventory) so the dashboard is pre-populated for development.
 
 ---
 
@@ -440,6 +438,18 @@ The application follows a **layered architecture** pattern:
 | `POST`   | `/api/auth/refresh`       | Refresh access token         | No            |
 | `POST`   | `/api/auth/logout`        | Logout and revoke tokens     | Yes           |
 | `GET`    | `/api/vehicles`           | List / search vehicles       | No            |
+| `GET`    | `/api/vehicles/search`    | Search with min/max price    | No            |
+| `POST`   | `/api/vehicles/{id}/purchase` | Purchase a vehicle       | Yes           |
+
+**Key Frontend Routes:**
+
+| Path | Page | Auth |
+| ---- | ---- | ---- |
+| `/` | Public Showroom | None |
+| `/vehicles/:id` | Vehicle Detail Page | None |
+| `/dashboard` | Inventory Dashboard (SearchBar w/ min/max price) | 🔒 User |
+| `/profile` | Client Dossier (acquisition history & contracts) | 🔒 User |
+| `/admin/inventory` | Admin Inventory Management | 🔒 Admin |
 
 For a comprehensive deep-dive into the system architecture, data models, security flow, and design decisions, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**.
 

@@ -2,7 +2,7 @@
 
 # 🚗 Car Dealership Inventory System
 
-A full-stack **Car Dealership Inventory Management System** built with **Spring Boot** and **React**, featuring JWT authentication, role-based access control, real-time inventory management, and dynamic vehicle search.
+A full-stack **Luxury Automotive Inventory & Acquisition Platform** built with **Spring Boot** and **React**, featuring JWT authentication, role-based access control, real-time inventory management, advanced vehicle search with **min/max price filtering**, and a bespoke **dark luxury showroom UI** with digital contract signing and escrow simulation.
 
 [![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.4.1-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
@@ -160,19 +160,31 @@ npm run dev
 
 | Resource | URL |
 |----------|-----|
-| 🖥️ **Frontend** | [http://localhost:5173](http://localhost:5173) |
+| 🖥️ **Frontend (Showroom)** | [http://localhost:5173](http://localhost:5173) |
 | 📡 **Backend API** | [http://localhost:8080](http://localhost:8080) |
 | 📖 **Swagger UI** | [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) |
 | 💚 **Health Check** | [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health) |
 
-### Default Admin Credentials
+### Default Credentials
 
-| Field | Value |
-|-------|-------|
-| Email | `admin@dealership.com` |
-| Password | `admin123` |
+| Role | Email | Password |
+|------|-------|----------|
+| **Admin** | `admin@dealership.com` | `admin123` |
+| **VIP Client** | `client@dealership.com` | `client123` |
 
 > These credentials are seeded automatically by a Flyway repeatable migration on startup.
+
+### Frontend Routes
+
+| Path | Page | Auth |
+|------|------|------|
+| `/` | Public Showroom | None |
+| `/vehicles/:id` | Vehicle Detail | None |
+| `/login` | Login | None |
+| `/register` | Register | None |
+| `/dashboard` | Inventory Dashboard (with SearchBar + min/max price) | 🔒 User |
+| `/profile` | Client Dossier (acquisition history & contracts) | 🔒 User |
+| `/admin/inventory` | Admin Inventory Management | 🔒 Admin |
 
 ---
 
@@ -226,16 +238,18 @@ car-dealership/
 │       ├── service/                     # Business logic layer
 │       └── vehicle/                     # Vehicle mapper, specifications, DTOs
 │
-├── car-dealership-web/                  # 🌐 React Frontend
+├── car-dealership-web/                  # 🌐 React Frontend (Dark Luxury Theme)
 │   └── src/
 │       ├── api/                         # Axios client with JWT interceptor
 │       ├── components/                  # Reusable UI components
-│       │   ├── inventory/               # VehicleCard, VehicleForm, SearchBar
+│       │   ├── inventory/               # VehicleCard, VehicleForm, SearchBar,
+│       │   │                            #   PurchaseAgreementModal, FinanceCalculator
 │       │   ├── layout/                  # Navbar, MainLayout, AuthLayout
-│       │   └── ui/                      # Button, Input, Modal, Toast
+│       │   └── ui/                      # Button, Input, Modal (headless dark), Toast
 │       ├── context/                     # Auth context (global state)
 │       ├── hooks/                       # Custom hooks (useVehicles, useDebounce)
-│       ├── pages/                       # Login, Register, Dashboard, Admin
+│       ├── pages/                       # Login, Register, Dashboard, Showroom,
+│       │                                #   VehicleDetail, ClientProfile (Dossier)
 │       └── routes/                      # App routes, protected routes, admin guards
 │
 ├── docker-compose.yml                   # 🐳 PostgreSQL container

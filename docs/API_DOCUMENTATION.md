@@ -27,9 +27,10 @@ The Car Dealership Inventory System is a RESTful API built with Spring Boot for 
 - **JWT-based authentication** with refresh token rotation
 - **Role-based access control** (USER and ADMIN roles)
 - **Full CRUD** for vehicle inventory management
-- **Dynamic search** with JPA Specifications
+- **Dynamic search** with JPA Specifications (including **minPrice** and **maxPrice** range filtering)
 - **Optimistic locking** for safe concurrent updates
 - **Paginated** vehicle listings
+- **Digital acquisition flow** — contract signing, escrow simulation, and client dossier tracking
 
 All requests and responses use **JSON** (`application/json`). Authenticated endpoints require a Bearer token in the `Authorization` header.
 

@@ -27,7 +27,10 @@ The Car Dealership Inventory System uses a **PostgreSQL 16** relational database
 - **Data Integrity** — Referential integrity via foreign keys, optimistic locking for concurrent access, and unique constraints to prevent duplicate records.
 - **Evolvability** — Schema changes are managed through **Flyway** versioned migrations, ensuring reproducible, auditable, and rollback-safe database evolution across all environments.
 
-The schema consists of three tables — `vehicles`, `users`, and `refresh_tokens` — kept deliberately lean to avoid premature abstraction while supporting all current business operations: inventory browsing, vehicle CRUD, user authentication, and role-based access control.
+The schema consists of three core tables — `vehicles`, `users`, and `refresh_tokens` — kept deliberately lean to avoid premature abstraction while supporting all current business operations: inventory browsing, vehicle CRUD (with **min/max price range filtering**), user authentication, role-based access control, and digital acquisition flows.
+
+> [!NOTE]
+> **Client-Side Order History:** Acquisition records (contract IDs, digital signatures, VIN assignments) are currently stored in the browser’s `localStorage` via the `PurchaseAgreementModal` component. A future migration will introduce a persistent `orders` table to move this data server-side.
 
 ---
 
@@ -230,7 +233,7 @@ Stores the latest condition report for a vehicle.
 | Unique index on `token` | `refresh_tokens` | `token` | Unique B-tree | Enforces token uniqueness. Enables fast token lookup during refresh-token-based authentication (`findByToken`). |
 
 > [!NOTE]
-> The three `vehicles` indexes (`make`, `category`, `price`) are defined via JPA `@Table(indexes = ...)` annotations on the `Vehicle` entity and are created by Hibernate during schema validation. All other indexes are implicit, created automatically by PostgreSQL to enforce `PRIMARY KEY` and `UNIQUE` constraints.
+> The three `vehicles` indexes (`make`, `category`, `price`) are defined via JPA `@Table(indexes = ...)` annotations on the `Vehicle` entity and are created by Hibernate during schema validation. The `price` index is particularly important for the **min/max price filtering** feature implemented via `VehicleSpecification.withCriteria()`, which generates `price >= :minPrice AND price <= :maxPrice` predicates. All other indexes are implicit, created automatically by PostgreSQL to enforce `PRIMARY KEY` and `UNIQUE` constraints.
 
 ---
 
@@ -392,14 +395,12 @@ The schema is in **Third Normal Form (3NF)**:
 
 The repeatable migration seeds the database with a demo-ready dataset for development and testing. It is **not executed in production** — it is intended for local development and staging environments only.
 
-### Seeded Admin User
+### Seeded Users
 
-| Field | Value |
-|---|---|
-| Username | `admin_demo` |
-| Email | `admin@dealership.com` |
-| Password | `admin123` (stored as BCrypt hash) |
-| Role | `ADMIN` |
+| Role | Username | Email | Password | 
+|---|---|---|---|
+| **Admin** | `admin_demo` | `admin@dealership.com` | `admin123` (BCrypt) |
+| **VIP Client** | `client_demo` | `client@dealership.com` | `client123` (BCrypt) |
 
 ### Seeded Vehicles
 
