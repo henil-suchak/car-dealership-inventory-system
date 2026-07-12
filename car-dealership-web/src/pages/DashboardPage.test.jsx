@@ -12,7 +12,7 @@ describe('DashboardPage', () => {
   it('renders loading state initially', () => {
     useVehicles.mockReturnValue({ loading: true, vehicles: [], error: null, fetchVehicles: vi.fn() });
     renderWithProviders(<DashboardPage />);
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByText(/curating vehicles/i)).toBeInTheDocument();
   });
 
   it('renders error message on API failure', () => {
@@ -29,11 +29,11 @@ describe('DashboardPage', () => {
     useVehicles.mockReturnValue({ loading: false, vehicles: mockVehicles, error: null, fetchVehicles: vi.fn() });
     renderWithProviders(<DashboardPage />);
     
-    expect(screen.getByText('Toyota Camry (2023)')).toBeInTheDocument();
-    expect(screen.getByText('Honda Civic (2022)')).toBeInTheDocument();
+    expect(screen.getByText('Toyota Camry')).toBeInTheDocument();
+    expect(screen.getByText('Honda Civic')).toBeInTheDocument();
     
     // Toyota should be purchasable, Honda out of stock
-    const buttons = screen.getAllByRole('button', { name: /purchase|out of stock/i });
+    const buttons = screen.getAllByRole('button', { name: /purchase now|sold out/i });
     expect(buttons[0]).not.toBeDisabled(); // Toyota Purchase
     expect(buttons[1]).toBeDisabled();     // Honda Out of stock
   });
@@ -52,7 +52,7 @@ describe('DashboardPage', () => {
     });
     
     renderWithProviders(<DashboardPage />);
-    const purchaseButton = screen.getByRole('button', { name: /purchase/i });
+    const purchaseButton = screen.getByRole('button', { name: /purchase now/i });
     await userEvent.click(purchaseButton);
     
     expect(mockPurchase).toHaveBeenCalledWith(1);
@@ -73,7 +73,7 @@ describe('DashboardPage', () => {
     });
     
     renderWithProviders(<DashboardPage />);
-    const purchaseButton = screen.getByRole('button', { name: /purchase/i });
+    const purchaseButton = screen.getByRole('button', { name: /purchase now/i });
     await userEvent.click(purchaseButton);
     
     expect(mockPurchase).toHaveBeenCalledWith(1);
