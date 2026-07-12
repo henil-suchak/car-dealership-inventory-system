@@ -5,7 +5,27 @@ import { jwtDecode } from 'jwt-decode';
 const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const token = localStorage.getItem('jwt_token');
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        if (decoded.exp && decoded.exp * 1000 < Date.now()) {
+          localStorage.removeItem('jwt_token');
+          return null;
+        }
+        return {
+          email: decoded.sub,
+          roles: decoded.roles || [],
+          isAdmin: decoded.roles?.includes('ROLE_ADMIN') || false
+        };
+      } catch (e) {
+        localStorage.removeItem('jwt_token');
+        return null;
+      }
+    }
+    return null;
+  });
 
   const login = (token) => {
     setToken(token);

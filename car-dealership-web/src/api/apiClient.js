@@ -1,9 +1,14 @@
 import axios from 'axios';
 
-let currentToken = null;
+let currentToken = localStorage.getItem('jwt_token') || null;
 
 export const setToken = (token) => {
   currentToken = token;
+  if (token) {
+    localStorage.setItem('jwt_token', token);
+  } else {
+    localStorage.removeItem('jwt_token');
+  }
 };
 
 const apiClient = axios.create({

@@ -18,8 +18,13 @@ public class JwtService {
     private static final String SECRET_KEY = "8e9b6a5d4c3b2a1f0e9d8c7b6a5d4c3b2a1f0e9d8c7b6a5d4c3b2a1f0e9d8c7b";
 
     public String generateToken(UserDetails userDetails) {
+        java.util.List<String> roles = userDetails.getAuthorities().stream()
+                .map(org.springframework.security.core.GrantedAuthority::getAuthority)
+                .toList();
+
         return Jwts.builder()
                 .subject(userDetails.getUsername())
+                .claim("roles", roles)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 15)) // 15 minutes validity
                 .signWith(getSignInKey())
