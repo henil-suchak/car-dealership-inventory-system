@@ -6,6 +6,7 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import DashboardPage from '../pages/DashboardPage';
 import AdminInventoryPage from '../pages/AdminInventoryPage';
+import MainLayout from '../components/layout/MainLayout';
 
 const AppRoutes = () => {
   return (
@@ -14,14 +15,16 @@ const AppRoutes = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
-      {/* Protected User Routes */}
+      {/* Protected Routes */}
       <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<DashboardPage />} />
-      </Route>
-
-      {/* Protected Admin Routes */}
-      <Route element={<AdminRoute />}>
-        <Route path="/admin/inventory" element={<AdminInventoryPage />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<DashboardPage />} />
+          
+          {/* Admin Routes */}
+          <Route element={<AdminRoute />}>
+            <Route path="/admin/inventory" element={<AdminInventoryPage />} />
+          </Route>
+        </Route>
       </Route>
     </Routes>
   );
