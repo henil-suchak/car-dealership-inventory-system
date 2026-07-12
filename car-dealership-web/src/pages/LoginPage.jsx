@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import apiClient from '../api/apiClient';
 import { useAuth } from '../context/AuthContext';
 import Input from '../components/ui/Input';
@@ -18,7 +18,10 @@ const LoginPage = () => {
   const [serverError, setServerError] = useState(null);
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
+  
+  const from = location.state?.from?.pathname || '/';
 
   const {
     register,
@@ -36,7 +39,7 @@ const LoginPage = () => {
       if (!token) throw new Error('No token received');
       login(token);
       setSuccess(true);
-      setTimeout(() => navigate('/'), 1000);
+      setTimeout(() => navigate(from), 1000);
     } catch (err) {
       setServerError(err.response?.data?.message || 'Login failed');
     }

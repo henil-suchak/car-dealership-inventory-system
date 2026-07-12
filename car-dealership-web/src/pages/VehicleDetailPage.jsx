@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import FinanceCalculator from '../components/inventory/FinanceCalculator';
@@ -9,6 +9,7 @@ import vehicleApi from '../api/vehicleApi';
 const VehicleDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useAuth();
   
   const [vehicle, setVehicle] = useState(null);
@@ -17,6 +18,17 @@ const VehicleDetailPage = () => {
   const [showAgreement, setShowAgreement] = useState(false);
   const [isPurchasing, setIsPurchasing] = useState(false);
   const [toast, setToast] = useState(null);
+
+  const handleCheckoutClick = () => {
+    if (!user) {
+      setToast('Please login first to proceed with the acquisition.');
+      setTimeout(() => {
+        navigate('/login', { state: { from: location } });
+      }, 1500);
+      return;
+    }
+    setShowAgreement(true);
+  };
 
   const executePurchase = async () => {
     setShowAgreement(false);
@@ -182,7 +194,7 @@ const VehicleDetailPage = () => {
 
                  <div className="space-y-4">
                     <button 
-                       onClick={() => setShowAgreement(true)}
+                       onClick={handleCheckoutClick}
                        className={`w-full py-4 uppercase tracking-widest text-xs font-bold transition-all ${
                          isAvailable ? 'bg-white text-black hover:bg-gray-200' : 'bg-zinc-900 border border-zinc-800 text-zinc-500 cursor-not-allowed'
                        }`}
