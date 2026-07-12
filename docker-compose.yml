@@ -34,7 +34,7 @@ services:
       context: ./car-dealership-web
     container_name: dealership-frontend
     ports:
-      - "5173:80"
+      - "80:80"
     depends_on:
       - backend
     networks:
