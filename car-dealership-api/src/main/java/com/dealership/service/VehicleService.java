@@ -35,6 +35,13 @@ public class VehicleService {
     }
 
     @Transactional(readOnly = true)
+    public VehicleResponse getVehicleById(UUID id) {
+        return vehicleRepository.findById(id)
+                .map(vehicleMapper::toResponse)
+                .orElseThrow(() -> new com.dealership.exception.ResourceNotFoundException("Vehicle not found with id: " + id));
+    }
+
+    @Transactional(readOnly = true)
     public Page<VehicleResponse> searchVehicles(com.dealership.vehicle.dto.VehicleSearchCriteria criteria, Pageable pageable) {
         if (criteria.minPrice() != null && criteria.maxPrice() != null && criteria.minPrice().compareTo(criteria.maxPrice()) > 0) {
             throw new IllegalArgumentException("minPrice cannot be greater than maxPrice");

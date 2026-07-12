@@ -33,7 +33,7 @@ const vehicleApi = {
   },
 
   restockVehicle: async (id, quantity) => {
-    const response = await apiClient.post(`/vehicles/${id}/restock?quantity=${quantity}`);
+    const response = await apiClient.post(`/vehicles/${id}/restock`, { quantity });
     return response.data;
   }
 };

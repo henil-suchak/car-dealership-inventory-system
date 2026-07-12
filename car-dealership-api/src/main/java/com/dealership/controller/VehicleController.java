@@ -40,6 +40,12 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.getAllVehicles(pageable));
     }
 
+    @GetMapping("/{id}")
+    @Operation(summary = "Get a vehicle by ID", description = "Retrieves a single vehicle by its UUID. No authentication required.")
+    public ResponseEntity<VehicleResponse> getVehicleById(@PathVariable UUID id) {
+        return ResponseEntity.ok(vehicleService.getVehicleById(id));
+    }
+
     @GetMapping("/search")
     @Operation(summary = "Search vehicles", description = "Dynamically filter vehicles by make, model, category, and price range. No authentication required.")
     public ResponseEntity<Page<VehicleResponse>> searchVehicles(
