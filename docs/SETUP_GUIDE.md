@@ -440,6 +440,7 @@ The application follows a **layered architecture** pattern:
 | `GET`    | `/api/vehicles`           | List / search vehicles       | No            |
 | `GET`    | `/api/vehicles/search`    | Search with min/max price    | No            |
 | `POST`   | `/api/vehicles/{id}/purchase` | Purchase a vehicle       | Yes           |
+| `POST`   | `/api/finance/calculate` | Calculate loan amortization   | No            |
 
 **Key Frontend Routes:**
 

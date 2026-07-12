@@ -400,20 +400,21 @@ The repeatable migration seeds the database with a demo-ready dataset for develo
 | Role | Username | Email | Password | 
 |---|---|---|---|
 | **Admin** | `admin_demo` | `admin@dealership.com` | `admin123` (BCrypt) |
-| **VIP Client** | `client_demo` | `client@dealership.com` | `client123` (BCrypt) |
+| **VIP Client** | `vip_client` | `client@dealership.com` | `client123` (BCrypt) |
+
 
 ### Seeded Vehicles
 
 | Make | Model | Category | Price (USD) | Stock |
 |---|---|---|---|---|
-| Toyota | Camry | SEDAN | $25,000.00 | 10 |
-| Honda | Civic | SEDAN | $22,000.00 | 15 |
-| Ford | F-150 | TRUCK | $35,000.00 | 8 |
-| Chevrolet | Silverado | TRUCK | $38,000.00 | 6 |
-| Toyota | RAV4 | SUV | $28,000.00 | 12 |
-| Honda | CR-V | SUV | $30,000.00 | 9 |
-| Ford | Mustang | COUPE | $45,000.00 | 5 |
-| Volkswagen | Golf | HATCHBACK | $23,000.00 | 11 |
+| Rolls-Royce | Phantom | SEDAN | $493,000.00 | 2 |
+| Audi | RS e-tron GT | SEDAN | $147,100.00 | 3 |
+| BMW | M8 Competition | COUPE | $138,800.00 | 3 |
+| Porsche | 911 GT3 RS | COUPE | $241,300.00 | 0 |
+| Lamborghini | Urus Performante | SUV | $269,900.00 | 2 |
+| Ferrari | 812 Superfast | COUPE | $335,000.00 | 1 |
+| Mercedes-Benz | G 63 AMG | SUV | $179,000.00 | 3 |
+| Aston Martin | DB12 | COUPE | $245,000.00 | 1 |
 
 **Why seed data exists:**
 

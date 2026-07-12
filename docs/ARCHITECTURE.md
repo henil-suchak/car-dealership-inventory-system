@@ -29,8 +29,8 @@ The system follows a classic **three-tier architecture** with a clear separation
 flowchart TB
     subgraph Client["🖥️ Client — React 19 + Vite"]
         direction TB
-        Pages["Pages<br/>(Login · Register · Dashboard · Admin Inventory)"]
-        Components["Components<br/>(VehicleCard · VehicleForm · SearchBar · Navbar)"]
+        Pages["Pages<br/>(Showroom · Vehicle Detail · Login · Register<br/>Dashboard · Client Profile · Admin Inventory)"]
+        Components["Components<br/>(VehicleCard · VehicleForm · SearchBar · Navbar<br/>FinanceCalculator · PurchaseAgreementModal)"]
         State["State Management<br/>(AuthContext · useVehicles · useDebounce)"]
         ApiClient["API Client<br/>(Axios + JWT Interceptor)"]
         Pages --> Components
@@ -41,8 +41,8 @@ flowchart TB
     subgraph Server["⚙️ API Layer — Spring Boot 3.4.1"]
         direction TB
         SecurityFilter["Security Filter Chain<br/>(JwtAuthenticationFilter)"]
-        Controllers["Controllers<br/>(AuthController · VehicleController · InventoryController)"]
-        Services["Services<br/>(AuthService · VehicleService · InventoryService<br/>JwtService · RefreshTokenService)"]
+        Controllers["Controllers<br/>(AuthController · VehicleController · InventoryController · FinanceController)"]
+        Services["Services<br/>(AuthService · VehicleService · InventoryService<br/>JwtService · RefreshTokenService · FinanceService)"]
         Repositories["Repositories<br/>(VehicleRepository · UserRepository · RefreshTokenRepository)"]
         SecurityFilter --> Controllers
         Controllers --> Services
@@ -126,6 +126,7 @@ The system uses **stateless JWT-based authentication** with a **refresh token ro
 // SecurityConfig — Spring Security Filter Chain
 /api/auth/**          → permitAll()       // Login, register, refresh
 GET /api/vehicles/**  → permitAll()       // Public vehicle browsing
+/api/finance/**       → permitAll()       // Finance calculator
 POST/PUT/DELETE /**   → authenticated()   // All mutations require auth
 Admin endpoints       → @PreAuthorize("hasRole('ADMIN')")
 ```
@@ -467,14 +468,22 @@ flowchart TB
     AuthLayout --> RegisterPage["RegisterPage"]
 
     MainLayout --> Navbar["Navbar"]
+    MainLayout --> ShowroomPage["ShowroomPage"]
+    MainLayout --> VehicleDetailPage["VehicleDetailPage"]
     MainLayout --> ProtectedRoute["ProtectedRoute"]
     MainLayout --> AdminRoute["AdminRoute"]
 
+    ShowroomPage --> FinanceCalculator["FinanceCalculator"]
+    VehicleDetailPage --> FinanceCalc2["FinanceCalculator"]
+    VehicleDetailPage --> PurchaseAgreementModal["PurchaseAgreementModal"]
+
     ProtectedRoute --> DashboardPage["DashboardPage"]
+    ProtectedRoute --> ClientProfilePage["ClientProfilePage"]
     AdminRoute --> AdminInventoryPage["AdminInventoryPage"]
 
     DashboardPage --> SearchBar["SearchBar"]
     DashboardPage --> VehicleCard["VehicleCard"]
+    DashboardPage --> PAM2["PurchaseAgreementModal"]
 
     AdminInventoryPage --> VehicleForm["VehicleForm"]
     AdminInventoryPage --> Modal["Modal"]
@@ -484,6 +493,9 @@ flowchart TB
     style MainLayout fill:#1e293b,stroke:#a78bfa,color:#f8fafc
     style ProtectedRoute fill:#1e293b,stroke:#fbbf24,color:#f8fafc
     style AdminRoute fill:#1e293b,stroke:#f87171,color:#f8fafc
+    style ShowroomPage fill:#1e293b,stroke:#34d399,color:#f8fafc
+    style VehicleDetailPage fill:#1e293b,stroke:#34d399,color:#f8fafc
+    style ClientProfilePage fill:#1e293b,stroke:#fbbf24,color:#f8fafc
 ```
 
 ### 8.2 State Management
@@ -501,6 +513,8 @@ flowchart LR
 
     useVehicles --> DashboardPage
     useVehicles --> AdminInventoryPage
+    useVehicles --> ShowroomPage
+    useVehicles --> VehicleDetailPage
     useDebounce --> SearchBar
 
     style AuthContext fill:#0f172a,stroke:#a78bfa,color:#f8fafc
@@ -557,7 +571,7 @@ apiClient.interceptors.request.use((config) => {
 
 The Axios interceptor is the **single point of responsibility** for attaching authentication headers. Individual API call sites (`vehicleApi.js`) never deal with tokens — they simply call `apiClient.get('/vehicles')`.
 
-### 8.4 Route Guards
+### 8.5 Route Guards
 
 | Guard | Purpose | Redirect |
 |---|---|---|

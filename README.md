@@ -63,6 +63,7 @@ graph TB
             AC[Auth Controller]
             VC[Vehicle Controller]
             IC[Inventory Controller]
+            FC[Finance Controller]
         end
         
         subgraph Services
@@ -70,6 +71,7 @@ graph TB
             VS[Vehicle Service]
             IS[Inventory Service]
             JS[JWT Service]
+            FS[Finance Service]
         end
         
         subgraph Data["Data Layer"]
@@ -216,6 +218,14 @@ npm run dev
 |--------|----------|------|-------------|
 | `POST` | `/api/vehicles/{id}/purchase` | 🔒 User | Purchase (decrement stock) |
 | `POST` | `/api/vehicles/{id}/restock` | 🔒 Admin | Restock (increment stock) |
+
+### Finance (`/api/finance`)
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| `POST` | `/api/finance/calculate` | Public | Calculate loan amortization |
+
+
 
 > 📄 For detailed request/response examples, see [API Documentation](docs/API_DOCUMENTATION.md).
 

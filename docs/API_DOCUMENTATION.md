@@ -15,6 +15,7 @@
    - [Auth Endpoints](#auth-endpoints)
    - [Vehicle Endpoints](#vehicle-endpoints)
    - [Inventory Endpoints](#inventory-endpoints)
+   - [Finance Endpoints](#finance-endpoints)
 5. [Error Response Reference](#error-response-reference)
 6. [Pagination](#pagination)
 
@@ -31,6 +32,7 @@ The Car Dealership Inventory System is a RESTful API built with Spring Boot for 
 - **Optimistic locking** for safe concurrent updates
 - **Paginated** vehicle listings
 - **Digital acquisition flow** — contract signing, escrow simulation, and client dossier tracking
+- **Finance calculator** — loan amortization API with configurable down payment, trade-in value, term length, and interest rate
 
 All requests and responses use **JSON** (`application/json`). Authenticated endpoints require a Bearer token in the `Authorization` header.
 
@@ -119,6 +121,7 @@ curl -X POST http://localhost:8080/api/auth/logout \
 | `/api/vehicles/{id}`                | `DELETE` | ❌     | ❌   | ✅    |
 | `/api/vehicles/{id}/purchase`       | `POST`   | ❌     | ✅   | ✅    |
 | `/api/vehicles/{id}/restock`        | `POST`   | ❌     | ❌   | ✅    |
+| `/api/finance/calculate`           | `POST`   | ✅     | ✅   | ✅    |
 
 ---
 
@@ -799,6 +802,69 @@ Content-Type: application/json
 | `400`  | Validation error (quantity must be ≥ 1)    |
 | `403`  | Forbidden — requires ADMIN role            |
 | `404`  | Vehicle not found                          |
+
+---
+
+### Finance Endpoints
+
+#### POST /api/finance/calculate
+
+Calculate a loan amortization schedule based on vehicle price, down payment, trade-in value, loan term, and interest rate. This endpoint is **publicly accessible** — no authentication required.
+
+**Request Body:**
+
+```json
+{
+  "vehiclePrice": 245000.00,
+  "downPayment": 50000.00,
+  "tradeInValue": 15000.00,
+  "termMonths": 60,
+  "interestRate": 4.99
+}
+```
+
+**Request Fields:**
+
+| Field | Type | Required | Constraints | Description |
+|---|---|---|---|---|
+| `vehiclePrice` | `BigDecimal` | ✅ | min: 0 | Full price of the vehicle |
+| `downPayment` | `BigDecimal` | ✅ | min: 0 | Up-front cash payment |
+| `tradeInValue` | `BigDecimal` | ❌ | min: 0, default: 0 | Value of trade-in vehicle |
+| `termMonths` | `Integer` | ✅ | min: 12 | Loan duration in months |
+| `interestRate` | `BigDecimal` | ✅ | min: 0 | Annual interest rate (e.g., 4.99) |
+
+**Success Response** — `200 OK`:
+
+```json
+{
+  "principalAmount": 180000.00,
+  "monthlyPayment": 3396.04,
+  "totalInterestPaid": 23762.40,
+  "totalCostToBuyer": 268762.40
+}
+```
+
+**Response Fields:**
+
+| Field | Type | Description |
+|---|---|---|
+| `principalAmount` | `BigDecimal` | Loan amount (vehiclePrice − downPayment − tradeInValue) |
+| `monthlyPayment` | `BigDecimal` | Calculated monthly payment using amortization formula |
+| `totalInterestPaid` | `BigDecimal` | Total interest paid over the life of the loan |
+| `totalCostToBuyer` | `BigDecimal` | Total cost including principal + interest + down payment + trade-in |
+
+**Amortization Formula:**
+
+`M = P × [i(1+i)^n] / [(1+i)^n − 1]`
+
+Where `P` = principal, `i` = monthly rate (annual / 12 / 100), `n` = term in months.
+
+**Status Codes:**
+
+| Status | Description |
+|---|---|
+| `200` | Calculation successful |
+| `400` | Validation error — missing or invalid fields |
 
 ---
 
