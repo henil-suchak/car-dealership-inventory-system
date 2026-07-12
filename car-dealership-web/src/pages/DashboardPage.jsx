@@ -1,14 +1,20 @@
 import React, { useState, useCallback } from 'react';
 import useVehicles from '../hooks/useVehicles';
+import vehicleApi from '../api/vehicleApi';
 import VehicleCard from '../components/inventory/VehicleCard';
 import SearchBar from '../components/inventory/SearchBar';
 import Toast from '../components/ui/Toast';
+import Modal from '../components/ui/Modal';
+import VehicleForm from '../components/inventory/VehicleForm';
+import Button from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 
 const DashboardPage = () => {
   const { vehicles, loading, error, fetchVehicles, purchaseVehicle } = useVehicles();
   const { user, logout } = useAuth();
   const [toast, setToast] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingVehicle, setEditingVehicle] = useState(null);
 
   const handlePurchase = async (vehicleId) => {
     try {
@@ -22,6 +28,63 @@ const DashboardPage = () => {
     setTimeout(() => {
       setToast(null);
     }, 3000);
+  };
+
+  const showToast = (type, message) => {
+    setToast({ type, message });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this vehicle?')) {
+      try {
+        await vehicleApi.deleteVehicle(id);
+        fetchVehicles(); // Refresh list
+        showToast('success', 'Vehicle deleted successfully.');
+      } catch (err) {
+        showToast('error', 'Failed to delete vehicle.');
+      }
+    }
+  };
+
+  const handleRestock = async (id) => {
+    const quantity = window.prompt('Enter quantity to restock:', '1');
+    if (quantity && !isNaN(quantity)) {
+      try {
+        await vehicleApi.restockVehicle(id, parseInt(quantity, 10));
+        fetchVehicles(); // Refresh list
+        showToast('success', 'Vehicle restocked successfully.');
+      } catch (err) {
+        showToast('error', 'Failed to restock vehicle.');
+      }
+    }
+  };
+
+  const handleSave = async (data) => {
+    try {
+      if (editingVehicle) {
+        await vehicleApi.updateVehicle(editingVehicle.id, data);
+        showToast('success', 'Vehicle updated successfully.');
+      } else {
+        await vehicleApi.createVehicle(data);
+        showToast('success', 'Vehicle created successfully.');
+      }
+      setIsModalOpen(false);
+      fetchVehicles();
+    } catch (err) {
+      showToast('error', 'Failed to save vehicle.');
+      throw err;
+    }
+  };
+
+  const openEditModal = (vehicle) => {
+    setEditingVehicle(vehicle);
+    setIsModalOpen(true);
+  };
+
+  const openCreateModal = () => {
+    setEditingVehicle(null);
+    setIsModalOpen(true);
   };
 
   const handleSearch = useCallback((filters) => {
@@ -63,9 +126,16 @@ const DashboardPage = () => {
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Featured Inventory</h3>
-            <span className="text-sm font-medium px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">
-              {vehicles.length} Results
-            </span>
+            <div className="flex items-center space-x-4">
+              <span className="text-sm font-medium px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">
+                {vehicles.length} Results
+              </span>
+              {user?.isAdmin && (
+                <Button onClick={openCreateModal} size="sm">
+                  Add New Vehicle
+                </Button>
+              )}
+            </div>
           </div>
 
           {loading ? (
@@ -94,11 +164,22 @@ const DashboardPage = () => {
                   key={vehicle.id} 
                   vehicle={vehicle} 
                   onPurchase={handlePurchase} 
+                  onEdit={openEditModal}
+                  onRestock={handleRestock}
+                  onDelete={handleDelete}
                 />
               ))}
             </div>
           )}
         </div>
+
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <VehicleForm 
+            initialData={editingVehicle} 
+            onSubmit={handleSave} 
+            onCancel={() => setIsModalOpen(false)} 
+          />
+        </Modal>
       </main>
     </div>
   );
