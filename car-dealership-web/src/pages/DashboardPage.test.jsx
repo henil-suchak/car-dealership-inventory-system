@@ -44,7 +44,7 @@ describe('DashboardPage', () => {
     expect(screen.getByText('Honda Civic')).toBeInTheDocument();
     
     // Toyota should be purchasable, Honda out of stock
-    const buttons = screen.getAllByRole('button', { name: /purchase now|sold out/i });
+    const buttons = screen.getAllByRole('button', { name: /purchase now|unavailable/i });
     expect(buttons[0]).not.toBeDisabled(); // Toyota Purchase
     expect(buttons[1]).toBeDisabled();     // Honda Out of stock
   });

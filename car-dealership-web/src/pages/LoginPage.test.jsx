@@ -42,7 +42,7 @@ describe('LoginPage', () => {
     const fakeJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBkZWFsZXJzaGlwLmNvbSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTcxNjIzOTAyMn0.signature';
     
     server.use(
-      http.post('http://localhost:8080/api/auth/login', () => {
+      http.post(/\/api\/auth\/login/, () => {
         return HttpResponse.json({ token: fakeJwt }, { status: 200 });
       })
     );
@@ -64,7 +64,7 @@ describe('LoginPage', () => {
 
   it('displays server error on 401 invalid credentials', async () => {
     server.use(
-      http.post('http://localhost:8080/api/auth/login', () => {
+      http.post(/\/api\/auth\/login/, () => {
         return HttpResponse.json({ message: 'Bad credentials' }, { status: 401 });
       })
     );

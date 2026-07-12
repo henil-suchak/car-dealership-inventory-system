@@ -48,7 +48,7 @@ public class RefreshTokenIntegrationTest {
         user.setUsername("refreshuser");
         user.setEmail("refresh@example.com");
         user.setPassword(passwordEncoder.encode("password123"));
-        user.setRole(Role.CUSTOMER);
+        user.setRole(Role.USER);
         userRepository.save(user);
 
         // 2. Login to get access token and refresh token
@@ -91,7 +91,7 @@ public class RefreshTokenIntegrationTest {
         user.setUsername("logoutuser");
         user.setEmail("logout@example.com");
         user.setPassword(passwordEncoder.encode("password123"));
-        user.setRole(Role.CUSTOMER);
+        user.setRole(Role.USER);
         userRepository.save(user);
 
         // 2. Login to get access token and refresh token
@@ -110,7 +110,7 @@ public class RefreshTokenIntegrationTest {
         // 3. Logout (which should revoke the token)
         mockMvc.perform(post("/api/auth/logout")
                         .header("Authorization", "Bearer " + accessToken))
-                .andExpect(status().isOk()); // Assuming it returns 200 OK or 204 No Content
+                .andExpect(status().isNoContent()); // Assuming it returns 204 No Content
 
         // 4. Try to use the revoked refresh token
         String refreshJson = "{\"refreshToken\":\"" + refreshToken + "\"}";

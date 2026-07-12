@@ -1,0 +1,1510 @@
+
+> car-dealership-web@0.0.0 test
+> vitest --watch=false
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90m/Users/suchak/car-dealership/car-dealership-web[39m
+
+(node:3658) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3655) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3657) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3660) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3659) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3656) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3661) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+[90mstderr[2m | src/api/apiClient.test.js[2m > [22m[2mapiClient[2m > [22m[2mshould attach Authorization header if token exists
+[22m[39m[MSW] Error: intercepted a request without a matching request handler:
+
+  • GET /api/test-auth
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+
+[90mstderr[2m | src/api/apiClient.test.js[2m > [22m[2mapiClient[2m > [22m[2mshould not attach Authorization header if token does not exist
+[22m[39m[MSW] Error: intercepted a request without a matching request handler:
+
+  • GET /api/test-auth
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+
+ [31m❯[39m src/api/apiClient.test.js [2m([22m[2m2 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 37[2mms[22m[39m
+[31m     [31m×[31m should attach Authorization header if token exists[39m[32m 30[2mms[22m[39m
+[31m     [31m×[31m should not attach Authorization header if token does not exist[39m[32m 3[2mms[22m[39m
+ [32m✓[39m src/pages/AdminInventoryPage.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[33m 349[2mms[22m[39m
+[90mstderr[2m | src/pages/LoginPage.test.jsx[2m > [22m[2mLoginPage[2m > [22m[2msubmits successfully, stores session and redirects to dashboard
+[22m[39m[MSW] Error: intercepted a request without a matching request handler:
+
+  • POST /api/auth/login
+
+  • Request body: {"email":"admin@dealership.com","password":"admin123"}
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+
+ [31m❯[39m src/pages/DashboardPage.test.jsx [2m([22m[2m7 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 296[2mms[22m[39m
+     [32m✓[39m renders loading state initially[32m 87[2mms[22m[39m
+     [32m✓[39m renders error message on API failure[32m 5[2mms[22m[39m
+[31m     [31m×[31m renders list of vehicles from hook[39m[32m 121[2mms[22m[39m
+     [32m✓[39m handles successful vehicle purchase with optimistic update and toast[32m 46[2mms[22m[39m
+     [32m✓[39m handles failed vehicle purchase with error toast[32m 21[2mms[22m[39m
+     [32m✓[39m does NOT render Add New Vehicle button for regular user[32m 5[2mms[22m[39m
+     [32m✓[39m renders Add New Vehicle button for ADMIN user[32m 7[2mms[22m[39m
+[90mstderr[2m | src/pages/RegisterPage.test.jsx[2m > [22m[2mRegisterPage[2m > [22m[2msubmits successfully and redirects to login
+[22m[39m[MSW] Error: intercepted a request without a matching request handler:
+
+  • POST /api/auth/register
+
+  • Request body: {"username":"John Doe","email":"john@example.com","password":"password123"}
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+
+ [32m✓[39m src/components/inventory/VehicleForm.test.jsx [2m([22m[2m4 tests[22m[2m)[22m[33m 669[2mms[22m[39m
+     [33m[2m✓[22m[39m calls onSubmit with valid data [33m 328[2mms[22m[39m
+(node:3662) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m✓[39m src/components/inventory/SearchBar.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[33m 832[2mms[22m[39m
+     [33m[2m✓[22m[39m calls onSearch with debounced values when typing [33m 572[2mms[22m[39m
+(node:3663) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3664) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+[90mstderr[2m | src/routes/AppRoutes.test.jsx[2m > [22m[2mAppRoutes Integration[2m > [22m[2mrenders Navbar on protected dashboard route
+[22m[39m[MSW] Error: intercepted a request without a matching request handler:
+
+  • GET /api/vehicles/search
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+[MSW] Error: intercepted a request without a matching request handler:
+
+  • GET /api/vehicles/search
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+
+[90mstderr[2m | src/routes/AppRoutes.test.jsx[2m > [22m[2mAppRoutes Integration[2m > [22m[2mrenders Navbar on protected admin route
+[22m[39m[MSW] Error: intercepted a request without a matching request handler:
+
+  • GET /api/vehicles/search
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+[MSW] Error: intercepted a request without a matching request handler:
+
+  • GET /api/vehicles/search
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+
+ [32m✓[39m src/routes/AppRoutes.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[32m 264[2mms[22m[39m
+(node:3668) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m✓[39m src/components/ui/Toast.test.jsx [2m([22m[2m2 tests[22m[2m)[22m[32m 108[2mms[22m[39m
+ [32m✓[39m src/components/inventory/VehicleCard.test.jsx [2m([22m[2m5 tests[22m[2m)[22m[32m 181[2mms[22m[39m
+[90mstderr[2m | src/pages/LoginPage.test.jsx[2m > [22m[2mLoginPage[2m > [22m[2mdisplays server error on 401 invalid credentials
+[22m[39m[MSW] Error: intercepted a request without a matching request handler:
+
+  • POST /api/auth/login
+
+  • Request body: {"email":"wrong@email.com","password":"wrongpass"}
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+
+(node:3669) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m✓[39m src/components/ui/Button.test.jsx [2m([22m[2m4 tests[22m[2m)[22m[32m 170[2mms[22m[39m
+[90mstderr[2m | src/pages/RegisterPage.test.jsx[2m > [22m[2mRegisterPage[2m > [22m[2mdisplays server error toast on failure
+[22m[39m[MSW] Error: intercepted a request without a matching request handler:
+
+  • POST /api/auth/register
+
+  • Request body: {"username":"John Doe","email":"admin@dealership.com","password":"password123"}
+
+If you still wish to intercept this unhandled request, please create a request handler for it.
+Read more: https://mswjs.io/docs/http/intercepting-requests
+
+ [32m✓[39m src/hooks/useVehicles.test.jsx [2m([22m[2m2 tests[22m[2m)[22m[32m 131[2mms[22m[39m
+(node:3670) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3671) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m✓[39m src/components/ui/Input.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[32m 140[2mms[22m[39m
+(node:3672) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3674) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [31m❯[39m src/pages/LoginPage.test.jsx [2m([22m[2m4 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 2518[2mms[22m[39m
+     [32m✓[39m renders login form[32m 98[2mms[22m[39m
+     [32m✓[39m shows client-side validation errors when submitting empty form[32m 68[2mms[22m[39m
+[31m     [31m×[31m submits successfully, stores session and redirects to dashboard[39m[33m 1202[2mms[22m[39m
+[31m     [31m×[31m displays server error on 401 invalid credentials[39m[33m 1144[2mms[22m[39m
+ [32m✓[39m src/components/ui/Modal.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[32m 140[2mms[22m[39m
+ [32m✓[39m src/routes/ProtectedRoute.test.jsx [2m([22m[2m2 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m src/components/layout/MainLayout.test.jsx [2m([22m[2m1 test[22m[2m)[22m[32m 46[2mms[22m[39m
+(node:3676) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [31m❯[39m src/pages/RegisterPage.test.jsx [2m([22m[2m4 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 2747[2mms[22m[39m
+     [32m✓[39m renders registration form[32m 166[2mms[22m[39m
+     [32m✓[39m shows client-side validation errors when submitting empty form[32m 48[2mms[22m[39m
+[31m     [31m×[31m submits successfully and redirects to login[39m[33m 1181[2mms[22m[39m
+[31m     [31m×[31m displays server error toast on failure[39m[33m 1348[2mms[22m[39m
+ [32m✓[39m src/components/layout/Navbar.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[32m 50[2mms[22m[39m
+(node:3677) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3679) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3678) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3680) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m✓[39m src/routes/AdminRoute.test.jsx [2m([22m[2m2 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/hooks/useDebounce.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/api/vehicleApi.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m src/context/AuthContext.test.jsx [2m([22m[2m4 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 7 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/api/apiClient.test.js[2m > [22mapiClient[2m > [22mshould attach Authorization header if token exists
+[31m[1mAxiosError[22m: Network Error[39m
+[90m [2m❯[22m XMLHttpRequest.handleError node_modules/axios/lib/adapters/xhr.js:[2m124:21[22m[39m
+[90m [2m❯[22m XMLHttpRequest.methodCall node_modules/@mswjs/interceptors/src/interceptors/XMLHttpRequest/XMLHttpRequestController.ts:[2m217:19[22m[39m
+[90m [2m❯[22m Proxy.<anonymous> node_modules/@mswjs/interceptors/src/utils/createProxy.ts:[2m93:28[22m[39m
+[90m [2m❯[22m XMLHttpRequestController.trigger node_modules/@mswjs/interceptors/src/interceptors/XMLHttpRequest/XMLHttpRequestController.ts:[2m642:15[22m[39m
+[90m [2m❯[22m XMLHttpRequestController.errorWith node_modules/@mswjs/interceptors/src/interceptors/XMLHttpRequest/XMLHttpRequestController.ts:[2m592:9[22m[39m
+[90m [2m❯[22m Object.errorWith node_modules/@mswjs/interceptors/src/interceptors/XMLHttpRequest/XMLHttpRequestProxy.ts:[2m74:19[22m[39m
+[90m [2m❯[22m RequestController.errorWith node_modules/@mswjs/interceptors/src/RequestController.ts:[2m106:16[22m[39m
+[90m [2m❯[22m InterceptorHttpNetworkFrame.errorWith node_modules/msw/src/core/experimental/sources/interceptor-source.ts:[2m156:23[22m[39m
+[90m [2m❯[22m node_modules/msw/src/core/experimental/frames/http-frame.ts:[2m206:24[22m[39m
+[90m [2m❯[22m Axios.request node_modules/axios/lib/core/Axios.js:[2m46:41[22m[39m
+[36m [2m❯[22m src/api/apiClient.test.js:[2m24:5[22m[39m
+    [90m 22|[39m     [34msetToken[39m([32m'fake-jwt-token'[39m)[33m;[39m
+    [90m 23|[39m
+    [90m 24|[39m     [35mawait[39m apiClient[33m.[39m[35mget[39m([32m'/test-auth'[39m)[33m;[39m
+    [90m   |[39m     [31m^[39m
+    [90m 25|[39m
+    [90m 26|[39m     [34mexpect[39m(capturedHeader)[33m.[39m[34mtoBe[39m([32m'Bearer fake-jwt-token'[39m)[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/api/apiClient.test.js[2m > [22mapiClient[2m > [22mshould not attach Authorization header if token does not exist
+[31m[1mAxiosError[22m: Network Error[39m
+[90m [2m❯[22m XMLHttpRequest.handleError node_modules/axios/lib/adapters/xhr.js:[2m124:21[22m[39m
+[90m [2m❯[22m XMLHttpRequest.methodCall node_modules/@mswjs/interceptors/src/interceptors/XMLHttpRequest/XMLHttpRequestController.ts:[2m217:19[22m[39m
+[90m [2m❯[22m Proxy.<anonymous> node_modules/@mswjs/interceptors/src/utils/createProxy.ts:[2m93:28[22m[39m
+[90m [2m❯[22m XMLHttpRequestController.trigger node_modules/@mswjs/interceptors/src/interceptors/XMLHttpRequest/XMLHttpRequestController.ts:[2m642:15[22m[39m
+[90m [2m❯[22m XMLHttpRequestController.errorWith node_modules/@mswjs/interceptors/src/interceptors/XMLHttpRequest/XMLHttpRequestController.ts:[2m592:9[22m[39m
+[90m [2m❯[22m Object.errorWith node_modules/@mswjs/interceptors/src/interceptors/XMLHttpRequest/XMLHttpRequestProxy.ts:[2m74:19[22m[39m
+[90m [2m❯[22m RequestController.errorWith node_modules/@mswjs/interceptors/src/RequestController.ts:[2m106:16[22m[39m
+[90m [2m❯[22m InterceptorHttpNetworkFrame.errorWith node_modules/msw/src/core/experimental/sources/interceptor-source.ts:[2m156:23[22m[39m
+[90m [2m❯[22m node_modules/msw/src/core/experimental/frames/http-frame.ts:[2m206:24[22m[39m
+[90m [2m❯[22m Axios.request node_modules/axios/lib/core/Axios.js:[2m46:41[22m[39m
+[36m [2m❯[22m src/api/apiClient.test.js:[2m38:5[22m[39m
+    [90m 36|[39m     )[33m;[39m
+    [90m 37|[39m
+    [90m 38|[39m     [35mawait[39m apiClient[33m.[39m[35mget[39m([32m'/test-auth'[39m)[33m;[39m
+    [90m   |[39m     [31m^[39m
+    [90m 39|[39m
+    [90m 40|[39m     [34mexpect[39m(capturedHeader)[33m.[39m[34mtoBeNull[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/pages/DashboardPage.test.jsx[2m > [22mDashboardPage[2m > [22mrenders list of vehicles from hook
+[31m[1mError[22m: [2mexpect([22m[31mreceived[31m[2m).toBeDisabled()[22m
+
+[31mreceived[31m value must be an HTMLElement or an SVGElement.
+Received has type:  Undefined
+Received has value: [31mundefined[31m[39m
+[36m [2m❯[22m src/pages/DashboardPage.test.jsx:[2m49:24[22m[39m
+    [90m 47|[39m     const buttons = screen.getAllByRole('button', { name: /purchase no…
+    [90m 48|[39m     [34mexpect[39m(buttons[[34m0[39m])[33m.[39mnot[33m.[39m[34mtoBeDisabled[39m()[33m;[39m [90m// Toyota Purchase[39m
+    [90m 49|[39m     [34mexpect[39m(buttons[[34m1[39m])[33m.[39m[34mtoBeDisabled[39m()[33m;[39m     [90m// Honda Out of stock[39m
+    [90m   |[39m                        [31m^[39m
+    [90m 50|[39m   })[33m;[39m
+    [90m 51|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/pages/LoginPage.test.jsx[2m > [22mLoginPage[2m > [22msubmits successfully, stores session and redirects to dashboard
+[31m[1mTestingLibraryElementError[22m[39m: Unable to find an element with the text: /login successful/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-col items-center"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"lucide lucide-car h-6 w-6 text-blue-600"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"7"[39m
+                [33mcy[39m=[32m"17"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 17h6"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"17"[39m
+                [33mcy[39m=[32m"17"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"mt-6 text-center text-3xl font-extrabold text-gray-900"[39m
+          [36m>[39m
+            [0mSign in to your account[0m
+          [36m</h2>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"mt-2 text-center text-sm text-gray-600"[39m
+          [36m>[39m
+            [0mOr[0m
+            [0m [0m
+            [36m<a[39m
+              [33mclass[39m=[32m"font-medium text-blue-600 hover:text-blue-500"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/register"[39m
+            [36m>[39m
+              [0mcreate a new account[0m
+            [36m</a>[39m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center justify-between p-4 mb-4 border rounded-md shadow-sm bg-red-100 border-red-400 text-red-700"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [0mLogin failed[0m
+          [36m</div>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Close alert"[39m
+            [33mclass[39m=[32m"ml-4 focus:outline-none"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"w-4 h-4"[39m
+              [33mfill[39m=[32m"currentColor"[39m
+              [33mviewBox[39m=[32m"0 0 20 20"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33mclip-rule[39m=[32m"evenodd"[39m
+                [33md[39m=[32m"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"[39m
+                [33mfill-rule[39m=[32m"evenodd"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<form[39m
+          [33mclass[39m=[32m"mt-8 space-y-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"email"[39m
+              [36m>[39m
+                [0mEmail address[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"email"[39m
+                [33mname[39m=[32m"email"[39m
+                [33mtype[39m=[32m"email"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"password"[39m
+              [36m>[39m
+                [0mPassword[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"password"[39m
+                [33mname[39m=[32m"password"[39m
+                [33mtype[39m=[32m"password"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 w-full"[39m
+            [33mtype[39m=[32m"submit"[39m
+          [36m>[39m
+            [0mSign in[0m
+          [36m</button>[39m
+        [36m</form>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-col items-center"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"lucide lucide-car h-6 w-6 text-blue-600"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"7"[39m
+                  [33mcy[39m=[32m"17"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M9 17h6"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"17"[39m
+                  [33mcy[39m=[32m"17"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+            [36m<h2[39m
+              [33mclass[39m=[32m"mt-6 text-center text-3xl font-extrabold text-gray-900"[39m
+            [36m>[39m
+              [0mSign in to your account[0m
+            [36m</h2>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"mt-2 text-center text-sm text-gray-600"[39m
+            [36m>[39m
+              [0mOr[0m
+              [0m [0m
+              [36m<a[39m
+                [33mclass[39m=[32m"font-medium text-blue-600 hover:text-blue-500"[39m
+                [33mdata-discover[39m=[32m"true"[39m
+                [33mhref[39m=[32m"/register"[39m
+              [36m>[39m
+                [0mcreate a new account[0m
+              [36m</a>[39m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-center justify-between p-4 mb-4 border rounded-md shadow-sm bg-red-100 border-red-400 text-red-700"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [0mLogin failed[0m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close alert"[39m
+              [33mclass[39m=[32m"ml-4 focus:outline-none"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"w-4 h-4"[39m
+                [33mfill[39m=[32m"currentColor"[39m
+                [33mviewBox[39m=[32m"0 0 20 20"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33mclip-rule[39m=[32m"evenodd"[39m
+                  [33md[39m=[32m"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"[39m
+                  [33mfill-rule[39m=[32m"evenodd"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<form[39m
+            [33mclass[39m=[32m"mt-8 space-y-6"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"space-y-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"email"[39m
+                [36m>[39m
+                  [0mEmail address[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"email"[39m
+                  [33mname[39m=[32m"email"[39m
+                  [33mtype[39m=[32m"email"[39m
+                [36m/>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"password"[39m
+                [36m>[39m
+                  [0mPassword[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"password"[39m
+                  [33mname[39m=[32m"password"[39m
+                  [33mtype[39m=[32m"password"[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 w-full"[39m
+              [33mtype[39m=[32m"submit"[39m
+            [36m>[39m
+              [0mSign in[0m
+            [36m</button>[39m
+          [36m</form>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[36m [2m❯[22m src/pages/LoginPage.test.jsx:[2m56:11[22m[39m
+    [90m 54|[39m     await userEvent.click(screen.getByRole('button', { name: /sign in/…
+    [90m 55|[39m
+    [90m 56|[39m     [35mawait[39m [34mwaitFor[39m(() [33m=>[39m {
+    [90m   |[39m           [31m^[39m
+    [90m 57|[39m       expect(screen.getByText(/login successful/i)).toBeInTheDocument(…
+    [90m 58|[39m     })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/pages/LoginPage.test.jsx[2m > [22mLoginPage[2m > [22mdisplays server error on 401 invalid credentials
+[31m[1mTestingLibraryElementError[22m[39m: Unable to find an element with the text: /bad credentials/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-col items-center"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"lucide lucide-car h-6 w-6 text-blue-600"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"7"[39m
+                [33mcy[39m=[32m"17"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 17h6"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"17"[39m
+                [33mcy[39m=[32m"17"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"mt-6 text-center text-3xl font-extrabold text-gray-900"[39m
+          [36m>[39m
+            [0mSign in to your account[0m
+          [36m</h2>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"mt-2 text-center text-sm text-gray-600"[39m
+          [36m>[39m
+            [0mOr[0m
+            [0m [0m
+            [36m<a[39m
+              [33mclass[39m=[32m"font-medium text-blue-600 hover:text-blue-500"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/register"[39m
+            [36m>[39m
+              [0mcreate a new account[0m
+            [36m</a>[39m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center justify-between p-4 mb-4 border rounded-md shadow-sm bg-red-100 border-red-400 text-red-700"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [0mLogin failed[0m
+          [36m</div>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Close alert"[39m
+            [33mclass[39m=[32m"ml-4 focus:outline-none"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"w-4 h-4"[39m
+              [33mfill[39m=[32m"currentColor"[39m
+              [33mviewBox[39m=[32m"0 0 20 20"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33mclip-rule[39m=[32m"evenodd"[39m
+                [33md[39m=[32m"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"[39m
+                [33mfill-rule[39m=[32m"evenodd"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<form[39m
+          [33mclass[39m=[32m"mt-8 space-y-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"email"[39m
+              [36m>[39m
+                [0mEmail address[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"email"[39m
+                [33mname[39m=[32m"email"[39m
+                [33mtype[39m=[32m"email"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"password"[39m
+              [36m>[39m
+                [0mPassword[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"password"[39m
+                [33mname[39m=[32m"password"[39m
+                [33mtype[39m=[32m"password"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 w-full"[39m
+            [33mtype[39m=[32m"submit"[39m
+          [36m>[39m
+            [0mSign in[0m
+          [36m</button>[39m
+        [36m</form>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-col items-center"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"lucide lucide-car h-6 w-6 text-blue-600"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"7"[39m
+                  [33mcy[39m=[32m"17"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M9 17h6"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"17"[39m
+                  [33mcy[39m=[32m"17"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+            [36m<h2[39m
+              [33mclass[39m=[32m"mt-6 text-center text-3xl font-extrabold text-gray-900"[39m
+            [36m>[39m
+              [0mSign in to your account[0m
+            [36m</h2>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"mt-2 text-center text-sm text-gray-600"[39m
+            [36m>[39m
+              [0mOr[0m
+              [0m [0m
+              [36m<a[39m
+                [33mclass[39m=[32m"font-medium text-blue-600 hover:text-blue-500"[39m
+                [33mdata-discover[39m=[32m"true"[39m
+                [33mhref[39m=[32m"/register"[39m
+              [36m>[39m
+                [0mcreate a new account[0m
+              [36m</a>[39m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-center justify-between p-4 mb-4 border rounded-md shadow-sm bg-red-100 border-red-400 text-red-700"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [0mLogin failed[0m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close alert"[39m
+              [33mclass[39m=[32m"ml-4 focus:outline-none"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"w-4 h-4"[39m
+                [33mfill[39m=[32m"currentColor"[39m
+                [33mviewBox[39m=[32m"0 0 20 20"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33mclip-rule[39m=[32m"evenodd"[39m
+                  [33md[39m=[32m"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"[39m
+                  [33mfill-rule[39m=[32m"evenodd"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<form[39m
+            [33mclass[39m=[32m"mt-8 space-y-6"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"space-y-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"email"[39m
+                [36m>[39m
+                  [0mEmail address[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"email"[39m
+                  [33mname[39m=[32m"email"[39m
+                  [33mtype[39m=[32m"email"[39m
+                [36m/>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"password"[39m
+                [36m>[39m
+                  [0mPassword[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"password"[39m
+                  [33mname[39m=[32m"password"[39m
+                  [33mtype[39m=[32m"password"[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 w-full"[39m
+              [33mtype[39m=[32m"submit"[39m
+            [36m>[39m
+              [0mSign in[0m
+            [36m</button>[39m
+          [36m</form>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[36m [2m❯[22m src/pages/LoginPage.test.jsx:[2m78:11[22m[39m
+    [90m 76|[39m     await userEvent.click(screen.getByRole('button', { name: /sign in/…
+    [90m 77|[39m
+    [90m 78|[39m     [35mawait[39m [34mwaitFor[39m(() [33m=>[39m {
+    [90m   |[39m           [31m^[39m
+    [90m 79|[39m       expect(screen.getByText(/bad credentials/i)).toBeInTheDocument()…
+    [90m 80|[39m     })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/pages/RegisterPage.test.jsx[2m > [22mRegisterPage[2m > [22msubmits successfully and redirects to login
+[31m[1mTestingLibraryElementError[22m[39m: Unable to find an element with the text: /registration successful/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-col items-center"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"lucide lucide-car h-6 w-6 text-blue-600"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"7"[39m
+                [33mcy[39m=[32m"17"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 17h6"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"17"[39m
+                [33mcy[39m=[32m"17"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"mt-6 text-center text-3xl font-extrabold text-gray-900"[39m
+          [36m>[39m
+            [0mCreate an account[0m
+          [36m</h2>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"mt-2 text-center text-sm text-gray-600"[39m
+          [36m>[39m
+            [0mAlready have an account?[0m
+            [0m [0m
+            [36m<a[39m
+              [33mclass[39m=[32m"font-medium text-blue-600 hover:text-blue-500"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/login"[39m
+            [36m>[39m
+              [0mSign in[0m
+            [36m</a>[39m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center justify-between p-4 mb-4 border rounded-md shadow-sm bg-red-100 border-red-400 text-red-700"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [0mRegistration failed[0m
+          [36m</div>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Close alert"[39m
+            [33mclass[39m=[32m"ml-4 focus:outline-none"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"w-4 h-4"[39m
+              [33mfill[39m=[32m"currentColor"[39m
+              [33mviewBox[39m=[32m"0 0 20 20"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33mclip-rule[39m=[32m"evenodd"[39m
+                [33md[39m=[32m"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"[39m
+                [33mfill-rule[39m=[32m"evenodd"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<form[39m
+          [33mclass[39m=[32m"mt-8 space-y-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"name"[39m
+              [36m>[39m
+                [0mName[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"name"[39m
+                [33mname[39m=[32m"name"[39m
+                [33mtype[39m=[32m"text"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"email"[39m
+              [36m>[39m
+                [0mEmail address[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"email"[39m
+                [33mname[39m=[32m"email"[39m
+                [33mtype[39m=[32m"email"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"password"[39m
+              [36m>[39m
+                [0mPassword[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"password"[39m
+                [33mname[39m=[32m"password"[39m
+                [33mtype[39m=[32m"password"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 w-full"[39m
+            [33mtype[39m=[32m"submit"[39m
+          [36m>[39m
+            [0mRegister[0m
+          [36m</button>[39m
+        [36m</form>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-col items-center"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"lucide lucide-car h-6 w-6 text-blue-600"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"7"[39m
+                  [33mcy[39m=[32m"17"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M9 17h6"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"17"[39m
+                  [33mcy[39m=[32m"17"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+            [36m<h2[39m
+              [33mclass[39m=[32m"mt-6 text-center text-3xl font-extrabold text-gray-900"[39m
+            [36m>[39m
+              [0mCreate an account[0m
+            [36m</h2>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"mt-2 text-center text-sm text-gray-600"[39m
+            [36m>[39m
+              [0mAlready have an account?[0m
+              [0m [0m
+              [36m<a[39m
+                [33mclass[39m=[32m"font-medium text-blue-600 hover:text-blue-500"[39m
+                [33mdata-discover[39m=[32m"true"[39m
+                [33mhref[39m=[32m"/login"[39m
+              [36m>[39m
+                [0mSign in[0m
+              [36m</a>[39m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-center justify-between p-4 mb-4 border rounded-md shadow-sm bg-red-100 border-red-400 text-red-700"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [0mRegistration failed[0m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close alert"[39m
+              [33mclass[39m=[32m"ml-4 focus:outline-none"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"w-4 h-4"[39m
+                [33mfill[39m=[32m"currentColor"[39m
+                [33mviewBox[39m=[32m"0 0 20 20"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33mclip-rule[39m=[32m"evenodd"[39m
+                  [33md[39m=[32m"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"[39m
+                  [33mfill-rule[39m=[32m"evenodd"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<form[39m
+            [33mclass[39m=[32m"mt-8 space-y-6"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"space-y-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"name"[39m
+                [36m>[39m
+                  [0mName[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"name"[39m
+                  [33mname[39m=[32m"name"[39m
+                  [33mtype[39m=[32m"text"[39m
+                [36m/>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"email"[39m
+                [36m>[39m
+                  [0mEmail address[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"email"[39m
+                  [33mname[39m=[32m"email"[39m
+                  [33mtype[39m=[32m"email"[39m
+                [36m/>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"password"[39m
+                [36m>[39m
+                  [0mPassword[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"password"[39m
+                  [33mname[39m=[32m"password"[39m
+                  [33mtype[39m=[32m"password"[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 w-full"[39m
+              [33mtype[39m=[32m"submit"[39m
+            [36m>[39m
+              [0mRegister[0m
+            [36m</button>[39m
+          [36m</form>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[36m [2m❯[22m src/pages/RegisterPage.test.jsx:[2m56:11[22m[39m
+    [90m 54|[39m     await userEvent.click(screen.getByRole('button', { name: /register…
+    [90m 55|[39m
+    [90m 56|[39m     [35mawait[39m [34mwaitFor[39m(() [33m=>[39m {
+    [90m   |[39m           [31m^[39m
+    [90m 57|[39m       expect(screen.getByText(/registration successful/i)).toBeInTheDo…
+    [90m 58|[39m     })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/pages/RegisterPage.test.jsx[2m > [22mRegisterPage[2m > [22mdisplays server error toast on failure
+[31m[1mTestingLibraryElementError[22m[39m: Unable to find an element with the text: /email already exists/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-col items-center"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"lucide lucide-car h-6 w-6 text-blue-600"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"7"[39m
+                [33mcy[39m=[32m"17"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 17h6"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"17"[39m
+                [33mcy[39m=[32m"17"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"mt-6 text-center text-3xl font-extrabold text-gray-900"[39m
+          [36m>[39m
+            [0mCreate an account[0m
+          [36m</h2>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"mt-2 text-center text-sm text-gray-600"[39m
+          [36m>[39m
+            [0mAlready have an account?[0m
+            [0m [0m
+            [36m<a[39m
+              [33mclass[39m=[32m"font-medium text-blue-600 hover:text-blue-500"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/login"[39m
+            [36m>[39m
+              [0mSign in[0m
+            [36m</a>[39m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center justify-between p-4 mb-4 border rounded-md shadow-sm bg-red-100 border-red-400 text-red-700"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [0mRegistration failed[0m
+          [36m</div>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Close alert"[39m
+            [33mclass[39m=[32m"ml-4 focus:outline-none"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"w-4 h-4"[39m
+              [33mfill[39m=[32m"currentColor"[39m
+              [33mviewBox[39m=[32m"0 0 20 20"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33mclip-rule[39m=[32m"evenodd"[39m
+                [33md[39m=[32m"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"[39m
+                [33mfill-rule[39m=[32m"evenodd"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<form[39m
+          [33mclass[39m=[32m"mt-8 space-y-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"name"[39m
+              [36m>[39m
+                [0mName[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"name"[39m
+                [33mname[39m=[32m"name"[39m
+                [33mtype[39m=[32m"text"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"email"[39m
+              [36m>[39m
+                [0mEmail address[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"email"[39m
+                [33mname[39m=[32m"email"[39m
+                [33mtype[39m=[32m"email"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                [33mfor[39m=[32m"password"[39m
+              [36m>[39m
+                [0mPassword[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                [33mid[39m=[32m"password"[39m
+                [33mname[39m=[32m"password"[39m
+                [33mtype[39m=[32m"password"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 w-full"[39m
+            [33mtype[39m=[32m"submit"[39m
+          [36m>[39m
+            [0mRegister[0m
+          [36m</button>[39m
+        [36m</form>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-col items-center"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"lucide lucide-car h-6 w-6 text-blue-600"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"7"[39m
+                  [33mcy[39m=[32m"17"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M9 17h6"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"17"[39m
+                  [33mcy[39m=[32m"17"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+            [36m<h2[39m
+              [33mclass[39m=[32m"mt-6 text-center text-3xl font-extrabold text-gray-900"[39m
+            [36m>[39m
+              [0mCreate an account[0m
+            [36m</h2>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"mt-2 text-center text-sm text-gray-600"[39m
+            [36m>[39m
+              [0mAlready have an account?[0m
+              [0m [0m
+              [36m<a[39m
+                [33mclass[39m=[32m"font-medium text-blue-600 hover:text-blue-500"[39m
+                [33mdata-discover[39m=[32m"true"[39m
+                [33mhref[39m=[32m"/login"[39m
+              [36m>[39m
+                [0mSign in[0m
+              [36m</a>[39m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-center justify-between p-4 mb-4 border rounded-md shadow-sm bg-red-100 border-red-400 text-red-700"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [0mRegistration failed[0m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close alert"[39m
+              [33mclass[39m=[32m"ml-4 focus:outline-none"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"w-4 h-4"[39m
+                [33mfill[39m=[32m"currentColor"[39m
+                [33mviewBox[39m=[32m"0 0 20 20"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33mclip-rule[39m=[32m"evenodd"[39m
+                  [33md[39m=[32m"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"[39m
+                  [33mfill-rule[39m=[32m"evenodd"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<form[39m
+            [33mclass[39m=[32m"mt-8 space-y-6"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"space-y-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"name"[39m
+                [36m>[39m
+                  [0mName[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"name"[39m
+                  [33mname[39m=[32m"name"[39m
+                  [33mtype[39m=[32m"text"[39m
+                [36m/>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"email"[39m
+                [36m>[39m
+                  [0mEmail address[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"email"[39m
+                  [33mname[39m=[32m"email"[39m
+                  [33mtype[39m=[32m"email"[39m
+                [36m/>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col space-y-1 "[39m
+              [36m>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"block text-sm font-medium text-slate-700 dark:text-slate-300"[39m
+                  [33mfor[39m=[32m"password"[39m
+                [36m>[39m
+                  [0mPassword[0m
+                [36m</label>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"block w-full rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2 border transition-colors border-slate-300 dark:border-slate-700"[39m
+                  [33mid[39m=[32m"password"[39m
+                  [33mname[39m=[32m"password"[39m
+                  [33mtype[39m=[32m"password"[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 w-full"[39m
+              [33mtype[39m=[32m"submit"[39m
+            [36m>[39m
+              [0mRegister[0m
+            [36m</button>[39m
+          [36m</form>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+[90m [2m❯[22m waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:[2m163:27[22m[39m
+[36m [2m❯[22m src/pages/RegisterPage.test.jsx:[2m79:11[22m[39m
+    [90m 77|[39m     await userEvent.click(screen.getByRole('button', { name: /register…
+    [90m 78|[39m
+    [90m 79|[39m     [35mawait[39m [34mwaitFor[39m(() [33m=>[39m {
+    [90m   |[39m           [31m^[39m
+    [90m 80|[39m       expect(screen.getByText(/email already exists/i)).toBeInTheDocum…
+    [90m 81|[39m     })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m4 failed[39m[22m[2m | [22m[1m[32m17 passed[39m[22m[90m (21)[39m
+[2m      Tests [22m [1m[31m7 failed[39m[22m[2m | [22m[1m[32m59 passed[39m[22m[90m (66)[39m
+[2m   Start at [22m 16:17:53
+[2m   Duration [22m 5.31s[2m (transform 1.40s, setup 4.00s, import 4.13s, tests 8.77s, environment 14.15s)[22m
+

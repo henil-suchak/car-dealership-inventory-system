@@ -41,7 +41,7 @@ describe('RegisterPage', () => {
   it('submits successfully and redirects to login', async () => {
     // Mock the register endpoint
     server.use(
-      http.post('http://localhost:8080/api/auth/register', () => {
+      http.post(/\/api\/auth\/register/, () => {
         return HttpResponse.json({ success: true }, { status: 201 });
       })
     );
@@ -64,7 +64,7 @@ describe('RegisterPage', () => {
 
   it('displays server error toast on failure', async () => {
     server.use(
-      http.post('http://localhost:8080/api/auth/register', () => {
+      http.post(/\/api\/auth\/register/, () => {
         return HttpResponse.json({ message: 'Email already exists' }, { status: 400 });
       })
     );

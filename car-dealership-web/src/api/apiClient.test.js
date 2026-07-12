@@ -13,7 +13,7 @@ describe('apiClient', () => {
     // We create a temporary MSW handler just for this test to inspect the headers
     let capturedHeader = null;
     server.use(
-      http.get('http://localhost:8080/api/test-auth', ({ request }) => {
+      http.get(/\/api\/test-auth/, ({ request }) => {
         capturedHeader = request.headers.get('Authorization');
         return HttpResponse.json({ success: true });
       })
@@ -29,7 +29,7 @@ describe('apiClient', () => {
   it('should not attach Authorization header if token does not exist', async () => {
     let capturedHeader = null;
     server.use(
-      http.get('http://localhost:8080/api/test-auth', ({ request }) => {
+      http.get(/\/api\/test-auth/, ({ request }) => {
         capturedHeader = request.headers.get('Authorization');
         return HttpResponse.json({ success: true });
       })

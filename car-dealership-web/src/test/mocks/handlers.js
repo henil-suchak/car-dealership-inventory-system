@@ -20,7 +20,11 @@ const createFakeJwt = (payload) => {
 
 export const handlers = [
   // Auth Mocks
-  http.post('http://localhost:8080/api/auth/register', async ({ request }) => {
+  http.get(/\/api\/test-auth/, () => {
+    return HttpResponse.json({ message: 'ok' });
+  }),
+  
+  http.post(/\/api\/auth\/register/, async ({ request }) => {
     await delay(500); // Simulate network latency
     const body = await request.json();
     if (mockUsers.find(u => u.email === body.email)) {
@@ -30,7 +34,7 @@ export const handlers = [
     return HttpResponse.json({ message: 'User registered successfully' }, { status: 201 });
   }),
   
-  http.post('http://localhost:8080/api/auth/login', async ({ request }) => {
+  http.post(/\/api\/auth\/login/, async ({ request }) => {
     await delay(500);
     const body = await request.json();
     const user = mockUsers.find(u => u.email === body.email && u.password === body.password);
@@ -49,7 +53,24 @@ export const handlers = [
   }),
   
   // Vehicle Mocks
-  http.get('http://localhost:8080/api/vehicles', async ({ request }) => {
+  http.get(/\/api\/vehicles\/search/, async ({ request }) => {
+    await delay(300);
+    const url = new URL(request.url);
+    const make = url.searchParams.get('make');
+    const category = url.searchParams.get('category');
+    
+    let filteredVehicles = [...mockVehicles];
+    if (make) {
+      filteredVehicles = filteredVehicles.filter(v => v.make.toLowerCase().includes(make.toLowerCase()));
+    }
+    if (category) {
+      filteredVehicles = filteredVehicles.filter(v => v.category === category);
+    }
+    
+    return HttpResponse.json(filteredVehicles);
+  }),
+
+  http.get(/\/api\/vehicles$/, async ({ request }) => {
     await delay(300);
     const url = new URL(request.url);
     const make = url.searchParams.get('make');
@@ -65,7 +86,24 @@ export const handlers = [
     });
   }),
   
-  http.post('http://localhost:8080/api/vehicles', async ({ request }) => {
+  http.get('/api/vehicles/search', async ({ request }) => {
+    await delay(300);
+    const url = new URL(request.url);
+    const make = url.searchParams.get('make');
+    const category = url.searchParams.get('category');
+    
+    let filteredVehicles = [...mockVehicles];
+    if (make) {
+      filteredVehicles = filteredVehicles.filter(v => v.make.toLowerCase().includes(make.toLowerCase()));
+    }
+    if (category) {
+      filteredVehicles = filteredVehicles.filter(v => v.category === category);
+    }
+    
+    return HttpResponse.json(filteredVehicles);
+  }),
+
+  http.post(/\/api\/vehicles$/, async ({ request }) => {
     await delay(500);
     const body = await request.json();
     const newVehicle = { id: String(Date.now()), ...body };
@@ -73,20 +111,20 @@ export const handlers = [
     return HttpResponse.json(newVehicle, { status: 201 });
   }),
   
-  http.put('http://localhost:8080/api/vehicles/:id', async ({ request, params }) => {
+  http.put(/\/api\/vehicles\/(.+)$/, async ({ request, params }) => {
     await delay(500);
     const body = await request.json();
     mockVehicles = mockVehicles.map(v => v.id === params.id ? { ...v, ...body } : v);
     return HttpResponse.json({ ...body, id: params.id });
   }),
   
-  http.delete('http://localhost:8080/api/vehicles/:id', async ({ params }) => {
+  http.delete(/\/api\/vehicles\/(.+)$/, async ({ params }) => {
     await delay(500);
     mockVehicles = mockVehicles.filter(v => v.id !== params.id);
     return new HttpResponse(null, { status: 204 });
   }),
   
-  http.post('http://localhost:8080/api/vehicles/:id/purchase', async ({ params }) => {
+  http.post(/\/api\/vehicles\/(.+)\/purchase/, async ({ params }) => {
     await delay(500);
     const vehicle = mockVehicles.find(v => v.id === params.id);
     if (!vehicle || vehicle.quantityInStock <= 0) {
@@ -98,7 +136,7 @@ export const handlers = [
     return new HttpResponse(null, { status: 200 });
   }),
   
-  http.post('http://localhost:8080/api/vehicles/:id/restock', async ({ request, params }) => {
+  http.post(/\/api\/vehicles\/(.+)\/restock/, async ({ request, params }) => {
     await delay(500);
     const url = new URL(request.url);
     const quantity = parseInt(url.searchParams.get('quantity') || '1', 10);
