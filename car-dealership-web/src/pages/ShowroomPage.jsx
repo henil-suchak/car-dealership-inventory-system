@@ -25,6 +25,24 @@ const ShowroomPage = () => {
     fetchVehicles();
   }, []);
 
+  const getFallbackImage = (make, category) => {
+    const catLower = category?.toLowerCase() || '';
+    
+    // Use locally generated car stock images
+    const carImages = {
+      sedan: '/images/cars/sedan.png',
+      truck: '/images/cars/truck.png',
+      suv: '/images/cars/suv.png',
+      coupe: '/images/cars/sports.png',
+      hatchback: '/images/cars/sedan.png', // Fallback hatchback to sedan
+      sports: '/images/cars/sports.png',
+      default: '/images/cars/default.png'
+    };
+
+    if (catLower && carImages[catLower]) return carImages[catLower];
+    return carImages.default;
+  };
+
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
       
@@ -79,7 +97,7 @@ const ShowroomPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {premiumCars.map((car, idx) => {
-             const imageUrl = car.media && car.media.length > 0 ? car.media[0].mediaUrl : 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=2070&auto=format&fit=crop';
+             const imageUrl = car.media && car.media.length > 0 ? car.media[0].mediaUrl : getFallbackImage(car.make, car.category);
              return (
             <div 
               key={car.id} 

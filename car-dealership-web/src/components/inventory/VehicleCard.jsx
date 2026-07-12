@@ -20,24 +20,19 @@ const VehicleCard = ({ vehicle, onPurchase, onEdit, onRestock, onDelete }) => {
   const statusColor = statusColors[statusText] || statusColors.AVAILABLE;
 
   const getFallbackImage = (make, category) => {
-    const makeLower = make?.toLowerCase() || '';
     const catLower = category?.toLowerCase() || '';
     
-    // Very reliable, manually-curated Unsplash IDs specifically featuring cars
+    // Use locally generated car stock images
     const carImages = {
-      toyota: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80',
-      honda: 'https://images.unsplash.com/photo-1610928236173-10d65bdaafb5?auto=format&fit=crop&w=800&q=80',
-      ford: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
-      chevrolet: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=800&q=80',
-      volkswagen: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80',
-      truck: 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=800&q=80',
-      suv: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80',
-      sedan: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80',
-      sports: 'https://images.unsplash.com/photo-1503376780-60b666491764?auto=format&fit=crop&w=800&q=80',
-      default: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80'
+      sedan: '/images/cars/sedan.png',
+      truck: '/images/cars/truck.png',
+      suv: '/images/cars/suv.png',
+      coupe: '/images/cars/sports.png',
+      hatchback: '/images/cars/sedan.png', // Fallback hatchback to sedan
+      sports: '/images/cars/sports.png',
+      default: '/images/cars/default.png'
     };
 
-    if (makeLower && carImages[makeLower]) return carImages[makeLower];
     if (catLower && carImages[catLower]) return carImages[catLower];
     return carImages.default;
   };
