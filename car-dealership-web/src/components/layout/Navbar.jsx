@@ -27,7 +27,7 @@ const Navbar = () => {
                 >
                   Dashboard
                 </Link>
-                {user?.role === 'ADMIN' && (
+                {user?.isAdmin && (
                   <Link
                     to="/admin/inventory"
                     className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"

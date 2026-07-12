@@ -45,30 +45,6 @@ const DashboardPage = () => {
         </div>
       )}
 
-      <header className="glass sticky top-0 z-40 border-b border-slate-200/50 dark:border-slate-800/50 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 tracking-tight">
-            AutoPremium
-          </h1>
-          <div className="flex items-center space-x-6">
-            <div className="hidden sm:flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold shadow-md">
-                {user?.email?.charAt(0).toUpperCase() || 'U'}
-              </div>
-              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                {user?.email}
-              </span>
-            </div>
-            <button 
-              onClick={logout} 
-              className="text-sm font-semibold text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
-            >
-              Sign out
-            </button>
-          </div>
-        </div>
-      </header>
-
       <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
         
         {/* Hero Section */}
