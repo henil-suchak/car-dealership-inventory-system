@@ -1,0 +1,22 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dealership:car-dealership-api >------------------
+[INFO] Building  0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.11:prepare-agent (default) @ car-dealership-api ---
+[INFO] argLine set to "-javaagent:C:\\Users\\Het Ashishbhai Modi\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.11\\org.jacoco.agent-0.8.11-runtime.jar=destfile=C:\\Users\\Het Ashishbhai Modi\\OneDrive\\Desktop\\henil\\car-dealership-inventory-system\\car-dealership-api\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ car-dealership-api ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ car-dealership-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.056 s
+[INFO] Finished at: 2026-07-12T14:06:25+05:30
+[INFO] ------------------------------------------------------------------------

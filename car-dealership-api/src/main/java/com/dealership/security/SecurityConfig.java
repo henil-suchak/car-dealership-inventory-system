@@ -33,6 +33,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/finance/**").permitAll()
                 .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/vehicles/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/actuator/**").permitAll()
                 .anyRequest().authenticated()

@@ -1,0 +1,548 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dealership:car-dealership-api >------------------
+[INFO] Building  0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.4.0/maven-clean-plugin-3.4.0.pom
+Progress (1): 797 B
+Progress (1): 1.7 kB
+Progress (1): 4.3 kB
+Progress (1): 5.5 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.4.0/maven-clean-plugin-3.4.0.pom (5.5 kB at 8.6 kB/s)
+[INFO] 
+[INFO] --- clean:3.4.0:clean (default-clean) @ car-dealership-api ---
+[INFO] Deleting C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\car-dealership-api\target
+[INFO] 
+[INFO] >>> spring-boot:3.4.1:run (default-cli) > test-compile @ car-dealership-api >>>
+[INFO] 
+[INFO] --- jacoco:0.8.11:prepare-agent (default) @ car-dealership-api ---
+[INFO] argLine set to "-javaagent:C:\\Users\\Het Ashishbhai Modi\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.11\\org.jacoco.agent-0.8.11-runtime.jar=destfile=C:\\Users\\Het Ashishbhai Modi\\OneDrive\\Desktop\\henil\\car-dealership-inventory-system\\car-dealership-api\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ car-dealership-api ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ car-dealership-api ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 37 source files with javac [debug parameters release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ car-dealership-api ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ car-dealership-api ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 15 source files with javac [debug parameters release 17] to target\test-classes
+[WARNING] /C:/Users/Het Ashishbhai Modi/OneDrive/Desktop/henil/car-dealership-inventory-system/car-dealership-api/src/test/java/com/dealership/auth/AuthControllerTest.java:[23,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[WARNING] /C:/Users/Het Ashishbhai Modi/OneDrive/Desktop/henil/car-dealership-inventory-system/car-dealership-api/src/test/java/com/dealership/auth/AuthControllerTest.java:[26,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[WARNING] /C:/Users/Het Ashishbhai Modi/OneDrive/Desktop/henil/car-dealership-inventory-system/car-dealership-api/src/test/java/com/dealership/auth/AuthControllerTest.java:[29,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[INFO] 
+[INFO] <<< spring-boot:3.4.1:run (default-cli) < test-compile @ car-dealership-api <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.4.1:run (default-cli) @ car-dealership-api ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.1)
+
+2026-07-12T14:08:04.632+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] c.d.CarDealershipApiApplication          : Starting CarDealershipApiApplication using Java 17.0.10 with PID 36324 (C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\car-dealership-api\target\classes started by Het Ashishbhai Modi in C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\car-dealership-api)
+2026-07-12T14:08:04.636+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] c.d.CarDealershipApiApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-07-12T14:08:04.690+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-12T14:08:04.690+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-12T14:08:04.716+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\docker-compose.yml
+2026-07-12T14:08:08.677+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Image postgres:16-alpine Pulling 
+2026-07-12T14:08:20.629+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Pulling fs layer 
+2026-07-12T14:08:20.632+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  0749aef11dca Pulling fs layer 
+2026-07-12T14:08:20.635+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Pulling fs layer 
+2026-07-12T14:08:20.636+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ef6ab46d98b2 Pulling fs layer 
+2026-07-12T14:08:20.636+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  689a434e3a86 Pulling fs layer 
+2026-07-12T14:08:20.637+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Pulling fs layer 
+2026-07-12T14:08:20.637+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Pulling fs layer 
+2026-07-12T14:08:20.637+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  c86ab38aa6db Pulling fs layer 
+2026-07-12T14:08:20.637+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  713473b5b92b Pulling fs layer 
+2026-07-12T14:08:20.637+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  713473b5b92b Waiting 
+2026-07-12T14:08:20.638+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  c86ab38aa6db Waiting 
+2026-07-12T14:08:20.638+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Pulling fs layer 
+2026-07-12T14:08:20.638+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  cc7fa208b8a7 Pulling fs layer 
+2026-07-12T14:08:20.638+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Waiting 
+2026-07-12T14:08:20.638+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  cc7fa208b8a7 Waiting 
+2026-07-12T14:08:20.638+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  689a434e3a86 Waiting 
+2026-07-12T14:08:20.638+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Waiting 
+2026-07-12T14:08:24.247+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  0749aef11dca Downloading [==================================================>]     970B/970B
+2026-07-12T14:08:24.248+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  0749aef11dca Verifying Checksum 
+2026-07-12T14:08:24.248+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  0749aef11dca Download complete 
+2026-07-12T14:08:24.354+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Downloading [>                                                  ]  15.79kB/900.3kB
+2026-07-12T14:08:24.355+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [>                                                  ]  48.55kB/3.846MB
+2026-07-12T14:08:24.479+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Downloading [======>                                            ]  114.1kB/900.3kB
+2026-07-12T14:08:24.482+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [=>                                                 ]  146.9kB/3.846MB
+2026-07-12T14:08:24.574+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Downloading [================>                                  ]  294.3kB/900.3kB
+2026-07-12T14:08:24.625+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [======>                                            ]  490.9kB/3.846MB
+2026-07-12T14:08:24.709+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Downloading [=============================>                     ]  540.1kB/900.3kB
+2026-07-12T14:08:24.765+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [==========>                                        ]  785.8kB/3.846MB
+2026-07-12T14:08:24.773+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Downloading [==================================================>]  900.3kB/900.3kB
+2026-07-12T14:08:24.773+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Verifying Checksum 
+2026-07-12T14:08:24.775+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Download complete 
+2026-07-12T14:08:24.871+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [================>                                  ]  1.277MB/3.846MB
+2026-07-12T14:08:24.971+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [====================>                              ]  1.572MB/3.846MB
+2026-07-12T14:08:25.162+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [=========================>                         ]  1.965MB/3.846MB
+2026-07-12T14:08:25.279+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [=============================>                     ]   2.26MB/3.846MB
+2026-07-12T14:08:25.295+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ef6ab46d98b2 Downloading [==================================================>]     173B/173B
+2026-07-12T14:08:25.296+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ef6ab46d98b2 Verifying Checksum 
+2026-07-12T14:08:25.296+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ef6ab46d98b2 Download complete 
+2026-07-12T14:08:25.392+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [=================================>                 ]  2.604MB/3.846MB
+2026-07-12T14:08:25.493+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [=====================================>             ]  2.899MB/3.846MB
+2026-07-12T14:08:25.617+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [========================================>          ]  3.096MB/3.846MB
+2026-07-12T14:08:25.720+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [===========================================>       ]  3.342MB/3.846MB
+2026-07-12T14:08:25.728+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  689a434e3a86 Downloading [==================================================>]     116B/116B
+2026-07-12T14:08:25.729+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  689a434e3a86 Verifying Checksum 
+2026-07-12T14:08:25.876+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [============================================>      ]   3.44MB/3.846MB
+2026-07-12T14:08:25.978+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [==============================================>    ]  3.587MB/3.846MB
+2026-07-12T14:08:26.107+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Downloading [================================================>  ]  3.735MB/3.846MB
+2026-07-12T14:08:26.127+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Verifying Checksum 
+2026-07-12T14:08:26.128+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Download complete 
+2026-07-12T14:08:26.157+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Extracting [>                                                  ]  65.54kB/3.846MB
+2026-07-12T14:08:26.340+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Extracting [===>                                               ]  262.1kB/3.846MB
+2026-07-12T14:08:26.444+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Extracting [===========>                                       ]  917.5kB/3.846MB
+2026-07-12T14:08:26.544+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Extracting [=======================>                           ]  1.835MB/3.846MB
+2026-07-12T14:08:26.589+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Extracting [==================================================>]  3.846MB/3.846MB
+2026-07-12T14:08:26.590+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Extracting [==================================================>]  3.846MB/3.846MB
+2026-07-12T14:08:26.720+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  55afa1ecc21d Pull complete 
+2026-07-12T14:08:26.736+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  0749aef11dca Extracting [==================================================>]     970B/970B
+2026-07-12T14:08:26.742+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  0749aef11dca Extracting [==================================================>]     970B/970B
+2026-07-12T14:08:26.816+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  0749aef11dca Pull complete 
+2026-07-12T14:08:26.836+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Extracting [=>                                                 ]  32.77kB/900.3kB
+2026-07-12T14:08:26.923+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Extracting [==================================================>]  900.3kB/900.3kB
+2026-07-12T14:08:26.923+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Extracting [==================================================>]  900.3kB/900.3kB
+2026-07-12T14:08:26.969+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2d3064b8615b Pull complete 
+2026-07-12T14:08:26.991+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ef6ab46d98b2 Extracting [==================================================>]     173B/173B
+2026-07-12T14:08:26.994+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ef6ab46d98b2 Extracting [==================================================>]     173B/173B
+2026-07-12T14:08:27.058+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ef6ab46d98b2 Pull complete 
+2026-07-12T14:08:27.072+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  689a434e3a86 Extracting [==================================================>]     116B/116B
+2026-07-12T14:08:27.075+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  689a434e3a86 Extracting [==================================================>]     116B/116B
+2026-07-12T14:08:27.138+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  689a434e3a86 Pull complete 
+2026-07-12T14:08:27.365+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  c86ab38aa6db Downloading [==================================================>]     128B/128B
+2026-07-12T14:08:27.365+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  c86ab38aa6db Download complete 
+2026-07-12T14:08:27.576+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Downloading [==================>                                ]  3.502kB/9.62kB
+2026-07-12T14:08:27.577+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Downloading [==================================================>]   9.62kB/9.62kB
+2026-07-12T14:08:27.577+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Verifying Checksum 
+2026-07-12T14:08:27.577+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Download complete 
+2026-07-12T14:08:27.587+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [>                                                  ]  537.5kB/111.3MB
+2026-07-12T14:08:27.810+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [>                                                  ]  1.078MB/111.3MB
+2026-07-12T14:08:28.190+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [>                                                  ]  1.618MB/111.3MB
+2026-07-12T14:08:28.328+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=>                                                 ]    2.7MB/111.3MB
+2026-07-12T14:08:28.601+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=>                                                 ]   3.24MB/111.3MB
+2026-07-12T14:08:28.876+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=>                                                 ]  4.322MB/111.3MB
+2026-07-12T14:08:28.996+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==>                                                ]  5.403MB/111.3MB
+2026-07-12T14:08:29.141+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==>                                                ]  5.944MB/111.3MB
+2026-07-12T14:08:29.360+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==>                                                ]  6.477MB/111.3MB
+2026-07-12T14:08:29.647+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  713473b5b92b Downloading [==================================================>]     167B/167B
+2026-07-12T14:08:29.667+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  713473b5b92b Verifying Checksum 
+2026-07-12T14:08:29.667+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  713473b5b92b Download complete 
+2026-07-12T14:08:29.803+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===>                                               ]  7.558MB/111.3MB
+2026-07-12T14:08:29.914+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Downloading [============================>                      ]  3.502kB/6.109kB
+2026-07-12T14:08:29.915+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Downloading [==================================================>]  6.109kB/6.109kB
+2026-07-12T14:08:29.915+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Verifying Checksum 
+2026-07-12T14:08:29.915+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Download complete 
+2026-07-12T14:08:30.006+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===>                                               ]  8.099MB/111.3MB
+2026-07-12T14:08:30.289+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===>                                               ]   8.64MB/111.3MB
+2026-07-12T14:08:30.456+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [====>                                              ]  10.26MB/111.3MB
+2026-07-12T14:08:30.656+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====>                                             ]  11.34MB/111.3MB
+2026-07-12T14:08:30.744+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  cc7fa208b8a7 Downloading [==================================================>]     184B/184B
+2026-07-12T14:08:30.744+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  cc7fa208b8a7 Verifying Checksum 
+2026-07-12T14:08:30.744+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  cc7fa208b8a7 Download complete 
+2026-07-12T14:08:30.916+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====>                                             ]  12.42MB/111.3MB
+2026-07-12T14:08:31.107+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====>                                             ]  12.96MB/111.3MB
+2026-07-12T14:08:31.249+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [======>                                            ]  14.05MB/111.3MB
+2026-07-12T14:08:31.483+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [======>                                            ]  15.13MB/111.3MB
+2026-07-12T14:08:31.804+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=======>                                           ]  16.21MB/111.3MB
+2026-07-12T14:08:31.975+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=======>                                           ]  17.29MB/111.3MB
+2026-07-12T14:08:32.123+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========>                                          ]  17.83MB/111.3MB
+2026-07-12T14:08:32.249+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========>                                          ]  18.37MB/111.3MB
+2026-07-12T14:08:32.416+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========>                                          ]  18.91MB/111.3MB
+2026-07-12T14:08:32.629+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========>                                          ]  19.45MB/111.3MB
+2026-07-12T14:08:32.885+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========>                                         ]  20.53MB/111.3MB
+2026-07-12T14:08:33.153+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========>                                         ]  21.62MB/111.3MB
+2026-07-12T14:08:33.377+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========>                                         ]  22.16MB/111.3MB
+2026-07-12T14:08:33.478+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========>                                        ]   22.7MB/111.3MB
+2026-07-12T14:08:33.669+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========>                                        ]  23.24MB/111.3MB
+2026-07-12T14:08:33.792+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========>                                        ]  23.78MB/111.3MB
+2026-07-12T14:08:34.120+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========>                                       ]  24.86MB/111.3MB
+2026-07-12T14:08:34.244+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========>                                       ]  25.94MB/111.3MB
+2026-07-12T14:08:34.467+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========>                                       ]  26.48MB/111.3MB
+2026-07-12T14:08:34.968+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============>                                      ]  27.56MB/111.3MB
+2026-07-12T14:08:35.266+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============>                                      ]  28.64MB/111.3MB
+2026-07-12T14:08:35.598+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============>                                     ]  29.72MB/111.3MB
+2026-07-12T14:08:35.712+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============>                                     ]  30.26MB/111.3MB
+2026-07-12T14:08:35.947+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============>                                     ]  30.81MB/111.3MB
+2026-07-12T14:08:36.189+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============>                                    ]  31.35MB/111.3MB
+2026-07-12T14:08:36.347+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============>                                    ]  32.43MB/111.3MB
+2026-07-12T14:08:36.579+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===============>                                   ]  33.51MB/111.3MB
+2026-07-12T14:08:36.742+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===============>                                   ]  34.05MB/111.3MB
+2026-07-12T14:08:36.960+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===============>                                   ]  35.13MB/111.3MB
+2026-07-12T14:08:37.165+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================>                                  ]  36.21MB/111.3MB
+2026-07-12T14:08:37.309+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================>                                  ]  36.75MB/111.3MB
+2026-07-12T14:08:37.450+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================>                                  ]  37.29MB/111.3MB
+2026-07-12T14:08:38.015+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================>                                 ]  37.83MB/111.3MB
+2026-07-12T14:08:38.254+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================>                                 ]   38.9MB/111.3MB
+2026-07-12T14:08:38.434+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================>                                 ]  39.43MB/111.3MB
+2026-07-12T14:08:38.617+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================>                                 ]  39.96MB/111.3MB
+2026-07-12T14:08:38.815+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==================>                                ]   40.5MB/111.3MB
+2026-07-12T14:08:38.996+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==================>                                ]  41.58MB/111.3MB
+2026-07-12T14:08:39.197+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==================>                                ]  42.12MB/111.3MB
+2026-07-12T14:08:39.400+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===================>                               ]  42.66MB/111.3MB
+2026-07-12T14:08:39.516+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===================>                               ]   43.2MB/111.3MB
+2026-07-12T14:08:39.681+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===================>                               ]  44.29MB/111.3MB
+2026-07-12T14:08:39.861+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [====================>                              ]  44.82MB/111.3MB
+2026-07-12T14:08:39.975+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [====================>                              ]   45.9MB/111.3MB
+2026-07-12T14:08:40.087+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====================>                             ]  46.98MB/111.3MB
+2026-07-12T14:08:40.256+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====================>                             ]  48.06MB/111.3MB
+2026-07-12T14:08:40.428+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [======================>                            ]  49.14MB/111.3MB
+2026-07-12T14:08:40.577+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [======================>                            ]  50.22MB/111.3MB
+2026-07-12T14:08:40.724+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [======================>                            ]  50.76MB/111.3MB
+2026-07-12T14:08:40.832+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=======================>                           ]  51.84MB/111.3MB
+2026-07-12T14:08:41.049+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=======================>                           ]  52.38MB/111.3MB
+2026-07-12T14:08:41.172+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================>                          ]  53.46MB/111.3MB
+2026-07-12T14:08:41.316+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================>                          ]     54MB/111.3MB
+2026-07-12T14:08:41.511+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================>                          ]  54.54MB/111.3MB
+2026-07-12T14:08:41.801+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================>                          ]  55.08MB/111.3MB
+2026-07-12T14:08:41.977+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================>                          ]  55.63MB/111.3MB
+2026-07-12T14:08:42.627+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========================>                         ]  56.17MB/111.3MB
+2026-07-12T14:08:42.945+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========================>                         ]  56.71MB/111.3MB
+2026-07-12T14:08:43.427+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========================>                         ]  57.25MB/111.3MB
+2026-07-12T14:08:43.711+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========================>                         ]  57.79MB/111.3MB
+2026-07-12T14:08:44.017+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========================>                        ]  58.33MB/111.3MB
+2026-07-12T14:08:44.266+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========================>                        ]  58.87MB/111.3MB
+2026-07-12T14:08:44.546+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========================>                        ]  59.95MB/111.3MB
+2026-07-12T14:08:44.785+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========================>                       ]  60.49MB/111.3MB
+2026-07-12T14:08:44.917+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========================>                       ]  61.03MB/111.3MB
+2026-07-12T14:08:45.049+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========================>                       ]  61.57MB/111.3MB
+2026-07-12T14:08:45.263+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============================>                      ]  62.65MB/111.3MB
+2026-07-12T14:08:45.441+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============================>                      ]   63.2MB/111.3MB
+2026-07-12T14:08:45.742+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============================>                      ]  63.73MB/111.3MB
+2026-07-12T14:08:45.982+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============================>                     ]  64.81MB/111.3MB
+2026-07-12T14:08:46.145+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============================>                     ]  65.35MB/111.3MB
+2026-07-12T14:08:46.312+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============================>                     ]  66.44MB/111.3MB
+2026-07-12T14:08:46.485+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============================>                    ]  66.98MB/111.3MB
+2026-07-12T14:08:46.721+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============================>                    ]  68.05MB/111.3MB
+2026-07-12T14:08:46.841+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============================>                    ]  68.59MB/111.3MB
+2026-07-12T14:08:47.050+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===============================>                   ]  69.66MB/111.3MB
+2026-07-12T14:08:47.226+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===============================>                   ]   70.2MB/111.3MB
+2026-07-12T14:08:47.641+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================================>                  ]  71.28MB/111.3MB
+2026-07-12T14:08:47.934+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================================>                  ]  72.36MB/111.3MB
+2026-07-12T14:08:48.051+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================================>                  ]   72.9MB/111.3MB
+2026-07-12T14:08:48.223+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================================>                 ]  73.44MB/111.3MB
+2026-07-12T14:08:48.398+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================================>                 ]  73.97MB/111.3MB
+2026-07-12T14:08:48.554+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================================>                 ]  75.05MB/111.3MB
+2026-07-12T14:08:48.821+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================================>                 ]  75.59MB/111.3MB
+2026-07-12T14:08:49.120+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==================================>                ]  76.68MB/111.3MB
+2026-07-12T14:08:49.221+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==================================>                ]  77.22MB/111.3MB
+2026-07-12T14:08:49.535+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==================================>                ]  77.76MB/111.3MB
+2026-07-12T14:08:49.757+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===================================>               ]  78.29MB/111.3MB
+2026-07-12T14:08:49.940+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===================================>               ]  78.82MB/111.3MB
+2026-07-12T14:08:50.208+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===================================>               ]  79.36MB/111.3MB
+2026-07-12T14:08:50.359+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===================================>               ]  79.91MB/111.3MB
+2026-07-12T14:08:50.520+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [====================================>              ]  80.45MB/111.3MB
+2026-07-12T14:08:50.737+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [====================================>              ]  81.53MB/111.3MB
+2026-07-12T14:08:51.020+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [====================================>              ]  82.07MB/111.3MB
+2026-07-12T14:08:51.218+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====================================>             ]  82.61MB/111.3MB
+2026-07-12T14:08:51.427+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====================================>             ]  83.15MB/111.3MB
+2026-07-12T14:08:51.690+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====================================>             ]  83.69MB/111.3MB
+2026-07-12T14:08:52.738+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=====================================>             ]  84.23MB/111.3MB
+2026-07-12T14:08:52.911+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [======================================>            ]  85.31MB/111.3MB
+2026-07-12T14:08:53.107+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [======================================>            ]  86.39MB/111.3MB
+2026-07-12T14:08:53.311+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=======================================>           ]  86.93MB/111.3MB
+2026-07-12T14:08:53.562+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=======================================>           ]  88.02MB/111.3MB
+2026-07-12T14:08:53.687+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================================>          ]   89.1MB/111.3MB
+2026-07-12T14:08:53.922+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================================>          ]  89.64MB/111.3MB
+2026-07-12T14:08:54.248+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================================>          ]  90.18MB/111.3MB
+2026-07-12T14:08:54.508+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [========================================>          ]  90.72MB/111.3MB
+2026-07-12T14:08:54.743+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========================================>         ]  91.26MB/111.3MB
+2026-07-12T14:08:54.974+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========================================>         ]  92.34MB/111.3MB
+2026-07-12T14:08:55.269+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=========================================>         ]  93.41MB/111.3MB
+2026-07-12T14:08:55.392+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========================================>        ]  93.95MB/111.3MB
+2026-07-12T14:08:55.557+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========================================>        ]   94.5MB/111.3MB
+2026-07-12T14:08:55.803+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========================================>        ]  95.04MB/111.3MB
+2026-07-12T14:08:56.083+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==========================================>        ]  95.58MB/111.3MB
+2026-07-12T14:08:56.301+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========================================>       ]  96.12MB/111.3MB
+2026-07-12T14:08:56.546+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========================================>       ]  96.66MB/111.3MB
+2026-07-12T14:08:56.815+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===========================================>       ]   97.2MB/111.3MB
+2026-07-12T14:08:57.030+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============================================>      ]  98.28MB/111.3MB
+2026-07-12T14:08:57.212+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============================================>      ]  98.82MB/111.3MB
+2026-07-12T14:08:57.351+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============================================>      ]  99.36MB/111.3MB
+2026-07-12T14:08:57.559+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [============================================>      ]   99.9MB/111.3MB
+2026-07-12T14:08:57.701+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============================================>     ]  100.4MB/111.3MB
+2026-07-12T14:08:57.938+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============================================>     ]    101MB/111.3MB
+2026-07-12T14:08:58.076+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=============================================>     ]  102.1MB/111.3MB
+2026-07-12T14:08:58.270+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============================================>    ]  102.6MB/111.3MB
+2026-07-12T14:08:58.393+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============================================>    ]  103.1MB/111.3MB
+2026-07-12T14:08:58.494+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============================================>    ]  103.7MB/111.3MB
+2026-07-12T14:08:58.687+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [==============================================>    ]  104.2MB/111.3MB
+2026-07-12T14:08:58.840+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===============================================>   ]  105.3MB/111.3MB
+2026-07-12T14:08:58.973+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===============================================>   ]  105.8MB/111.3MB
+2026-07-12T14:08:59.112+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [===============================================>   ]  106.4MB/111.3MB
+2026-07-12T14:08:59.363+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================================================>  ]  106.9MB/111.3MB
+2026-07-12T14:08:59.547+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================================================>  ]  107.4MB/111.3MB
+2026-07-12T14:08:59.742+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================================================>  ]    108MB/111.3MB
+2026-07-12T14:08:59.932+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [================================================>  ]  108.5MB/111.3MB
+2026-07-12T14:09:00.127+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================================================> ]  109.1MB/111.3MB
+2026-07-12T14:09:00.281+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================================================> ]  109.6MB/111.3MB
+2026-07-12T14:09:00.522+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================================================> ]  110.1MB/111.3MB
+2026-07-12T14:09:00.823+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Downloading [=================================================> ]  111.2MB/111.3MB
+2026-07-12T14:09:00.827+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Verifying Checksum 
+2026-07-12T14:09:00.827+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Download complete 
+2026-07-12T14:09:00.881+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [>                                                  ]  557.1kB/111.3MB
+2026-07-12T14:09:00.996+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [>                                                  ]  1.114MB/111.3MB
+2026-07-12T14:09:01.102+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [==>                                                ]  5.571MB/111.3MB
+2026-07-12T14:09:01.208+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [=====>                                             ]   11.7MB/111.3MB
+2026-07-12T14:09:01.311+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [=======>                                           ]  17.27MB/111.3MB
+2026-07-12T14:09:01.415+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [==========>                                        ]  22.84MB/111.3MB
+2026-07-12T14:09:01.538+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [============>                                      ]  26.74MB/111.3MB
+2026-07-12T14:09:01.673+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [=============>                                     ]  30.08MB/111.3MB
+2026-07-12T14:09:01.795+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [===============>                                   ]  35.09MB/111.3MB
+2026-07-12T14:09:01.893+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [==================>                                ]  40.67MB/111.3MB
+2026-07-12T14:09:02.000+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [====================>                              ]  46.24MB/111.3MB
+2026-07-12T14:09:02.125+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [======================>                            ]  50.14MB/111.3MB
+2026-07-12T14:09:02.202+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [========================>                          ]  54.59MB/111.3MB
+2026-07-12T14:09:02.401+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [=========================>                         ]  56.26MB/111.3MB
+2026-07-12T14:09:02.502+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [==========================>                        ]  59.05MB/111.3MB
+2026-07-12T14:09:02.620+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [===========================>                       ]  61.83MB/111.3MB
+2026-07-12T14:09:02.722+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [==============================>                    ]   67.4MB/111.3MB
+2026-07-12T14:09:02.833+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [================================>                  ]  71.86MB/111.3MB
+2026-07-12T14:09:02.940+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [=================================>                 ]   75.2MB/111.3MB
+2026-07-12T14:09:03.128+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [====================================>              ]  80.77MB/111.3MB
+2026-07-12T14:09:03.373+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [====================================>              ]  81.33MB/111.3MB
+2026-07-12T14:09:03.543+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [====================================>              ]  81.89MB/111.3MB
+2026-07-12T14:09:03.678+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [=====================================>             ]  83.56MB/111.3MB
+2026-07-12T14:09:03.806+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [======================================>            ]  85.23MB/111.3MB
+2026-07-12T14:09:03.911+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [=======================================>           ]  87.46MB/111.3MB
+2026-07-12T14:09:04.022+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [========================================>          ]  89.69MB/111.3MB
+2026-07-12T14:09:04.140+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [=========================================>         ]  91.91MB/111.3MB
+2026-07-12T14:09:04.263+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [==========================================>        ]  95.26MB/111.3MB
+2026-07-12T14:09:04.387+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [===========================================>       ]  96.93MB/111.3MB
+2026-07-12T14:09:04.823+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [============================================>      ]  98.04MB/111.3MB
+2026-07-12T14:09:04.931+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [===============================================>   ]  105.8MB/111.3MB
+2026-07-12T14:09:05.272+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Extracting [==================================================>]  111.3MB/111.3MB
+2026-07-12T14:09:05.545+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  2f537278bc74 Pull complete 
+2026-07-12T14:09:05.556+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Extracting [==================================================>]   9.62kB/9.62kB
+2026-07-12T14:09:05.560+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Extracting [==================================================>]   9.62kB/9.62kB
+2026-07-12T14:09:05.613+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4096c457dc0d Pull complete 
+2026-07-12T14:09:05.625+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  c86ab38aa6db Extracting [==================================================>]     128B/128B
+2026-07-12T14:09:05.628+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  c86ab38aa6db Extracting [==================================================>]     128B/128B
+2026-07-12T14:09:05.672+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  c86ab38aa6db Pull complete 
+2026-07-12T14:09:05.684+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  713473b5b92b Extracting [==================================================>]     167B/167B
+2026-07-12T14:09:05.688+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  713473b5b92b Extracting [==================================================>]     167B/167B
+2026-07-12T14:09:05.739+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  713473b5b92b Pull complete 
+2026-07-12T14:09:05.753+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Extracting [==================================================>]  6.109kB/6.109kB
+2026-07-12T14:09:05.757+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Extracting [==================================================>]  6.109kB/6.109kB
+2026-07-12T14:09:05.812+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  7af924000309 Pull complete 
+2026-07-12T14:09:05.822+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  cc7fa208b8a7 Extracting [==================================================>]     184B/184B
+2026-07-12T14:09:05.825+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  cc7fa208b8a7 Extracting [==================================================>]     184B/184B
+2026-07-12T14:09:05.873+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  cc7fa208b8a7 Pull complete 
+2026-07-12T14:09:06.014+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Image postgres:16-alpine Pulled 
+2026-07-12T14:09:06.070+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Network car-dealership-inventory-system_default Creating 
+2026-07-12T14:09:06.273+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Network car-dealership-inventory-system_default Created 
+2026-07-12T14:09:06.284+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Volume car-dealership-inventory-system_pgdata Creating 
+2026-07-12T14:09:06.346+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Volume car-dealership-inventory-system_pgdata Created 
+2026-07-12T14:09:06.366+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container dealership-db Creating 
+2026-07-12T14:09:07.871+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container dealership-db Created 
+2026-07-12T14:09:07.882+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container dealership-db Starting 
+2026-07-12T14:09:09.218+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container dealership-db Started 
+2026-07-12T14:09:09.218+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container dealership-db Waiting 
+2026-07-12T14:09:09.734+05:30  INFO 36324 --- [car-dealership-api] [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container dealership-db Healthy 
+2026-07-12T14:09:17.336+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-12T14:09:17.596+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 232 ms. Found 3 JPA repository interfaces.
+2026-07-12T14:09:21.887+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-07-12T14:09:23.408+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-12T14:09:23.409+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-07-12T14:09:23.836+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-07-12T14:09:23.837+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11257 ms
+2026-07-12T14:09:26.091+05:30 ERROR 36324 --- [car-dealership-api] [  restartedMain] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\car-dealership-api\target\classes\com\dealership\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'applicationConfig' defined in file [C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\car-dealership-api\target\classes\com\dealership\security\ApplicationConfig.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.dealership.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+2026-07-12T14:09:26.162+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-07-12T14:09:26.184+05:30  WARN 36324 --- [car-dealership-api] [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2026-07-12T14:09:26.222+05:30  INFO 36324 --- [car-dealership-api] [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-07-12T14:09:26.284+05:30 ERROR 36324 --- [car-dealership-api] [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.1.jar:3.4.1]
+	at com.dealership.CarDealershipApiApplication.main(CarDealershipApiApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.1.jar:3.4.1]
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162) ~[spring-boot-3.4.1.jar:3.4.1]
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\car-dealership-api\target\classes\com\dealership\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'applicationConfig' defined in file [C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\car-dealership-api\target\classes\com\dealership\security\ApplicationConfig.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.dealership.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1377) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4426) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128) ~[spring-boot-3.4.1.jar:3.4.1]
+	... 18 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationConfig' defined in file [C:\Users\Het Ashishbhai Modi\OneDrive\Desktop\henil\car-dealership-inventory-system\car-dealership-api\target\classes\com\dealership\security\ApplicationConfig.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.dealership.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1377) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:413) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1357) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1187) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1573) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1519) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.1.jar:6.2.1]
+	... 59 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.dealership.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1707) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1456) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1573) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1519) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.1.jar:6.2.1]
+	... 81 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaSharedEM_entityManagerFactory': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1357) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1187) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.1.jar:6.2.1]
+	... 94 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Unable to obtain connection from database: FATAL: password authentication failed for user "dealership_user"
+-----------------------------------------------------------------------------------------------------------
+SQL State  : 28P01
+Error Code : 0
+Message    : FATAL: password authentication failed for user "dealership_user"
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.1.jar:6.2.1]
+	... 106 common frames omitted
+Caused by: org.flywaydb.core.internal.exception.FlywaySqlException: Unable to obtain connection from database: FATAL: password authentication failed for user "dealership_user"
+-----------------------------------------------------------------------------------------------------------
+SQL State  : 28P01
+Error Code : 0
+Message    : FATAL: password authentication failed for user "dealership_user"
+
+	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:71) ~[flyway-core-10.20.1.jar:na]
+	at org.flywaydb.core.internal.jdbc.JdbcConnectionFactory.<init>(JdbcConnectionFactory.java:76) ~[flyway-core-10.20.1.jar:na]
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:137) ~[flyway-core-10.20.1.jar:na]
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:176) ~[flyway-core-10.20.1.jar:na]
+	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66) ~[spring-boot-autoconfigure-3.4.1.jar:3.4.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-6.2.1.jar:6.2.1]
+	... 115 common frames omitted
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dealership_user"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:711) ~[postgresql-42.7.4.jar:42.7.4]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:213) ~[postgresql-42.7.4.jar:42.7.4]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:268) ~[postgresql-42.7.4.jar:42.7.4]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.4.jar:42.7.4]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273) ~[postgresql-42.7.4.jar:42.7.4]
+	at org.postgresql.Driver.makeConnection(Driver.java:446) ~[postgresql-42.7.4.jar:42.7.4]
+	at org.postgresql.Driver.connect(Driver.java:298) ~[postgresql-42.7.4.jar:42.7.4]
+	at org.springframework.jdbc.datasource.SimpleDriverDataSource.getConnectionFromDriver(SimpleDriverDataSource.java:144) ~[spring-jdbc-6.2.1.jar:6.2.1]
+	at org.springframework.jdbc.datasource.AbstractDriverBasedDataSource.getConnectionFromDriver(AbstractDriverBasedDataSource.java:205) ~[spring-jdbc-6.2.1.jar:6.2.1]
+	at org.springframework.jdbc.datasource.AbstractDriverBasedDataSource.getConnection(AbstractDriverBasedDataSource.java:169) ~[spring-jdbc-6.2.1.jar:6.2.1]
+	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:59) ~[flyway-core-10.20.1.jar:na]
+	... 121 common frames omitted
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:36 min
+[INFO] Finished at: 2026-07-12T14:09:29+05:30
+[INFO] ------------------------------------------------------------------------

@@ -5,24 +5,40 @@ import { describe, it, expect, vi } from 'vitest';
 import SearchBar from './SearchBar';
 
 describe('SearchBar', () => {
-  it('renders input fields for search criteria', () => {
+  it('renders input fields for all search criteria', () => {
     render(<SearchBar onSearch={() => {}} />);
     
-    expect(screen.getByPlaceholderText(/make/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/model/i)).toBeInTheDocument();
-    expect(screen.getByRole('combobox')).toBeInTheDocument(); // Category select
+    expect(screen.getByPlaceholderText(/SEARCH MANUFACTURER/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/SEARCH DESIGNATION/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/MIN/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/MAX/i)).toBeInTheDocument();
+    expect(screen.getByRole('combobox')).toBeInTheDocument();
   });
 
-  it('calls onSearch with debounced values when typing', async () => {
+  it('calls onSearch with debounced values for text inputs', async () => {
     const handleSearch = vi.fn();
     render(<SearchBar onSearch={handleSearch} />);
     
-    const makeInput = screen.getByPlaceholderText(/make/i);
+    const makeInput = screen.getByPlaceholderText(/SEARCH MANUFACTURER/i);
     await userEvent.type(makeInput, 'Honda');
     
-    // The component uses useDebounce, so we wait for the callback
     await waitFor(() => {
       expect(handleSearch).toHaveBeenCalledWith(expect.objectContaining({ make: 'Honda' }));
+    }, { timeout: 1000 });
+  });
+
+  it('calls onSearch with debounced minPrice and maxPrice', async () => {
+    const handleSearch = vi.fn();
+    render(<SearchBar onSearch={handleSearch} />);
+    
+    const minInput = screen.getByPlaceholderText(/MIN/i);
+    const maxInput = screen.getByPlaceholderText(/MAX/i);
+    
+    await userEvent.type(minInput, '20000');
+    await userEvent.type(maxInput, '50000');
+    
+    await waitFor(() => {
+      expect(handleSearch).toHaveBeenCalledWith(expect.objectContaining({ minPrice: '20000', maxPrice: '50000' }));
     }, { timeout: 1000 });
   });
 
@@ -38,3 +54,4 @@ describe('SearchBar', () => {
     }, { timeout: 1000 });
   });
 });
+

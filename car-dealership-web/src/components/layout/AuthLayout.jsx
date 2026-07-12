@@ -14,19 +14,18 @@ const AuthLayout = ({
   children 
 }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-black py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 to-black pointer-events-none"></div>
+      
+      <div className="max-w-md w-full space-y-8 bg-zinc-950 p-10 border border-zinc-800 relative z-10">
         <div className="flex flex-col items-center">
-          <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
-            <Car className="h-6 w-6 text-blue-600" />
-          </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-light font-serif uppercase tracking-widest text-white">
             {title}
           </h2>
           {subtitleText && subtitleLinkText && subtitleLinkTo && (
-            <p className="mt-2 text-center text-sm text-gray-600">
+            <p className="mt-4 text-center text-xs text-zinc-500 uppercase tracking-widest">
               {subtitleText}{' '}
-              <Link to={subtitleLinkTo} className="font-medium text-blue-600 hover:text-blue-500">
+              <Link to={subtitleLinkTo} className="font-bold text-white hover:text-gray-300 transition-colors">
                 {subtitleLinkText}
               </Link>
             </p>
@@ -36,7 +35,9 @@ const AuthLayout = ({
         {serverError && <Toast message={serverError} type="error" onClose={() => setServerError(null)} />}
         {successMessage && <Toast message={successMessage} type="success" />}
 
-        {children}
+        <div className="auth-form-container">
+           {children}
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: dealership_password
       POSTGRES_DB: dealership_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
@@ -34,7 +34,7 @@ services:
       context: ./car-dealership-web
     container_name: dealership-frontend
     ports:
-      - "80:80"
+      - "5173:80"
     depends_on:
       - backend
     networks:
