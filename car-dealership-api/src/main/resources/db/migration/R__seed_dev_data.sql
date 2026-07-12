@@ -7,7 +7,7 @@ VALUES (
     '11111111-1111-1111-1111-111111111111',
     'admin_demo',
     'admin@dealership.com',
-    '$2a$10$wY1twJw3FcjQE.cOvq49Nez.Zl7cPxO7hL1S0J.qFp0j3b9xY/Dfq',
+    '$2a$10$5dCBJupBtnBwkhQ/RReczucNHRv8uR28B12YV/TGxyEsW7Fy7bnXO',
     'ADMIN'
 ) ON CONFLICT (email) DO NOTHING;
 
