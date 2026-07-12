@@ -2,6 +2,12 @@
 
 # 🚗 Car Dealership Inventory System
 
+## 🌐 Live Demo
+You can view the live deployment here: **[http://13.239.31.21](http://13.239.31.21)**
+
+> [!WARNING]
+> Due to SSL restrictions (serving over HTTP directly via IP address), this website will **not** open in Safari on macOS. Please use Chrome, Firefox, or Edge.
+
 A full-stack **Luxury Automotive Inventory & Acquisition Platform** built with **Spring Boot** and **React**, featuring JWT authentication, role-based access control, real-time inventory management, advanced vehicle search with **min/max price filtering**, and a bespoke **dark luxury showroom UI** with digital contract signing and escrow simulation.
 
 [![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
@@ -29,6 +35,7 @@ A full-stack **Luxury Automotive Inventory & Acquisition Platform** built with *
 - **Monroney Sticker Generation** — printable window stickers for physical showrooms
 - **Dynamic search** with filters — search by make, model, category, price range
 - **Paginated listings** with configurable page size and sorting
+- **Database Indexing** — optimized multi-column indexes for fast inventory search and filtering
 
 ### 📦 Inventory Operations
 - **Purchase vehicles** — automatically decrements stock with out-of-stock protection
