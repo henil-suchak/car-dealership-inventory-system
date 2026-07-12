@@ -1,6 +1,8 @@
 package com.dealership.entity;
 
 public enum Role {
-    USER,
+    CUSTOMER,
+    SALES,
+    MANAGER,
     ADMIN
 }

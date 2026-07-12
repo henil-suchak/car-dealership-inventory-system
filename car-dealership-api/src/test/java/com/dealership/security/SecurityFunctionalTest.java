@@ -42,7 +42,7 @@ public class SecurityFunctionalTest {
         dbUser.setUsername("testuser");
         dbUser.setEmail("test@example.com");
         dbUser.setPassword("password123");
-        dbUser.setRole(com.dealership.entity.Role.USER);
+        dbUser.setRole(com.dealership.entity.Role.CUSTOMER);
         userRepository.save(dbUser);
 
         // Create a token for this user

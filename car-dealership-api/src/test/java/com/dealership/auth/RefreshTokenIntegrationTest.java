@@ -48,7 +48,7 @@ public class RefreshTokenIntegrationTest {
         user.setUsername("refreshuser");
         user.setEmail("refresh@example.com");
         user.setPassword(passwordEncoder.encode("password123"));
-        user.setRole(Role.USER);
+        user.setRole(Role.CUSTOMER);
         userRepository.save(user);
 
         // 2. Login to get access token and refresh token
@@ -82,5 +82,41 @@ public class RefreshTokenIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(refreshJson))
                 .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void shouldRevokeRefreshTokenOnLogout() throws Exception {
+        // 1. Create a user
+        User user = new User();
+        user.setUsername("logoutuser");
+        user.setEmail("logout@example.com");
+        user.setPassword(passwordEncoder.encode("password123"));
+        user.setRole(Role.CUSTOMER);
+        userRepository.save(user);
+
+        // 2. Login to get access token and refresh token
+        String loginJson = "{\"email\":\"logout@example.com\", \"password\":\"password123\"}";
+        MvcResult loginResult = mockMvc.perform(post("/api/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(loginJson))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String responseBody = loginResult.getResponse().getContentAsString();
+        JsonNode jsonNode = objectMapper.readTree(responseBody);
+        String accessToken = jsonNode.get("token").asText();
+        String refreshToken = jsonNode.get("refreshToken").asText();
+
+        // 3. Logout (which should revoke the token)
+        mockMvc.perform(post("/api/auth/logout")
+                        .header("Authorization", "Bearer " + accessToken))
+                .andExpect(status().isOk()); // Assuming it returns 200 OK or 204 No Content
+
+        // 4. Try to use the revoked refresh token
+        String refreshJson = "{\"refreshToken\":\"" + refreshToken + "\"}";
+        mockMvc.perform(post("/api/auth/refresh")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(refreshJson))
+                .andExpect(status().isUnauthorized()); // Should be unauthorized because token is deleted
     }
 }

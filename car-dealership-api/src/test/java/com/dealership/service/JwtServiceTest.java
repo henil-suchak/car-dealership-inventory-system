@@ -28,4 +28,13 @@ public class JwtServiceTest {
         assertThat(token).isNotNull();
         assertThat(jwtService.extractUsername(token)).isEqualTo("testuser");
     }
+
+    @Test
+    void shouldThrowExceptionForInvalidToken() {
+        String invalidToken = "invalid.token.here";
+
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> {
+            jwtService.extractUsername(invalidToken);
+        }).isInstanceOf(io.jsonwebtoken.JwtException.class);
+    }
 }

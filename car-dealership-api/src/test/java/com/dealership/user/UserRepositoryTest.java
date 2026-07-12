@@ -27,7 +27,7 @@ public class UserRepositoryTest {
     @Test
     void shouldSaveAndFindUserByEmail() {
         // Arrange
-        User user = new User(null, "testuser", "test@example.com", "hashedpassword", Role.USER);
+        User user = new User(null, "testuser", "test@example.com", "hashedpassword", Role.CUSTOMER);
 
         // Action
         userRepository.save(user);
@@ -36,6 +36,6 @@ public class UserRepositoryTest {
         // Assertion
         assertThat(foundUser).isPresent();
         assertThat(foundUser.get().getRealUsername()).isEqualTo("testuser");
-        assertThat(foundUser.get().getRole()).isEqualTo(Role.USER);
+        assertThat(foundUser.get().getRole()).isEqualTo(Role.CUSTOMER);
     }
 }
