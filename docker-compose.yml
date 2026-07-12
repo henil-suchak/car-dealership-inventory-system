@@ -1,5 +1,5 @@
 services:
-  postgres:
+  db:
     image: postgres:16-alpine
     container_name: dealership-db
     environment:
@@ -10,6 +10,39 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - dealership-net
+
+  backend:
+    build:
+      context: ./car-dealership-api
+    container_name: dealership-backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/dealership_db
+      - SPRING_DATASOURCE_USERNAME=dealership_user
+      - SPRING_DATASOURCE_PASSWORD=dealership_password
+      - SPRING_DOCKER_COMPOSE_ENABLED=false
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - dealership-net
+
+  frontend:
+    build:
+      context: ./car-dealership-web
+    container_name: dealership-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - dealership-net
 
 volumes:
   pgdata:
+
+networks:
+  dealership-net:
+    driver: bridge

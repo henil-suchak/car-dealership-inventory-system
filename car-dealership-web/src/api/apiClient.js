@@ -12,7 +12,7 @@ export const setToken = (token) => {
 };
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: '/api',
 });
 
 // Request Interceptor: Attach JWT to every request if available
