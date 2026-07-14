@@ -27,6 +27,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=dealership_user
       - SPRING_DATASOURCE_PASSWORD=dealership_password
       - SPRING_DOCKER_COMPOSE_ENABLED=false
+      - JAVA_TOOL_OPTIONS=-Xmx256m -Xms256m
     ports:
       - "8080:8080"
     depends_on:
