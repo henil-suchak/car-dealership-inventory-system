@@ -3,6 +3,7 @@ package com.dealership.controller;
 import com.dealership.TestcontainersConfiguration;
 import com.dealership.entity.Vehicle;
 import com.dealership.repository.VehicleRepository;
+import com.dealership.repository.PurchaseRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,12 @@ public class VehicleSearchControllerTest {
     @Autowired
     private VehicleRepository vehicleRepository;
 
+    @Autowired
+    private PurchaseRepository purchaseRepository;
+
     @BeforeEach
     void setUp() {
+        purchaseRepository.deleteAll();
         vehicleRepository.deleteAll();
         
         List<Vehicle> vehicles = List.of(

@@ -2,14 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
+
 const ClientProfilePage = () => {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    // Load simulated order history from localStorage
-    const savedOrders = JSON.parse(localStorage.getItem('dealership_orders') || '[]');
-    setOrders(savedOrders);
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get('/api/purchases/my-purchases');
+        setOrders(response.data);
+      } catch (err) {
+        console.error("Failed to fetch purchase history", err);
+      }
+    };
+    fetchOrders();
   }, []);
 
   return (

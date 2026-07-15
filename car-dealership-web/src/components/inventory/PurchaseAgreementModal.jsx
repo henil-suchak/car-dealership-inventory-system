@@ -17,19 +17,7 @@ const PurchaseAgreementModal = ({ isOpen, vehicle, onClose, onConfirm }) => {
       setError('A valid digital signature (full name) is required.');
       return;
     }
-    
-    // Save to simulated order history
-    const existingOrders = JSON.parse(localStorage.getItem('dealership_orders') || '[]');
-    const newOrder = {
-      id: 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase(),
-      date: new Date().toISOString(),
-      vehicleId: vehicle.id,
-      model: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-      price: vehicle.price,
-      vin: vehicle.vin,
-      signature: signature
-    };
-    localStorage.setItem('dealership_orders', JSON.stringify([newOrder, ...existingOrders]));
+    // The purchase is now handled completely securely on the backend via the API call in the parent component!
 
     onConfirm();
   };

@@ -2,6 +2,7 @@ package com.dealership.vehicle;
 
 import com.dealership.entity.Vehicle;
 import com.dealership.repository.VehicleRepository;
+import com.dealership.repository.PurchaseRepository;
 import com.dealership.service.VehicleService;
 import com.dealership.vehicle.dto.VehicleSearchCriteria;
 import com.dealership.vehicle.dto.VehicleResponse;
@@ -19,9 +20,15 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.dealership.TestcontainersConfiguration;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import org.springframework.context.annotation.Import;
+
 @SpringBootTest
 @ActiveProfiles("test")
 @Transactional
+@Testcontainers
+@Import(TestcontainersConfiguration.class)
 public class VehicleSearchTest {
 
     @Autowired
@@ -30,8 +37,12 @@ public class VehicleSearchTest {
     @Autowired
     private VehicleRepository vehicleRepository;
 
+    @Autowired
+    private PurchaseRepository purchaseRepository;
+
     @BeforeEach
     public void setup() {
+        purchaseRepository.deleteAll();
         vehicleRepository.deleteAll();
         
         Vehicle v1 = new Vehicle();

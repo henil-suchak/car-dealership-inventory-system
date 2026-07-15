@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import com.dealership.entity.User;
+
 @RestController
 @RequestMapping("/api/vehicles")
 @Tag(name = "Inventory", description = "Endpoints for vehicle purchasing and restocking")
@@ -27,8 +30,8 @@ public class InventoryController {
     @PostMapping("/{id}/purchase")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @Operation(summary = "Purchase a vehicle", description = "Decrements stock by 1. Requires USER or ADMIN role.", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<VehicleResponse> purchaseVehicle(@PathVariable UUID id) {
-        return ResponseEntity.ok(inventoryService.purchaseVehicle(id));
+    public ResponseEntity<VehicleResponse> purchaseVehicle(@PathVariable UUID id, @AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(inventoryService.purchaseVehicle(id, user));
     }
 
     @PostMapping("/{id}/restock")
